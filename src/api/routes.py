@@ -2,13 +2,16 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from flask_migrate import Migrate
+from flask_swagger import swagger
+from flask_cors import CORS
 from api.utils import generate_sitemap, APIException
+from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment, Client
 
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
+@api.route('/account', methods=['GET'])
 def handle_hello():
 
     response_body = {

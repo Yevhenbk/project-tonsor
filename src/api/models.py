@@ -1,28 +1,36 @@
+
+import os
+import sys
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine
+from sqlalchemy.dialects.postgresql import VARCHAR
+from sqlalchemy import Column, ForeignKey, Integer, Table, DateTime, Numeric
+#from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
 class Account(db.Model):
     __tablename__="account"
     id = db.Column(db.Integer, primary_key=True)
-    img = db.Column(db.String, unique=True, nullable=False) 
-    name = db.Column(db.String, unique=True, nullable=False)
-    lastname = db.Column(db.String, unique=True, nullable=False)
-    phone_number = db.Column(db.String, unique=True, nullable=False)
-    email = db.Column(db.String, unique=True, nullable=False)
-    _password = db.Column(db.String, unique=False, nullable=False)
-    address = db.Column(db.String, unique=True, nullable=False)
-    ciudad = db.Column(db.String, unique=True, nullable=False)
-    cp = db.Column(db.String, unique=True, nullable=False)
-    is_barber = db.Column(db.Boolean(), unique=False, nullable=False)
+    img = db.Column(db.VARCHAR, unique=False, default=False, nullable=True) 
+    name = db.Column(db.VARCHAR, unique=False, nullable=False)
+    lastname = db.Column(db.VARCHAR, unique=False, nullable=False)
+    phone_number = db.Column(db.VARCHAR, unique=True, nullable=False)
+    email = db.Column(db.VARCHAR, unique=True, nullable=False)
+    _password = db.Column(db.VARCHAR, unique=False, nullable=False)
+    address = db.Column(db.VARCHAR, unique=False, nullable=False)
+    city = db.Column(db.VARCHAR, unique=False, nullable=False)
+    cp = db.Column(db.VARCHAR, unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    #relacion entre tablas
-    fkAccoun_Review = relationship("Review")
-    fkAccoun_Barber = relationship("Barber")
-    fkAccount_cita = relationship("Cita")
+    
+    have_barber = relationship("Barber", back_populates="account")
+    have_client = relationship("Client", back_populates="account")
+
+    
 
     def __repr__(self):
-        return '<Account %r>' % self.account
+        return f'Account {self.name}'
     
     def serialize (self):
         return {
@@ -31,126 +39,128 @@ class Account(db.Model):
             "name": self.name, 
             "lastname":self.lastname, 
             "phone_number": self.phone_number,
-            "email": self.email, 
-            "password": self.password,
+            "email": self.email,
             "address": self.address, 
-            "ciudad": self.ciudad, 
-            "cp": self.cp, 
-            "is_barber": self.is_barber, 
-            "is_active": self.is_active
+            "city": self.ciudad, 
+            "cp": self.cp
+        }
+
+
+class Client(db.Model):
+    __tablename__="client"
+    id = db.Column(db.Integer, primary_key=True)
+    id_account = db.Column(db.Integer, ForeignKey("account.id"))
+
+    have_appointment = relationship("Appointment", backref="client")
+    have_review = relationship("Review", backref="client")
+
+    def __repr__(self):
+        return f'Client {self.client}'
+    
+    def serialize (self):
+        return {
+            "id": self.id, 
+            "id_account": self.id_account
         }
 
 
 class Review(db.Model):
     __tablename__="review"
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String, unique=True, nullable=False)
-    id_account = db.Column(db.Integer, ForeignKey("account.id"))
+    text = db.Column(db.VARCHAR, unique=False, nullable=True)
+    ratings = db.Column(db.Integer, unique=False, nullable=True)
+
+    id_client = db.Column(db.Integer, ForeignKey("client.id"))
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
 
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-
-     def __repr__(self):
-        return '<Review %r>' % self.review
+    def __repr__(self):
+        return f'Review {self.review}'
     
     def serialize (self):
         return {
             "id": self.id, 
-            "text": self.text, 
-            "id_account": self.id_account, 
-            "id_barber": self.id_barber
+            "text": self.text,
+            "ratings": self.ratings 
         }
+
 
 class Barber(db.Model):
     __tablename__="barber"
     id = db.Column(db.Integer, primary_key=True)
-    _password = db.Column(db.String, unique=False, nullable=False)
     radio = db.Column(db.Integer, nullable=False)
-    id_coustomer = db.Column(db.Integer, ForeignKey("account.id"))
-    #relaciones
-    fkBarber_review = relationship("Review")
-    fkBarber_SERVICIOS = relationship("Barber_Servicio")
 
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    have_account = db.Column(db.Integer, ForeignKey("account.id"))
+    have_review = relationship("Review", backref="barber")
+    have_barber_services = relationship("Barber_Services", backref="barber")
 
     def __repr__(self):
-        return '<Barber %r>' % self.barber
+        return f'Barber {self.barber}'
     
     def serialize (self):
         return {
             "id": self.id, 
-            "password": self.password, 
-            "radio": self.radio,
-            "id_coustomer":self.raid_coustomer 
+            "radio": self.radio
         }
 
-class Servicios(db.Model):
-    __tablename__="servicios"
+class Services(db.Model):
+    __tablename__="services"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=True)
-    #relaciones
-    fkServicios_Bservicios = relationship("Barber_Servicio")
-  
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    name = db.Column(db.VARCHAR, unique=False, nullable=False)
+
+    have_barber_services = relationship("Barber_Services", backref="services")
 
     def __repr__(self):
-        return '<Servicios %r>' % self.servicios
+        return f'Services {self.services}'
 
     def serialize (self):
         return {
             "id": self.id, 
-            "name": self.name, 
-            "description": self.description
+            "name": self.name
         }
 
-class Barber_Servicio(db.Model):
-    __tablename__="barber_servicio"
+
+class Barber_Services(db.Model):
+    __tablename__="barberServices"
     id = db.Column(db.Integer, primary_key=True)
-    precio = db.Column(db.Integer, nullable=False)
-    descuento = db.Column(db.Integer, nullable=False)
-    tiempo = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String, unique=True, nullable=False)
+    cost = db.Column(db.Numeric, nullable=False)
+    discount = db.Column(db.Integer, nullable=True)
+    date = db.Column(db.DateTime, nullable=False)
+    description = db.Column(db.VARCHAR, unique=False, nullable=False)
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
-    id_servicio = db.Column(db.Integer, ForeignKey("servicios.id"))
-    #relaciones
-    fkBservicios_cita = relationship("Cita")
+    id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    have_barber = relationship("Barber",  backref="barberServices")
+    have_appointment = relationship("Appointment", backref="barber_services")
 
     def __repr__(self):
-        return '<Barber_Servicio %r>' % self.barber_servicio
+        return f'Barber_Services {self.barber_services}'
     
     def serialize (self):
         return {
             "id": self.id, 
-            "precio": self.precio, 
-            "descuento": self.descuento, 
-            "tiempo": self.tiempo, 
-            "description": self.description,
-            "id_barber": self.id_barber,
-            "id_servicio": self.id_servicio
-
+            "cost": self.cost, 
+            "discount": self.discount, 
+            "date": self.date, 
+            "description": self.description, 
+            "id_barber": self.id_barber
         }
 
 
-
-class Cita(db.Model):
-    __tablename__="cita"
+class Appointment(db.Model):
+    __tablename__="appointment"
     id = db.Column(db.Integer, primary_key=True)
-    dia_cita = db.Column(db.Date, nullable=False)
-    id_barber_servicio = db.Column(db.Integer, ForeignKey("barber_servicio.id"))
-    id_account = db.Column(db.Integer, ForeignKey("account.id"))
-
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)ç
+    date_appointment = db.Column(db.DateTime, nullable=False)
+    id_barber_Services = db.Column(db.Integer, ForeignKey("barberServices.id"))
+    id_client = db.Column(db.Integer, ForeignKey("client.id"))
 
     def __repr__(self):
-        return '<Cita %r>' % self.cita
+        return f'Appointment {self.appointment}'
 
     def serialize (self):
         return {
             "id": self.id, 
-            "dia_cita": self.dia_cita, 
-            "id_barber_servicio": self.id_barber_servicio,
-            "id_account": self.id_account
+            "date_Appointment": self.date_appointment, 
+            "id_barber_Services":self.id_barber_Services,
+            "id_client": self.id_client 
         }
+    
