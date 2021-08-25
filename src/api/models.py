@@ -26,9 +26,9 @@ class Account(db.Model):
     is_barber = db.Column(db.Boolean(), unique=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     #relacion entre tablas
-    fkAccoun_Review = relationship("Review")
+    
     fkAccoun_Barber = relationship("Barber")
-    fkAccount_Appointment = relationship("Appointment")
+    
 
     def __repr__(self):
         return f'Account {self.account}'
@@ -50,11 +50,19 @@ class Account(db.Model):
         }
 
 
+class Client(db.Model):
+    __tablename__="client"
+    id = db.Column(db.Integer, primary_key=True)
+    fkAccount_Appointment = relationship("Appointment")
+    fkAccoun_Review = relationship("Review")
+
+
+
 class Review(db.Model):
     __tablename__="review"
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.VARCHAR, unique=False, nullable=True)
-    id_account = db.Column(db.Integer, ForeignKey("account.id"))
+    id_client = db.Column(db.Integer, ForeignKey("client.id"))
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     ratings = db.Column(db.Integer, unique=False, nullable=True)
 
@@ -149,7 +157,7 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_appointment = db.Column(db.Date, nullable=False)
     id_barber_Services = db.Column(db.Integer, ForeignKey("barber_services.id"))
-    id_account = db.Column(db.Integer, ForeignKey("account.id"))
+    id_client = db.Column(db.Integer, ForeignKey("client.id"))
 
 
 

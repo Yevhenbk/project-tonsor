@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import generate_sitemap, APIException
-from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment
+from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment, Client
 
 api = Blueprint('api', __name__)
 
