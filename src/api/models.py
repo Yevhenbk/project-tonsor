@@ -49,11 +49,19 @@ class Account(db.Model):
 class Client(db.Model):
     __tablename__="client"
     id = db.Column(db.Integer, primary_key=True)
-
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
     have_appointment = relationship("Appointment", backref="client")
     have_review = relationship("Review", backref="client")
+
+    def __repr__(self):
+        return f'Client {self.client}'
+    
+    def serialize (self):
+        return {
+            "id": self.id, 
+            "id_account": self.id_account
+        }
 
 
 class Review(db.Model):
@@ -64,8 +72,6 @@ class Review(db.Model):
 
     id_client = db.Column(db.Integer, ForeignKey("client.id"))
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
-    
-
 
     def __repr__(self):
         return f'Review {self.review}'
@@ -76,6 +82,7 @@ class Review(db.Model):
             "text": self.text,
             "ratings": self.ratings 
         }
+
 
 class Barber(db.Model):
     __tablename__="barber"
@@ -105,17 +112,15 @@ class Services(db.Model):
     def __repr__(self):
         return f'Services {self.services}'
 
-
     def serialize (self):
         return {
             "id": self.id, 
-            "name": self.name, 
-            "description": self.description
+            "name": self.name
         }
+
 
 class Barber_Services(db.Model):
     __tablename__="barberServices"
-
     id = db.Column(db.Integer, primary_key=True)
     cost = db.Column(db.Numeric, nullable=False)
     discount = db.Column(db.Integer, nullable=True)
@@ -136,27 +141,26 @@ class Barber_Services(db.Model):
             "cost": self.cost, 
             "discount": self.discount, 
             "date": self.date, 
-            "description": self.description
+            "description": self.description, 
+            "id_barber": self.id_barber
         }
-
 
 
 class Appointment(db.Model):
     __tablename__="appointment"
     id = db.Column(db.Integer, primary_key=True)
-    date_appointment = db.Column(db.Date, nullable=False)
+    date_appointment = db.Column(db.DateTime, nullable=False)
     id_barber_Services = db.Column(db.Integer, ForeignKey("barberServices.id"))
     id_client = db.Column(db.Integer, ForeignKey("client.id"))
-
-
 
     def __repr__(self):
         return f'Appointment {self.appointment}'
 
-    
     def serialize (self):
         return {
             "id": self.id, 
-            "date_Appointment": self.date_appointment
+            "date_Appointment": self.date_appointment, 
+            "id_barber_Services":self.id_barber_Services,
+            "id_client": self.id_client 
         }
     
