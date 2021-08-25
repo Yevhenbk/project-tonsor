@@ -1,19 +1,26 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
+import os
+import sys
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy import Column, ForeignKey, Integer, VARCHAR, Table, DateTime
+#from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
 class Account(db.Model):
     __tablename__="account"
     id = db.Column(db.Integer, primary_key=True)
-    img = db.Column(db.String, unique=True, nullable=False) 
-    name = db.Column(db.String, unique=True, nullable=False)
-    lastname = db.Column(db.String, unique=True, nullable=False)
-    phone_number = db.Column(db.String, unique=True, nullable=False)
-    email = db.Column(db.String, unique=True, nullable=False)
-    _password = db.Column(db.String, unique=False, nullable=False)
-    address = db.Column(db.String, unique=True, nullable=False)
-    ciudad = db.Column(db.String, unique=True, nullable=False)
-    cp = db.Column(db.String, unique=True, nullable=False)
+    img = db.Column(db.VARCHAR, unique=True, nullable=False) 
+    name = db.Column(db.VARCHAR, unique=True, nullable=False)
+    lastname = db.Column(db.VARCHAR, unique=True, nullable=False)
+    phone_number = db.Column(db.VARCHAR, unique=True, nullable=False)
+    email = db.Column(db.VARCHAR, unique=True, nullable=False)
+    _password = db.Column(db.VARCHAR, unique=False, nullable=False)
+    address = db.Column(db.VARCHAR, unique=True, nullable=False)
+    ciudad = db.Column(db.VARCHAR, unique=True, nullable=False)
+    cp = db.Column(db.VARCHAR, unique=True, nullable=False)
     is_barber = db.Column(db.Boolean(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     #relacion entre tablas
@@ -44,13 +51,13 @@ class Account(db.Model):
 class Review(db.Model):
     __tablename__="review"
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String, unique=True, nullable=False)
+    text = db.Column(db.VARCHAR, unique=True, nullable=False)
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
 
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
-     def __repr__(self):
+    def __repr__(self):
         return '<Review %r>' % self.review
     
     def serialize (self):
@@ -64,7 +71,7 @@ class Review(db.Model):
 class Barber(db.Model):
     __tablename__="barber"
     id = db.Column(db.Integer, primary_key=True)
-    _password = db.Column(db.String, unique=False, nullable=False)
+    _password = db.Column(db.VARCHAR, unique=False, nullable=False)
     radio = db.Column(db.Integer, nullable=False)
     id_coustomer = db.Column(db.Integer, ForeignKey("account.id"))
     #relaciones
@@ -81,14 +88,14 @@ class Barber(db.Model):
             "id": self.id, 
             "password": self.password, 
             "radio": self.radio,
-            "id_coustomer":self.raid_coustomer 
+            "id_coustomer":self.raid_coustomer
         }
 
 class Servicios(db.Model):
     __tablename__="servicios"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=True)
+    name = db.Column(db.VARCHAR, nullable=False)
+    description = db.Column(db.VARCHAR, nullable=True)
     #relaciones
     fkServicios_Bservicios = relationship("Barber_Servicio")
   
@@ -110,7 +117,7 @@ class Barber_Servicio(db.Model):
     precio = db.Column(db.Integer, nullable=False)
     descuento = db.Column(db.Integer, nullable=False)
     tiempo = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String, unique=True, nullable=False)
+    description = db.Column(db.VARCHAR, unique=True, nullable=False)
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_servicio = db.Column(db.Integer, ForeignKey("servicios.id"))
     #relaciones
@@ -130,7 +137,6 @@ class Barber_Servicio(db.Model):
             "description": self.description,
             "id_barber": self.id_barber,
             "id_servicio": self.id_servicio
-
         }
 
 
@@ -142,7 +148,7 @@ class Cita(db.Model):
     id_barber_servicio = db.Column(db.Integer, ForeignKey("barber_servicio.id"))
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)ç
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return '<Cita %r>' % self.cita
