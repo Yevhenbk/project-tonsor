@@ -6,12 +6,12 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import generate_sitemap, APIException
-from api.models import db, Account, Review, Barber, Servicios, Barber_Servicio, Cita
+from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment
 
 api = Blueprint('api', __name__)
 
 
-@api.route('/Account', methods=['GET'])
+@api.route('/account', methods=['GET'])
 def handle_hello():
 
     response_body = {
