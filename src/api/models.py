@@ -22,7 +22,7 @@ class Account(db.Model):
     address = db.Column(db.VARCHAR, unique=False, nullable=False)
     city = db.Column(db.VARCHAR, unique=False, nullable=False)
     cp = db.Column(db.VARCHAR, unique=False, nullable=False)
-    is_barber = db.Column(db.Boolean(), unique=False, nullable=False)
+    is_client = db.Column(db.Boolean(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     
     have_barber = relationship("Barber", backref="account")
@@ -49,6 +49,11 @@ class Account(db.Model):
     @classmethod
     def get_by_id(cls, id):
         account = cls.query.get(id)
+        return account
+
+    @classmethod
+    def get_by_email(cls, email):
+        account = cls.query.filter_by(email=email).one_or_none()
         return account
 
     def create(self):
@@ -86,6 +91,16 @@ class Client(db.Model):
             "city": client.ciudad, 
             "cp": client.cp
         }
+
+    @classmethod
+    def get_by_id(cls, id):
+        client = cls.query.get(id)
+        return client
+
+    @classmethod
+    def get_by_id_account(cls, id):
+        client = cls.filter_by(id_account = id).one_or_none
+        return client
 
     def create(self):
         db.session.add(self)
@@ -131,6 +146,35 @@ class Barber(db.Model):
             "id_account": self.id_account, 
             "radio": self.radio
         }
+
+    def to_dict(self):
+        barber = Account.get_by_id(self.id_account)
+
+        return {
+            "id": self.id,
+            "img": barber.img, 
+            "name": barber.name, 
+            "lastname":barber.lastname, 
+            "phone_number": barber.phone_number,
+            "email": barber.email,
+            "address": barber.address, 
+            "city": barber.ciudad, 
+            "cp": barber.cp
+        }
+
+    @classmethod
+    def get_by_id(cls, id):
+        barber = cls.query.get(id)
+        return barber
+
+    @classmethod
+    def get_by_id_account(cls, id):
+        barber = cls.filter_by(id_account = id).one_or_none
+        return barber
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
 
 class Services(db.Model):
     __tablename__="services"
