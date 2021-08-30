@@ -10,7 +10,7 @@ const Login = () => {
 	const { register, handleSubmit } = useForm();
 	const { store, actions } = useContext(Context);
 
-	const onSubmit = data => actions(data);
+	const onSubmit = data => actions.login(data);
 
 	return (
 		<form action="" method="post" onSubmit={handleSubmit(onSubmit)}>
