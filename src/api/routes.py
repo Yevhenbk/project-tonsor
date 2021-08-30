@@ -32,13 +32,13 @@ def login():
     #if user.is_barber:
     #   barber = Barber.get_by_id_account(user.id)
 
-    if client and user._is_active:
-        token = create_access_token(identify=client.id, expires_delta=timedelta(minutes=120))
+    if client and user.is_active:
+        token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
         return {'token': token}, 200
 
     else:
         return ({'error': 'Wrong email or password'}), 400
-#AssertionError: View function mapping is overwriting an existing endpoint function: api.create_client
+
 
 @api.route('/client', methods=['POST'])
 def create_client():
@@ -71,7 +71,6 @@ def create_client():
     )
     if not (name and lastname and phone_number and password and email and address and city and cp):
         return ({'error': 'Some fields are missing'}), 400
-    #hasta aqui todo funciona bien, SEGURO
     
     account = Account(
         img=img, 
@@ -89,7 +88,7 @@ def create_client():
     
     try:
         account.create()
-        #return jsonify(account.to_dict()), 201
+        
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
     client = Client(id_account=account.id)
@@ -115,7 +114,7 @@ def get_client_profile():
     return({'error': 'Access denied'}), 401
 
 @api.route('/barber', methods=['POST'])
-def create_client():
+def create_barber():
     img = request.json.get(
         'img', None
     )
@@ -145,7 +144,6 @@ def create_client():
     )
     if not (name and lastname and phone_number and password and email and address and city and cp):
         return ({'error': 'Some fields are missing'}), 400
-    #hasta aqui todo funciona bien, SEGURO
     
     account = Account(
         img=img, 
@@ -163,7 +161,7 @@ def create_client():
     
     try:
         account.create()
-        #return jsonify(account.to_dict()), 201
+        
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
     barber = Barber(id_account=account.id)

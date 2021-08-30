@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 const Login = () => {
 	return (
-		<div>
+		<form action="" method="post">
 			<Modal.Dialog>
 				<Modal.Header>
 					<Modal.Title>Login</Modal.Title>
@@ -34,12 +34,12 @@ const Login = () => {
 				</Modal.Body>
 
 				<Modal.Footer>
-					<input type="submit" value="Registrar" className="registerButton" />
+					<input type="button" value="Registrar" className="registerButton" />
 
-					<input type="button" value="Acceder" className="accessButton" />
+					<input type="submit" value="Acceder" className="accessButton" />
 				</Modal.Footer>
 			</Modal.Dialog>
-		</div>
+		</form>
 	);
 };
 
