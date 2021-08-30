@@ -29,11 +29,21 @@ def login():
     if user.is_client:
         client = Client.get_by_id_account(user.id)
 
+    else:
+        barber = Barber.get_by_id_account(user.id)
+
     #if user.is_barber:
     #   barber = Barber.get_by_id_account(user.id)
 
     if client and user.is_active:
         token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
+        return {'token': token}, 200
+
+    #else:
+     #   return ({'error': 'Wrong email or password'}), 400
+
+    elif barber and user.is_active:
+        token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
         return {'token': token}, 200
 
     else:

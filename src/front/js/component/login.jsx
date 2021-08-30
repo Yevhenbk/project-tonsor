@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+
+import { Context } from "../store/appContext.js";
+
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 const Login = () => {
+	const { register, handleSubmit } = useForm();
+	const { store, actions } = useContext(Context);
+
+	const onSubmit = data => actions(data);
+
 	return (
-		<form action="" method="post">
+		<form action="" method="post" onSubmit={handleSubmit(onSubmit)}>
 			<Modal.Dialog>
 				<Modal.Header>
 					<Modal.Title>Login</Modal.Title>
@@ -22,13 +31,13 @@ const Login = () => {
 								Correo electronico:
 							</label>
 
-							<input type="email" id="email" name="email" className="myInput" />
+							<input type="email" id="email" name="email" className="myInput" {...register("email")} />
 							<br />
 							<label htmlFor="pwd" className="myLabel">
 								Contraseña:
 							</label>
 
-							<input type="password" id="pwd" name="pwd" className="myInput" />
+							<input type="password" id="pwd" name="pwd" className="myInput" {...register("password")} />
 						</div>
 					</div>
 				</Modal.Body>

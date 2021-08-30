@@ -169,7 +169,7 @@ class Barber(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        barber = cls.filter_by(id_account = id).one_or_none
+        barber = cls.filter_by(id_account = id).one_or_none()
         return barber
 
     def create(self):
