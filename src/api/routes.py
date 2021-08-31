@@ -29,16 +29,21 @@ def login():
     if user.is_client:
         client = Client.get_by_id_account(user.id)
 
-    #if user.is_barber:
-    #   barber = Barber.get_by_id_account(user.id)
+    else:
+        barber = Barber.get_by_id_account(user.id)
 
-    if client and user._is_active:
-        token = create_access_token(identify=client.id, expires_delta=timedelta(minutes=120))
+
+    if client and user.is_active:
+        token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
+        return {'token': token}, 200
+
+    elif barber and user.is_active:
+        token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
         return {'token': token}, 200
 
     else:
         return ({'error': 'Wrong email or password'}), 400
-#AssertionError: View function mapping is overwriting an existing endpoint function: api.create_client
+
 
 @api.route('/client', methods=['POST'])
 def create_client():
@@ -71,7 +76,6 @@ def create_client():
     )
     if not (name and lastname and phone_number and password and email and address and city and cp):
         return ({'error': 'Some fields are missing'}), 400
-    #hasta aqui todo funciona bien, SEGURO
     
     account = Account(
         img=img, 
@@ -89,7 +93,7 @@ def create_client():
     
     try:
         account.create()
-        #return jsonify(account.to_dict()), 201
+        
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
     client = Client(id_account=account.id)
@@ -114,8 +118,10 @@ def get_client_profile():
     
     return({'error': 'Access denied'}), 401
 
+
 @api.route('/barber', methods=['POST'])
-def create_client():
+def create_barber():
+    print("wwwwwwwwwwwwwwww")
     img = request.json.get(
         'img', None
     )
@@ -143,9 +149,10 @@ def create_client():
     cp = request.json.get(
         'cp', None
     )
+    print(name, lastname, address, city, phone_number, password, email, cp)
     if not (name and lastname and phone_number and password and email and address and city and cp):
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         return ({'error': 'Some fields are missing'}), 400
-    #hasta aqui todo funciona bien, SEGURO
     
     account = Account(
         img=img, 
@@ -163,7 +170,7 @@ def create_client():
     
     try:
         account.create()
-        #return jsonify(account.to_dict()), 201
+        
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
     barber = Barber(id_account=account.id)
@@ -174,3 +181,17 @@ def create_client():
         return ({'error': 'This email / phone number is already in use'}), 400
 
     
+@api.route('/barber/<int:id>', methods=['GET'])
+@jwt_required()
+def get_barber_profile():
+    current_user = get_jwt_identity()
+
+    if current_user == id: 
+        barber = Barber.get_by_id(id)
+
+        if barber:
+            return jsonify(barber.to_dict()), 200
+
+        return({'error': 'Not fount'})
+    
+    return({'error': 'Access denied'}), 401
