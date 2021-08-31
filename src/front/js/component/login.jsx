@@ -10,10 +10,10 @@ const Login = () => {
 	const { register, handleSubmit } = useForm();
 	const { store, actions } = useContext(Context);
 
-	const onSubmit = data => actions.login(data);
+	const getLogin = data => actions.login(data);
 
 	return (
-		<form action="" method="post" onSubmit={handleSubmit(onSubmit)}>
+		<form action="" method="post" onSubmit={handleSubmit(getLogin)}>
 			<Modal.Dialog>
 				<Modal.Header>
 					<Modal.Title>Login</Modal.Title>
@@ -32,7 +32,7 @@ const Login = () => {
 							</label>
 
 							<input type="email" id="email" name="email" className="myInput" {...register("email")} />
-							<br />
+
 							<label htmlFor="pwd" className="myLabel">
 								Contraseña:
 							</label>

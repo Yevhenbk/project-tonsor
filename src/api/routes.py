@@ -32,15 +32,10 @@ def login():
     else:
         barber = Barber.get_by_id_account(user.id)
 
-    #if user.is_barber:
-    #   barber = Barber.get_by_id_account(user.id)
 
     if client and user.is_active:
         token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
         return {'token': token}, 200
-
-    #else:
-     #   return ({'error': 'Wrong email or password'}), 400
 
     elif barber and user.is_active:
         token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
@@ -182,3 +177,17 @@ def create_barber():
         return ({'error': 'This email / phone number is already in use'}), 400
 
     
+@api.route('/barber/<int:id>', methods=['GET'])
+@jwt_required()
+def get_barber_profile():
+    current_user = get_jwt_identity()
+
+    if current_user == id: 
+        barber = Barber.get_by_id(id)
+
+        if barber:
+            return jsonify(barber.to_dict()), 200
+
+        return({'error': 'Not fount'})
+    
+    return({'error': 'Access denied'}), 401

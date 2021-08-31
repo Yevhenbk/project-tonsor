@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
+
+import { Context } from "../store/appContext.js";
+
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 const Register = () => {
+	const { store, actions } = useContext(Context);
+	const { register, handleSubmit } = useForm();
+
+	const getBarber = data => {
+		actions.barber(data);
+	};
+	const getClient = data => {
+		actions.client(data);
+	};
+
 	return (
-		<div>
+		<form
+			action=""
+			method="post" //onSubmit={if }
+		>
 			<Modal.Dialog>
 				<Modal.Header>
 					<Modal.Title>Registro</Modal.Title>
@@ -14,12 +31,18 @@ const Register = () => {
 					<div>
 						<p className="yourRole">Elige tu role</p>
 						<div className="myRole">
-							<button type="button" className="barberButton">
-								Barbero
-							</button>
-							<button type="button" className="customerButton">
-								Customer
-							</button>
+							<input
+								type="button"
+								className="barberButton"
+								value="Barbero"
+								onClick={handleSubmit(getBarber)}
+							/>
+							<input
+								type="button"
+								className="customerButton"
+								value="Cliente"
+								onClick={handleSubmit(getClient)}
+							/>
 						</div>
 						<div className="myHolder">
 							<hr />
@@ -38,44 +61,80 @@ const Register = () => {
 								Nombre:
 							</label>
 
-							<input type="text" id="myName" name="myName" className="myInput" />
-							<br />
+							<input type="text" id="myName" name="myName" className="myInput" {...register("name")} />
+
 							<label htmlFor="mySurname" className="myLabel">
 								Apellido:
 							</label>
 
-							<input type="text" id="mySurname" name="mySurname" className="myInput" />
+							<input
+								type="text"
+								id="mySurname"
+								name="mySurname"
+								className="myInput"
+								{...register("lastname")}
+							/>
 							<label htmlFor="email" className="myLabel">
 								Correo electronico:
 							</label>
 
-							<input type="email" id="email" name="email" className="myInput" />
-							<br />
+							<input type="email" id="email" name="email" className="myInput" {...register("email")} />
+
 							<label htmlFor="MyNum" className="myLabel">
 								Numero de telefono:
 							</label>
 
-							<input type="number" id="myNum" name="myNum" className="myInput" />
+							<input
+								type="number"
+								id="myNum"
+								name="myNum"
+								className="myInput"
+								{...register("phone_number")}
+							/>
 							<label htmlFor="myLocation" className="myLabel">
-								Localizacion:
+								Ciudad:
 							</label>
 
-							<input type="text" id="myLocation" name="myLocation" className="myInput" />
-							<br />
+							<input
+								type="text"
+								id="myLocation"
+								name="myLocation"
+								className="myInput"
+								{...register("city")}
+							/>
+
+							<label htmlFor="myAddress" className="myLabel">
+								Direcion:
+							</label>
+
+							<input
+								type="text"
+								id="myAddress"
+								name="myAddress"
+								className="myInput"
+								{...register("address")}
+							/>
+
+							<label htmlFor="cp" className="myLabel">
+								Codigo postal:
+							</label>
+
+							<input type="password" id="cp" name="cp" className="myInput" {...register("cp")} />
+
 							<label htmlFor="pwd" className="myLabel">
 								Contraseña:
 							</label>
 
-							<input type="password" id="pwd" name="pwd" className="myInput" />
+							<input type="password" id="pwd" name="pwd" className="myInput" {...register("password")} />
 						</div>
 					</div>
 				</Modal.Body>
 
 				<Modal.Footer>
-					<input type="button" value="Registrar" className="registerButton2" />
+					<input type="submit" value="Registrar" className="registerButton2" />
 				</Modal.Footer>
 			</Modal.Dialog>
-		</div>
+		</form>
 	);
 };
 

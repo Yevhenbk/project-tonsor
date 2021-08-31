@@ -1,26 +1,86 @@
-const BASE_URL = "https://3001-aquamarine-butterfly-d1y8h28g.ws-eu16.gitpod.io/";
+import jwt_decode from "jwt-decode";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			BASE_URL: "https://3001-aquamarine-butterfly-d1y8h28g.ws-eu16.gitpod.io/api/",
+			currentUser: "",
 			message: ""
 		},
 		actions: {
 			login: data => {
-				fetch(BASE_URL.concat("login"), {
+				fetch(getStore().BASE_URL.concat("login"), {
 					method: "POST",
-					body: JSON.stringify(data)
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json"
+					}
 				})
-					.then(response => {
-						if (!response.ok) {
-							throw new Error("Something went wrong");
-						}
+					.then(resp => {
+						if (resp.status === 200) {
+							console.log(resp);
+							return resp.json();
+						} else if (resp.status === 401) {
+							console.log("Invalid data");
+						} else if (resp.status === 400) {
+							console.log("Invalid email / password");
+						} else throw Error("Something went wrong");
+					})
+					.then(data => {
+						localStorage.setItem("token", data.token);
+						//redirect();
+					})
+					.catch(error => {
+						console.error("Unknown error", error);
+						//localStorage.removeItem("token");
+					});
+			},
 
+			client: data => {
+				fetch(getStore().BASE_URL.concat("register"), {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					},
+					body: JSON.stringify({
+						data
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid info");
+						}
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson);
+						localStorage.setItem("token", responseAsJson);
 					})
-					.catch(error => console.log(error));
+					.catch(error => console.error("Unknown error", error));
+			},
+
+			barber: data => {
+				console.log(data);
+				fetch(getStore().BASE_URL.concat("register"), {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					},
+					body: JSON.stringify({
+						data
+					})
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid info");
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						localStorage.setItem("token", responseAsJson);
+					})
+					.catch(error => console.error("Unknown error", error));
 			},
 
 			getMessage: () => {
