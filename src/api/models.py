@@ -135,7 +135,7 @@ class Barber(db.Model):
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
     have_review = relationship("Review", backref="barber")
-    have_barber_services = relationship("Barber_Services", backref="barber")
+    have_barber_services = relationship("Barber_Services", backref="barber", overlaps="barber,have_barber_services")
 
     def __repr__(self):
         return f'Barber {self.barber}'
@@ -203,7 +203,7 @@ class Barber_Services(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
-    have_barber = relationship("Barber",  backref="barberServices")
+    have_barber = relationship("Barber",  backref="barberServices", overlaps="barber,have_barber_services)
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):

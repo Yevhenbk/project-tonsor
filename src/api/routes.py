@@ -118,8 +118,10 @@ def get_client_profile():
     
     return({'error': 'Access denied'}), 401
 
+
 @api.route('/barber', methods=['POST'])
 def create_barber():
+    print("wwwwwwwwwwwwwwww")
     img = request.json.get(
         'img', None
     )
@@ -147,7 +149,9 @@ def create_barber():
     cp = request.json.get(
         'cp', None
     )
+    print(name, lastname, address, city, phone_number, password, email, cp)
     if not (name and lastname and phone_number and password and email and address and city and cp):
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         return ({'error': 'Some fields are missing'}), 400
     
     account = Account(

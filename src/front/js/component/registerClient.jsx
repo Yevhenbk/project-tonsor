@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Context } from "../store/appContext.js";
@@ -6,50 +6,26 @@ import { Context } from "../store/appContext.js";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const Register = () => {
+const RegisterClient = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
+	const [rol, setRol] = useState(null);
 
-	const getBarber = data => {
-		actions.barber(data);
-	};
+	//const getBarber = data => {
+	//	actions.barber(data);
+	//};
 	const getClient = data => {
 		actions.client(data);
 	};
 
 	return (
-		<form
-			action=""
-			method="post" //onSubmit={if }
-		>
+		<form action="" method="post" onSubmit={handleSubmit(getClient)}>
 			<Modal.Dialog>
 				<Modal.Header>
 					<Modal.Title>Registro</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
-					<div>
-						<p className="yourRole">Elige tu role</p>
-						<div className="myRole">
-							<input
-								type="button"
-								className="barberButton"
-								value="Barbero"
-								onClick={handleSubmit(getBarber)}
-							/>
-							<input
-								type="button"
-								className="customerButton"
-								value="Cliente"
-								onClick={handleSubmit(getClient)}
-							/>
-						</div>
-						<div className="myHolder">
-							<hr />
-							<p className="myDivider">Or</p>
-							<hr />
-						</div>
-					</div>
 					<div>
 						<div className="accessGoogle">
 							<button type="button" className="googleAcc">
@@ -116,7 +92,7 @@ const Register = () => {
 							/>
 
 							<label htmlFor="cp" className="myLabel">
-								Codigo postal:
+								Código postal:
 							</label>
 
 							<input type="password" id="cp" name="cp" className="myInput" {...register("cp")} />
@@ -138,4 +114,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default RegisterClient;

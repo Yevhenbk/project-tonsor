@@ -1,4 +1,4 @@
-import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode"; //optional
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
 					}
 				})
 					.then(resp => {
@@ -28,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(data => {
 						localStorage.setItem("token", data.token);
-						//redirect();
+						//redirect(); pasar la url de la vista que va a ver el usuario cuando se registra
 					})
 					.catch(error => {
 						console.error("Unknown error", error);
@@ -37,15 +38,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			client: data => {
-				fetch(getStore().BASE_URL.concat("register"), {
+				fetch(getStore().BASE_URL.concat("client"), {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 						"Sec-Fetch-Mode": "no-cors"
 					},
-					body: JSON.stringify({
-						data
-					})
+					body: JSON.stringify(data)
 				})
 					.then(resp => {
 						if (!resp.ok) {
@@ -61,15 +60,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			barber: data => {
 				console.log(data);
-				fetch(getStore().BASE_URL.concat("register"), {
+				fetch(getStore().BASE_URL.concat("barber"), {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
 						"Sec-Fetch-Mode": "no-cors"
 					},
-					body: JSON.stringify({
-						data
-					})
+					body: JSON.stringify(data)
 				})
 					.then(resp => {
 						if (!resp.ok) {
