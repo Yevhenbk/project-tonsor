@@ -104,6 +104,8 @@ body {
     border-bottom: 1px solid black;
     width: 18rem;
     outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
 }
 .myInput:active {
     border: none;
@@ -119,9 +121,10 @@ body {
     padding: 0;
     background-color: white;
     outline: none;
+    margin: 0;
 }
 .googleAcc:first-child {
-    padding: 0.15rem .7rem 0.15rem 3.2rem;
+    padding: 0.25rem 1.8rem 0.25rem 3.446rem;
     outline: none;
 }
 .accessGoogle {
@@ -130,7 +133,7 @@ body {
     margin: 0 0 1rem 0;
 }
 .fa-google {
-    padding-left: 1.5rem;
+    padding-left: 1.3rem;
     padding-right: 1.3rem;
 }
 .googleAcc:active {

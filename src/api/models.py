@@ -203,7 +203,7 @@ class Barber_Services(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
-    have_barber = relationship("Barber",  backref="barberServices", overlaps="barber,have_barber_services)
+    have_barber = relationship("Barber",  backref="barberServices", overlaps="barber,have_barber_services"),
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):

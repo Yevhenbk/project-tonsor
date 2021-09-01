@@ -7,6 +7,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from sqlalchemy import exc
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
+from werkzeug.security import  check_password_hash, generate_password_hash
+
 from api.utils import generate_sitemap, APIException
 from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment, Client
 
@@ -33,11 +35,11 @@ def login():
         barber = Barber.get_by_id_account(user.id)
 
 
-    if client and user.is_active:
+    if client and user.is_active and check_password_hash(client._password, password):
         token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
         return {'token': token}, 200
 
-    elif barber and user.is_active:
+    elif barber and user.is_active and check_password_hash(barber._password, password):
         token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
         return {'token': token}, 200
 
@@ -83,7 +85,7 @@ def create_client():
         lastname=lastname, 
         phone_number=phone_number,
         email=email, 
-        _password=password,
+        _password=generate_password_hash(password, method='pbkdf2:sha256', salt_length=16),
         address=address,
         city=city,
         cp=cp,
@@ -160,7 +162,7 @@ def create_barber():
         lastname=lastname, 
         phone_number=phone_number,
         email=email, 
-        _password=password,
+        _password=werkzeug.security.generate_password_hash(password, method='pbkdf2:sha256', salt_length=16),
         address=address,
         city=city,
         cp=cp,
