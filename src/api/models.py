@@ -42,7 +42,7 @@ class Account(db.Model):
             "phone_number": self.phone_number,
             "email": self.email,
             "address": self.address, 
-            "city": self.city, 
+            "city": self.ciudad, 
             "cp": self.cp
         }
 
@@ -88,7 +88,7 @@ class Client(db.Model):
             "phone_number": client.phone_number,
             "email": client.email,
             "address": client.address, 
-            "city": client.city, 
+            "city": client.ciudad, 
             "cp": client.cp
         }
 
@@ -99,7 +99,7 @@ class Client(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        client = cls.query.filter_by(id_account = id).one_or_none()
+        client = cls.filter_by(id_account = id).one_or_none
         return client
 
     def create(self):
@@ -135,7 +135,7 @@ class Barber(db.Model):
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
     have_review = relationship("Review", backref="barber")
-    have_barber_services = relationship("Barber_Services", backref="barber", overlaps="barber,have_barber_services")
+    have_barber_services = relationship("Barber_Services", backref="barber")
 
     def __repr__(self):
         return f'Barber {self.barber}'
@@ -158,7 +158,7 @@ class Barber(db.Model):
             "phone_number": barber.phone_number,
             "email": barber.email,
             "address": barber.address, 
-            "city": barber.city, 
+            "city": barber.ciudad, 
             "cp": barber.cp
         }
 
@@ -169,7 +169,7 @@ class Barber(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        barber = cls.filter_by(id_account = id).one_or_none()
+        barber = cls.filter_by(id_account = id).one_or_none
         return barber
 
     def create(self):
@@ -203,7 +203,7 @@ class Barber_Services(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
-    have_barber = relationship("Barber",  backref="barberServices", overlaps="barber,have_barber_services)
+    have_barber = relationship("Barber",  backref="barberServices")
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):
