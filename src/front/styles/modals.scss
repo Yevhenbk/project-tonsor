@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 body {
-    font-size: 21px;
+    font-size: 0.938;
 }
 .modal-content {
     border-radius: 20px;
@@ -10,9 +10,16 @@ body {
 .modal-title {
     color: #C8102E;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 600;
     margin: 1rem 0 1rem 0;
+}
+.modalTitle2 {
+    color: #C8102E;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3131rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.5rem 0;
 }
 .modal-header {
     border-bottom: none;
@@ -41,7 +48,7 @@ body {
     width: 124px;
     height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 400;
 }
 .registerButton:active {
@@ -56,7 +63,7 @@ body {
     width: 124px;
     height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 400;
 }
 .accessButton:active {
@@ -71,7 +78,7 @@ body {
     width: 124px;
     height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 400;
 }
 .registerButton2:active {

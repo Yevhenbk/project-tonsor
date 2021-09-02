@@ -1,6 +1,8 @@
 import React, { useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
 
+import AddSchedule from "./addSchedule.jsx";
+
 import { Context } from "../store/appContext.js";
 
 import Modal from "react-bootstrap/Modal";
@@ -35,17 +37,46 @@ const AddService = () => {
 							<input type="text" id="serviceName" name="serviceName" className="myInput" />
 
 							<label htmlFor="meeting-time" className="myScheduleLabel">
-								Horario:
+								Hora de empezar:
 							</label>
-							<div className="mySchedule">
-								<input type="time" id="meeting-time" name="meeting-time" className="myHourInput" />
-								<input
-									type="button"
-									htmlFor="meeting-time"
-									value="+ selecciona hora"
-									className="addButton"
-								/>
-							</div>
+
+							<AddSchedule />
+
+							<section className="myCheckboxesVsHolder">
+								<div className="myCategoryCheckTitle">
+									<p className="myLabel">Selecciona la categoria:</p>
+								</div>
+								<div className="myCategoryCheck">
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="pigmentacionDe" />
+										<label htmlFor="pigmentacionDe">Pigmentacion</label>
+									</div>
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="depilacionDe" />
+										<label htmlFor="depilacionDe">Depilacion de espalda</label>
+									</div>
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="corteDe" />
+										<label htmlFor="corteDe">Corte de pelo</label>
+									</div>
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="manicura" />
+										<label htmlFor="manicura">Manicura</label>
+									</div>
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="depilacionDe" />
+										<label htmlFor="depilacionDe">Depilacion de torso</label>
+									</div>
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="depDe" />
+										<label htmlFor="depDe">Depilacion de piernas</label>
+									</div>
+									<div className="myCheckboxHolder">
+										<input type="checkbox" id="inputCategoryName" name="pedicuraDe" />
+										<label htmlFor="pedicuraDe">Pedicura</label>
+									</div>
+								</div>
+							</section>
 
 							<label htmlFor="textArea" className="myScheduleLabel">
 								Descripcion:

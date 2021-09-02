@@ -29,7 +29,7 @@ input[type="file"] {
     font-weight: 600;
 }
 .addButton {
-    background: rgb(121, 189, 121);
+    background: #242331;
     border: 1px solid;
     border-radius: 0.313rem;
     display: flex;
@@ -43,7 +43,7 @@ input[type="file"] {
     padding: .15rem .5rem;
 }
 .addButton:active {
-    background: rgb(99, 153, 99);
+    background: rgb(0, 0, 0);
 }
 .mySchedule {
     display: flex;
@@ -58,4 +58,25 @@ input[type="file"] {
     padding: 0.95rem 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
+}
+.myCategoryCheck {
+    display: flex;
+    flex-direction: column;
+}
+.myCheckboxHolder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+#inputCategoryName {
+    margin-right: .5rem;
+}
+.myCategoryCheckTitle {
+    padding: 0 0 0.95rem;
+}
+.myCategoryCheck label {
+    font-size: 0.938rem;
+}
+.myCheckboxesVsHolder {
+    border-radius: 5px;
+    background-color: #E9EBED;
 }
