@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.myHour {
+    display: flex;
+    flex-direction: row;
+}
+.listOf{
+    font-size: 0.938rem;
+    border: none;
+    color: white;
+    background-color: #242331;
+    border-radius: 0px;
+    width: 5.2rem;
+    height: 1.913rem;
+    position: relative;
+    list-style: none;
+    line-height: 2rem;
+    border-radius: 5px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0.45rem 0 0;
+
+}
+i.fa-trash-alt {
+    margin-top: 0.55rem;
+    margin-left: 0.5rem;
+}
+i.fa-trash-alt:hover {
+    cursor: pointer;
+}
+.hourList {
+    margin-right: 1rem;
+    padding: 0;
+}

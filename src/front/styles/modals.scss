@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 body {
-    font-size: 21px;
+    font-size: 0.938;
 }
 .modal-content {
     border-radius: 20px;
@@ -10,9 +10,16 @@ body {
 .modal-title {
     color: #C8102E;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 600;
     margin: 1rem 0 1rem 0;
+}
+.modalTitle2 {
+    color: #C8102E;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3131rem;
+    font-weight: 600;
+    margin: 0.5rem 0 0.5rem 0;
 }
 .modal-header {
     border-bottom: none;
@@ -41,7 +48,7 @@ body {
     width: 124px;
     height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 400;
 }
 .registerButton:active {
@@ -56,7 +63,7 @@ body {
     width: 124px;
     height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 400;
 }
 .accessButton:active {
@@ -71,7 +78,7 @@ body {
     width: 124px;
     height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
+    font-size: 1.3131rem;
     font-weight: 400;
 }
 .registerButton2:active {
@@ -81,7 +88,6 @@ body {
     display: flex;
     text-align: left;
     margin: 0;
-    font-size: 15px;
     padding-top: 0.5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
@@ -91,6 +97,8 @@ body {
     border-bottom: 1px solid black;
     width: 18rem;
     outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
 }
 .myInput:active {
     border: none;
@@ -115,7 +123,7 @@ body {
     margin: 0 0 1rem 0;
 }
 .fa-google {
-    padding-left: 1.5rem;
+    padding-left: 1.3rem;
     padding-right: 1.3rem;
 }
 .googleAcc:active {

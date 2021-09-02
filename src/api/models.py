@@ -42,7 +42,7 @@ class Account(db.Model):
             "phone_number": self.phone_number,
             "email": self.email,
             "address": self.address, 
-            "city": self.ciudad, 
+            "city": self.city, 
             "cp": self.cp
         }
 
@@ -69,13 +69,7 @@ class Client(db.Model):
     have_review = relationship("Review", backref="client")
 
     def __repr__(self):
-        return f'Client {self.client}'
-    
-    def serialize (self):
-        return {
-            "id": self.id, 
-            "id_account": self.id_account
-        }
+        return f'Client {self.id}'
 
     def to_dict(self):
         client = Account.get_by_id(self.id_account)
@@ -88,7 +82,7 @@ class Client(db.Model):
             "phone_number": client.phone_number,
             "email": client.email,
             "address": client.address, 
-            "city": client.ciudad, 
+            "city": client.city, 
             "cp": client.cp
         }
 
@@ -99,7 +93,7 @@ class Client(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        client = cls.filter_by(id_account = id).one_or_none
+        client = cls.query.filter_by(id_account = id).one_or_none()
         return client
 
     def create(self):
@@ -131,21 +125,14 @@ class Review(db.Model):
 class Barber(db.Model):
     __tablename__="barber"
     id = db.Column(db.Integer, primary_key=True)
-    radio = db.Column(db.Integer, nullable=False)
+    radio = db.Column(db.Integer, nullable=True)
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
     have_review = relationship("Review", backref="barber")
-    have_barber_services = relationship("Barber_Services", backref="barber")
+    have_barber_services = relationship("Barber_Services", backref="barber", overlaps="barber, have_barber_services")
 
     def __repr__(self):
-        return f'Barber {self.barber}'
-    
-    def serialize (self):
-        return {
-            "id": self.id,
-            "id_account": self.id_account, 
-            "radio": self.radio
-        }
+        return f'Barber {self.id}'
 
     def to_dict(self):
         barber = Account.get_by_id(self.id_account)
@@ -158,7 +145,7 @@ class Barber(db.Model):
             "phone_number": barber.phone_number,
             "email": barber.email,
             "address": barber.address, 
-            "city": barber.ciudad, 
+            "city": barber.city, 
             "cp": barber.cp
         }
 
@@ -169,7 +156,7 @@ class Barber(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        barber = cls.filter_by(id_account = id).one_or_none
+        barber = cls.query.filter_by(id_account = id).one_or_none()
         return barber
 
     def create(self):
@@ -203,7 +190,7 @@ class Barber_Services(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
-    have_barber = relationship("Barber",  backref="barberServices")
+    have_barber = relationship("Barber",  backref="barberServices", overlaps="barber, have_barber_services")
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):
