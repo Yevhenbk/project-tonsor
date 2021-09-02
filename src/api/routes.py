@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from sqlalchemy import exc
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
-from werkzeug.security import  check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from api.utils import generate_sitemap, APIException
 from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment, Client
@@ -28,23 +28,24 @@ def login():
 
     user = Account.get_by_email(email)
 
+    print(user)
     if user.is_client:
         client = Client.get_by_id_account(user.id)
+        print(client)
+        print(check_password_hash(user._password, password))
+        if client and user.is_active and check_password_hash(user._password, password):
+            token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
+            return {'token': token}, 200
 
     else:
         barber = Barber.get_by_id_account(user.id)
 
+        if barber and user.is_active and check_password_hash(user._password, password):
+            token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
+            return {'token': token}, 200
 
-    if client and user.is_active and check_password_hash(client._password, password):
-        token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
-        return {'token': token}, 200
-
-    elif barber and user.is_active and check_password_hash(barber._password, password):
-        token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
-        return {'token': token}, 200
-
-    else:
-        return ({'error': 'Wrong email or password'}), 400
+    
+    return ({'error': 'Wrong email or password'}), 400
 
 
 @api.route('/client', methods=['POST'])
@@ -93,6 +94,7 @@ def create_client():
         is_active=True
     )
     
+    print(account._password)
     try:
         account.create()
         
