@@ -16,12 +16,7 @@ import AddService from "../component/addService.jsx";
 export const Home = () => {
 	return (
 		<div>
-			<AddService />
-			<AddServiceButton />
-			<Login />
-			<Role />
-			<RegisterClient />
-			<RegisterBarber />
+			
 		</div>
 	);
 };

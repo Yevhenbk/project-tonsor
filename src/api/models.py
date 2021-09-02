@@ -42,7 +42,7 @@ class Account(db.Model):
             "phone_number": self.phone_number,
             "email": self.email,
             "address": self.address, 
-            "city": self.city, 
+            "city": self.ciudad, 
             "cp": self.cp
         }
 
@@ -82,7 +82,7 @@ class Client(db.Model):
             "phone_number": client.phone_number,
             "email": client.email,
             "address": client.address, 
-            "city": client.city, 
+            "city": client.ciudad, 
             "cp": client.cp
         }
 
@@ -93,7 +93,7 @@ class Client(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        client = cls.query.filter_by(id_account = id).one_or_none()
+        client = cls.filter_by(id_account = id).one_or_none
         return client
 
     def create(self):
@@ -145,7 +145,7 @@ class Barber(db.Model):
             "phone_number": barber.phone_number,
             "email": barber.email,
             "address": barber.address, 
-            "city": barber.city, 
+            "city": barber.ciudad, 
             "cp": barber.cp
         }
 
@@ -156,7 +156,7 @@ class Barber(db.Model):
 
     @classmethod
     def get_by_id_account(cls, id):
-        barber = cls.filter_by(id_account = id).one_or_none()
+        barber = cls.filter_by(id_account = id).one_or_none
         return barber
 
     def create(self):

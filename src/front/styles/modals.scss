@@ -2,24 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 body {
-    font-size: 1.313rem;
+    font-size: 21px;
 }
 .modal-content {
-    border-radius: 1.25rem;
+    border-radius: 20px;
 }
 .modal-title {
     color: #C8102E;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.313rem;
+    font-size: 21px;
     font-weight: 600;
     margin: 1rem 0 1rem 0;
-}
-.modalTitle2 {
-    color: #C8102E;
-    font-family: 'Oswald', sans-serif;
-    
-    font-weight: 600;
-    margin: 0.5rem 0 0.5rem 0;
 }
 .modal-header {
     border-bottom: none;
@@ -31,16 +24,10 @@ body {
     padding-left: 5rem;
     padding-top: 0;
 }
-.modalBody2 {
-    padding-right: 2rem;
-    padding-left: 2rem;
-    padding-bottom: 2rem;
-    padding-top: 0;
-}
 .modal-footer {
     justify-content: center;
     border-top: none;
-    border-radius: 1.25rem;
+    border-radius: 20px;
     padding-bottom: 2rem;
 }
 .modal-dialog {
@@ -50,11 +37,11 @@ body {
     background-color: #242331;
     color: white;
     border: none;
-    border-radius: 2.5rem;
-    width: 7.75rem;
-    height: 2.75rem;
+    border-radius: 40px;
+    width: 124px;
+    height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.313rem;
+    font-size: 21px;
     font-weight: 400;
 }
 .registerButton:active {
@@ -65,11 +52,11 @@ body {
     background-color: #C8102E;
     color: white;
     border: none;
-    border-radius: 2.5rem;
-    width: 7.75rem;
-    height: 2.75rem;
+    border-radius: 40px;
+    width: 124px;
+    height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.313rem;
+    font-size: 21px;
     font-weight: 400;
 }
 .accessButton:active {
@@ -80,11 +67,11 @@ body {
     background-color: #C8102E;
     color: white;
     border: none;
-    border-radius: 2.5rem;
-    width: 7.75rem;
-    height: 2.75rem;
+    border-radius: 40px;
+    width: 124px;
+    height: 44px;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.313rem;
+    font-size: 21px;
     font-weight: 400;
 }
 .registerButton2:active {
@@ -94,7 +81,7 @@ body {
     display: flex;
     text-align: left;
     margin: 0;
-    font-size: 0.938rem;
+    font-size: 15px;
     padding-top: 0.5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
@@ -114,22 +101,19 @@ body {
 }
 .googleAcc {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.938rem;
+    font-size: 15px;
     font-weight: 600;
     border: 1px solid rgb(201, 201, 201);
-    border-radius: 0.313rem;
+    border-radius: 5px;
     padding: 0;
     background-color: white;
-    outline: none;
-    margin: 0;
 }
 .googleAcc:first-child {
-    padding: 0.25rem 1.8rem 0.25rem 3.446rem;
-    outline: none;
+    padding: 0.15rem .7rem 0.15rem 3.2rem;
 }
 .accessGoogle {
-    width: 17.563rem;
-    height: 2.438rem;
+    width: 281px;
+    height: 39px;
     margin: 0 0 1rem 0;
 }
 .fa-google {
@@ -147,41 +131,41 @@ body {
 }
 .yourRole {
     font-family: "Roboto", sans-serif;
-    font-size: 0.938rem;
+    font-size: 15px;
     font-weight: 600;
     margin: 1rem;
 }
 .barberButton {
-    width: 17.875rem;
-    height: 2.3rem;
+    width: 126px;
+    height: 29px;
     background-color: #242331;
-    border: 1px solid #242331;
-    border-radius: 0.313rem;
+    border: 1px solid #5A577A;
+    border-radius: 5px 0 0 5px;
     font-family: "Roboto", sans-serif;
-    font-size: 0.938rem;
-    font-weight: 600;
-    color: white;
-    padding: 0;
-    margin: 1rem 0 0.5rem 0;
-}
-.barberButton:active {
-    background-color: #000000;
-}
-.customerButton {
-    width: 17.875rem;
-    height: 2.3rem;
-    background-color: #C8102E;
-    border: 1px solid #C8102E;
-    border-radius: 0.313rem;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.938rem;
+    font-size: 15px;
     font-weight: 600;
     color: white;
     padding: 0;
     margin: 0;
 }
+.barberButton:active {
+    background-color: #000000;
+}
+.customerButton {
+    width: 126px;
+    height: 29px;
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 5px 5px 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    padding: 0;
+    margin: 0;
+}
 .customerButton:active {
-    background-color: #a50e27;
+    background-color: rgb(212, 212, 212);
 }
 .myHolder {
     display: flex;
@@ -192,12 +176,8 @@ hr {
 }
 .myDivider {
     font-family: "Roboto", sans-serif;
-    font-size: 0.938rem;
+    font-size: 15px;
     font-weight: 600;
     margin-right: 1rem;
     margin-left: 1rem;
-}
-.roleHolder {
-    display: flex;
-    flex-direction: column;
 }
