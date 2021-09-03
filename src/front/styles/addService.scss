@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -71,12 +76,29 @@ input[type="file"] {
     margin-right: .5rem;
 }
 .myCategoryCheckTitle {
-    padding: 0 0 0.95rem;
+    padding: 0;
 }
 .myCategoryCheck label {
     font-size: 0.938rem;
 }
-.myCheckboxesVsHolder {
+.myCategoryCheck {
+    padding: .5rem;
+}
+.theSelectCategory {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+}
+#myCategorySelect {
+    font-size: 15px;
+    padding: 0.25rem;
+    border: 1px solid rgb(212, 212, 212);
     border-radius: 5px;
-    background-color: #E9EBED;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+#myCategorySelect option {
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
 }

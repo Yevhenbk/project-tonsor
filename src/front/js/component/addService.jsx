@@ -7,6 +7,7 @@ import { Context } from "../store/appContext.js";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const AddService = () => {
 	return (
@@ -37,46 +38,74 @@ const AddService = () => {
 							<input type="text" id="serviceName" name="serviceName" className="myInput" />
 
 							<label htmlFor="meeting-time" className="myScheduleLabel">
-								Hora de empezar:
+								Disponibilidad:
 							</label>
 
 							<AddSchedule />
 
 							<section className="myCheckboxesVsHolder">
 								<div className="myCategoryCheckTitle">
-									<p className="myLabel">Selecciona la categoria:</p>
+									<p className="myLabel">Selecciona los dias:</p>
 								</div>
 								<div className="myCategoryCheck">
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="pigmentacionDe" />
-										<label htmlFor="pigmentacionDe">Pigmentacion</label>
-									</div>
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="depilacionDe" />
-										<label htmlFor="depilacionDe">Depilacion de espalda</label>
-									</div>
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="corteDe" />
-										<label htmlFor="corteDe">Corte de pelo</label>
-									</div>
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="manicura" />
-										<label htmlFor="manicura">Manicura</label>
-									</div>
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="depilacionDe" />
-										<label htmlFor="depilacionDe">Depilacion de torso</label>
-									</div>
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="depDe" />
-										<label htmlFor="depDe">Depilacion de piernas</label>
-									</div>
-									<div className="myCheckboxHolder">
-										<input type="checkbox" id="inputCategoryName" name="pedicuraDe" />
-										<label htmlFor="pedicuraDe">Pedicura</label>
-									</div>
+									<Form>
+										{["checkbox"].map(type => (
+											<div key={`inline-${type}`} className="categoryChecks">
+												<Form.Check label="Lunes" name="group1" type={type} id={`-${type}-1`} />
+												<Form.Check
+													label="Martes"
+													name="group1"
+													type={type}
+													id={`-${type}-2`}
+												/>
+												<Form.Check
+													label="Miercoles"
+													name="group1"
+													type={type}
+													id={`-${type}-3`}
+												/>
+												<Form.Check
+													label="Jueves"
+													name="group1"
+													type={type}
+													id={`-${type}-4`}
+												/>
+												<Form.Check
+													label="Viernes"
+													name="group1"
+													type={type}
+													id={`-${type}-5`}
+												/>
+												<Form.Check
+													label="Sabado"
+													name="group1"
+													type={type}
+													id={`-${type}-6`}
+												/>
+												<Form.Check
+													label="Domingo"
+													name="group1"
+													type={type}
+													id={`-${type}-7`}
+												/>
+											</div>
+										))}
+									</Form>
 								</div>
 							</section>
+
+							<form action="/action_page.php" className="theSelectCategory">
+								<label htmlFor="category">Categoria:</label>
+								<select name="category" id="myCategorySelect">
+									<option value="pigmentacion">Pigmentacion</option>
+									<option value="espalda">Depilacion de espalda</option>
+									<option value="pelo">Corte de pelo</option>
+									<option value="manicura">Manicura</option>
+									<option value="torso">Depilacion de torso</option>
+									<option value="piernad">Depilacion de piernas</option>
+									<option value="pedicura">Pedicura</option>
+								</select>
+							</form>
 
 							<label htmlFor="textArea" className="myScheduleLabel">
 								Descripcion:

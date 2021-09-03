@@ -33,9 +33,17 @@ const AddSchedule = props => {
 				/>
 				<input type="submit" htmlFor="meeting-time" value="+ elige la hora" className="addButton" />
 			</div>
-			<ul className="hourList">
-				<li className="myHour">{hourSelected}</li>
-			</ul>
+
+			<div className="addMyScheduleHours">
+				<div className="addScheduleHours">
+					<p className="p1Schedules">Hora de empezar</p>
+					<p>-</p>
+					<p className="p2Schedules">Hora de terminar</p>
+				</div>
+				<ul className="hourList">
+					<li className="myHour">{hourSelected}</li>
+				</ul>
+			</div>
 		</form>
 	);
 };

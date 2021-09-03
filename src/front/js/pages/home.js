@@ -5,6 +5,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/modals.scss";
 import "../../styles/addServiceButton.scss";
 import "../../styles/addService.scss";
+import "../../styles/addSchedule.scss";
 
 import Login from "../component/login.jsx";
 import RegisterClient from "../component/registerClient.jsx";
@@ -17,7 +18,6 @@ export const Home = () => {
 	return (
 		<div>
 			<AddService />
-			<AddServiceButton />
 			<Login />
 			<Role />
 			<RegisterClient />

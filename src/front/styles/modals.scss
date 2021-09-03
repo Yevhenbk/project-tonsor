@@ -27,8 +27,8 @@ body {
     padding-bottom: 0;
 }
 .modal-body {
-    padding-right: 5rem;
-    padding-left: 5rem;
+    padding-right: 3.5rem;
+    padding-left: 3.5rem;
     padding-top: 0;
 }
 .modal-footer {
@@ -114,8 +114,13 @@ body {
     padding: 0;
     background-color: white;
 }
+.googleAcc:active {
+    border: 1px solid rgb(201, 201, 201);
+    outline: none;
+
+}
 .googleAcc:first-child {
-    padding: 0.15rem .7rem 0.15rem 3.2rem;
+    padding: 0.25rem 2.25rem 0.25rem 3rem;
 }
 .accessGoogle {
     width: 281px;
@@ -176,9 +181,6 @@ body {
 .myHolder {
     display: flex;
     margin: 1rem 1rem 0 1rem;
-}
-hr {
-    width: 6.5rem;
 }
 .myDivider {
     font-family: "Roboto", sans-serif;
