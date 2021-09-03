@@ -1,10 +1,10 @@
 import jwt_decode from "jwt-decode"; //optional
-const URL_FER = "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/api/";
+const BASE_URL = "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			BASE_URL: "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/",
+			//BASE_URL: "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/",
 			currentUser: "",
 			message: "",
 			barbers: [],
@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			//Fer
 			getBarbers: () => {
-				fetch(URL_FER.concat(`barber`), {
+				fetch(BASE_URL.concat(`barber`), {
 					method: "GET"
 				})
 					.then(resp => {
