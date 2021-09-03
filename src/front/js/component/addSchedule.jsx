@@ -37,7 +37,7 @@ const AddSchedule = props => {
 			<div className="addMyScheduleHours">
 				<div className="addScheduleHours">
 					<p className="p1Schedules">Hora de empezar</p>
-					<p>-</p>
+					<p className="p1Schedules" />
 					<p className="p2Schedules">Hora de terminar</p>
 				</div>
 				<ul className="hourList">

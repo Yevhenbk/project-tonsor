@@ -8,7 +8,7 @@
 .listOf{
     font-size: 0.938rem;
     border: 1px solid rgb(201, 201, 201);
-    border-radius: 2px;
+    border-radius: 0.125rem;
     color: black;
     background-color: white;
     border-radius: 0px;
@@ -17,7 +17,7 @@
     position: relative;
     list-style: none;
     line-height: 2rem;
-    border-radius: 5px;
+    border-radius: 0.313rem;
     padding: 0;
     display: flex;
     justify-content: space-between;
@@ -45,7 +45,7 @@ i.fa-trash-alt:hover {
     margin: 0.5rem 0;
 }
 .addScheduleHours p {
-    font-size: 15px;
+    font-size: 0.938rem;
     margin: 0;
     
 }

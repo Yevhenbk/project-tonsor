@@ -37,75 +37,102 @@ const AddService = () => {
 
 							<input type="text" id="serviceName" name="serviceName" className="myInput" />
 
-							<label htmlFor="meeting-time" className="myScheduleLabel">
-								Disponibilidad:
-							</label>
+							<section className="meetingTimeChoose">
+								<label htmlFor="meeting-time" className="myScheduleLabel">
+									Disponibilidad:
+								</label>
 
-							<AddSchedule />
+								<div className="myScheduleSecondHolder">
+									<div className="mySchedule">
+										<label htmlFor="meeting-time" />
+										<input
+											type="time"
+											id="meeting-time"
+											name="meeting-time"
+											className="myHourInput"
+										/>
+									</div>
 
-							<section className="myCheckboxesVsHolder">
-								<div className="myCategoryCheckTitle">
-									<p className="myLabel">Selecciona los dias:</p>
+									<div className="mySchedule">
+										<label htmlFor="meeting-time" />
+										<input
+											type="time"
+											id="meeting-time"
+											name="meeting-time"
+											className="myHourInput"
+										/>
+									</div>
 								</div>
-								<div className="myCategoryCheck">
-									<Form>
-										{["checkbox"].map(type => (
-											<div key={`inline-${type}`} className="categoryChecks">
-												<Form.Check label="Lunes" name="group1" type={type} id={`-${type}-1`} />
-												<Form.Check
-													label="Martes"
-													name="group1"
-													type={type}
-													id={`-${type}-2`}
-												/>
-												<Form.Check
-													label="Miercoles"
-													name="group1"
-													type={type}
-													id={`-${type}-3`}
-												/>
-												<Form.Check
-													label="Jueves"
-													name="group1"
-													type={type}
-													id={`-${type}-4`}
-												/>
-												<Form.Check
-													label="Viernes"
-													name="group1"
-													type={type}
-													id={`-${type}-5`}
-												/>
-												<Form.Check
-													label="Sabado"
-													name="group1"
-													type={type}
-													id={`-${type}-6`}
-												/>
-												<Form.Check
-													label="Domingo"
-													name="group1"
-													type={type}
-													id={`-${type}-7`}
-												/>
-											</div>
-										))}
-									</Form>
-								</div>
+
+								<section className="myCheckboxesVsHolder">
+									<div className="myCategoryCheckTitle">
+										<p className="myLabel">Selecciona los dias:</p>
+									</div>
+									<div className="myCategoryCheck">
+										<Form>
+											{["checkbox"].map(type => (
+												<div key={`inline-${type}`} className="categoryChecks">
+													<Form.Check
+														label="Lunes"
+														name="group1"
+														type={type}
+														id={`-${type}-1`}
+													/>
+													<Form.Check
+														label="Martes"
+														name="group1"
+														type={type}
+														id={`-${type}-2`}
+													/>
+													<Form.Check
+														label="Miercoles"
+														name="group1"
+														type={type}
+														id={`-${type}-3`}
+													/>
+													<Form.Check
+														label="Jueves"
+														name="group1"
+														type={type}
+														id={`-${type}-4`}
+													/>
+													<Form.Check
+														label="Viernes"
+														name="group1"
+														type={type}
+														id={`-${type}-5`}
+													/>
+													<Form.Check
+														label="Sabado"
+														name="group1"
+														type={type}
+														id={`-${type}-6`}
+													/>
+													<Form.Check
+														label="Domingo"
+														name="group1"
+														type={type}
+														id={`-${type}-7`}
+													/>
+												</div>
+											))}
+										</Form>
+									</div>
+								</section>
+
+								<form action="/action_page.php" className="theSelectCategory">
+									<label htmlFor="category">Categoria:</label>
+									<select name="category" id="myCategorySelect">
+										<option value="pigmentacion">Pigmentacion</option>
+										<option value="espalda">Depilacion de espalda</option>
+										<option value="pelo">Corte de pelo</option>
+										<option value="manicura">Manicura</option>
+										<option value="torso">Depilacion de torso</option>
+										<option value="piernad">Depilacion de piernas</option>
+										<option value="pedicura">Pedicura</option>
+									</select>
+								</form>
 							</section>
-
-							<form action="/action_page.php" className="theSelectCategory">
-								<label htmlFor="category">Categoria:</label>
-								<select name="category" id="myCategorySelect">
-									<option value="pigmentacion">Pigmentacion</option>
-									<option value="espalda">Depilacion de espalda</option>
-									<option value="pelo">Corte de pelo</option>
-									<option value="manicura">Manicura</option>
-									<option value="torso">Depilacion de torso</option>
-									<option value="piernad">Depilacion de piernas</option>
-									<option value="pedicura">Pedicura</option>
-								</select>
-							</form>
 
 							<label htmlFor="textArea" className="myScheduleLabel">
 								Descripcion:

@@ -19,7 +19,7 @@ input[type="file"] {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     font-size: 0.938rem;
-    margin: 0 4em .5rem 4rem;
+    margin: 0 4em .5rem 5rem;
     
 }
 .fileUploader:active {
@@ -32,6 +32,7 @@ input[type="file"] {
     outline: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
+    margin-left: 1rem;
 }
 .addButton {
     background: #242331;
@@ -52,8 +53,10 @@ input[type="file"] {
 }
 .mySchedule {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: left;
+    margin-right: 3rem;
+
 }
 .myScheduleLabel {
     display: flex;
@@ -96,9 +99,16 @@ input[type="file"] {
     border-radius: 5px;
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
+    width: 18rem;
 }
 #myCategorySelect option {
     font-weight: 600;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
 }
+.myScheduleSecondHolder {
+    display: flex;
+    flex-direction: row;
+}
+
+
