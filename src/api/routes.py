@@ -111,6 +111,7 @@ def create_client():
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
 
+
 @api.route('/client/<int:id>', methods=['GET'])
 @jwt_required()
 def get_client_profile(id):
@@ -125,6 +126,7 @@ def get_client_profile(id):
         return({'error': 'Not fount'})
     
     return({'error': 'Access denied'}), 401
+
 
 @api.route('/barber', methods=['POST'])
 def create_barber():
@@ -188,6 +190,7 @@ def create_barber():
         return jsonify(barber.to_dict()), 201
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
+
 
 @api.route('/barber/<int:id>', methods=['GET'])
 def get_barber_profile(id):
