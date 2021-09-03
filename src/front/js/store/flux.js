@@ -1,11 +1,18 @@
 import jwt_decode from "jwt-decode"; //optional
+const URL_FER = "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			BASE_URL: "https://3001-aquamarine-butterfly-d1y8h28g.ws-eu16.gitpod.io/api/",
+			BASE_URL: "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/",
 			currentUser: "",
-			message: ""
+			message: "",
+			barbers: [],
+			clients: [],
+			barber_services: [],
+			services: [],
+			reviews: [],
+			appointments: []
 		},
 		actions: {
 			login: data => {
@@ -86,6 +93,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
+			},
+			//Fer
+			getBarbers: () => {
+				fetch(URL_FER.concat(`barber`), {
+					method: "GET"
+				})
+					.then(resp => {
+						console.log(resp);
+						if (!resp.ok) {
+							throw Error("Somethin is wrong", resp.status);
+						}
+
+						return resp.json();
+					})
+					.then(resp => {
+						setStore({ barbers: resp });
+					})
+					.catch(error => {
+						console.log(error);
+					});
 			}
 		}
 	};

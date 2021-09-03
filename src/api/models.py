@@ -129,10 +129,18 @@ class Barber(db.Model):
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
     have_review = relationship("Review", backref="barber")
-    have_barber_services = relationship("Barber_Services", backref="barber", overlaps="barber, have_barber_services")
+    have_barber_services = relationship("Barber_Services", back_populates="barber", overlaps="barber, have_barber_services")
 
     def __repr__(self):
         return f'Barber {self.id}'
+
+    def serialize (self):
+        return {
+            "id": self.id,
+            "id_account": self.id_account, 
+            "radio": self.radio
+        }
+
 
     def to_dict(self):
         barber = Account.get_by_id(self.id_account)
@@ -162,6 +170,13 @@ class Barber(db.Model):
     def create(self):
         db.session.add(self)
         db.session.commit()
+    
+    @classmethod
+    def get_all(cls):
+        print("get all")
+        barbers = cls.query.all()
+        return barbers
+
 
 class Services(db.Model):
     __tablename__="services"

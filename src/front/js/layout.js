@@ -9,6 +9,8 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Reviews } from "./pages/reviews.js";
+import { ChooseTonsor } from "./pages/chooseTonsor.js";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +29,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/reviews">
+							<Reviews />
+						</Route>
+						<Route exact path="/chooseTonsor">
+							<ChooseTonsor />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
