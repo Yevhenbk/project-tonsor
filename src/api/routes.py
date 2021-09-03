@@ -111,6 +111,7 @@ def create_client():
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
 
+
 @api.route('/client/<int:id>', methods=['GET'])
 @jwt_required()
 def get_client_profile(id):
@@ -125,6 +126,7 @@ def get_client_profile(id):
         return({'error': 'Not fount'})
     
     return({'error': 'Access denied'}), 401
+
 
 @api.route('/barber', methods=['POST'])
 def create_barber():
@@ -170,6 +172,7 @@ def create_barber():
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
 
+
 @api.route('/barber/<int:id>', methods=['GET'])
 def get_barber_profile(id):
     barber = Barber.get_by_id(id)
@@ -190,5 +193,29 @@ def get_barber_all():
         return jsonify(barbers_to_dict), 200 
 
     return jsonify({'error': 'Barbers no fount¡¡¡¡'}), 404
+
+#new
+@api.route('barber/<int:id>/review', methods=['POST'])
+@jwt_required()#hay que estar logeado
+def create_review(barber_id):
+    text = request.json.get('text', None)
+    ratings = request.json.get('ratings', None)
+    client_id= get_jwt_identity()
+    if not (text and ratings):
+        return({'error': 'Some info are missing'}), 400
+
+    review_client= Review(
+        text=text, 
+        ratings=ratings,
+        id_barber=barber_id,
+        id_client=client_id) 
+
+    review = Review(id_barber=account.id)
+    print(review)
+    try:
+        review.create()
+        return jsonify(review.serialize()), 201
+    except exc.IntegrityError:
+        return ({'error': 'This email / phone number is already in use'}), 400
 
     

@@ -118,8 +118,12 @@ class Review(db.Model):
             "id": self.id, 
             "id_client": self.id_client,
             "text": self.text,
-            "ratings": self.ratings 
+            "ratings": self.ratings, 
+            "barber_id":self.id_barber
         }
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class Barber(db.Model):
@@ -129,7 +133,7 @@ class Barber(db.Model):
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
 
     have_review = relationship("Review", backref="barber")
-    have_barber_services = relationship("Barber_Services", back_populates="barber", overlaps="barber, have_barber_services")
+    have_barber_services = relationship("Barber_Services", backref="barber")
 
     def __repr__(self):
         return f'Barber {self.id}'
@@ -183,7 +187,7 @@ class Services(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.VARCHAR, unique=False, nullable=False)
 
-    have_barber_services = relationship("Barber_Services", backref="services")
+    is_in_barber_services = relationship("Barber_Services", backref="services")
 
     def __repr__(self):
         return f'Services {self.services}'
@@ -205,7 +209,6 @@ class Barber_Services(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
-    have_barber = relationship("Barber",  backref="barberServices", overlaps="barber, have_barber_services")
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):
@@ -239,4 +242,5 @@ class Appointment(db.Model):
             "id_barber_Services":self.id_barber_Services,
             "id_client": self.id_client 
         }
+
     
