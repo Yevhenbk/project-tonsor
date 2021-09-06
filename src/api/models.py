@@ -118,12 +118,8 @@ class Review(db.Model):
             "id": self.id, 
             "id_client": self.id_client,
             "text": self.text,
-            "ratings": self.ratings, 
-            "barber_id":self.id_barber
+            "ratings": self.ratings 
         }
-    def create(self):
-        db.session.add(self)
-        db.session.commit()
 
 
 class Barber(db.Model):
@@ -137,14 +133,6 @@ class Barber(db.Model):
 
     def __repr__(self):
         return f'Barber {self.id}'
-
-    def serialize (self):
-        return {
-            "id": self.id,
-            "id_account": self.id_account, 
-            "radio": self.radio
-        }
-
 
     def to_dict(self):
         barber = Account.get_by_id(self.id_account)
@@ -174,13 +162,6 @@ class Barber(db.Model):
     def create(self):
         db.session.add(self)
         db.session.commit()
-    
-    @classmethod
-    def get_all(cls):
-        print("get all")
-        barbers = cls.query.all()
-        return barbers
-
 
 class Services(db.Model):
     __tablename__="services"
@@ -242,5 +223,4 @@ class Appointment(db.Model):
             "id_barber_Services":self.id_barber_Services,
             "id_client": self.id_client 
         }
-
     
