@@ -130,15 +130,33 @@ def get_client_profile(id):
 
 @api.route('/barber', methods=['POST'])
 def create_barber():
-    img = request.json.get( 'img', None)
-    name = request.json.get( 'name', None ) 
-    lastname = request.json.get('lastname', None) 
-    phone_number = request.json.get( 'phone_number', None ) 
-    email = request.json.get('email', None)
-    password = request.json.get('password', None) 
-    address = request.json.get( 'address', None)
-    city = request.json.get('city', None) 
-    cp = request.json.get( 'cp', None)
+    img = request.json.get(
+        'img', None
+    )
+    name = request.json.get(
+        'name', None
+    ) 
+    lastname = request.json.get(
+        'lastname', None
+    ) 
+    phone_number = request.json.get(
+        'phone_number', None
+    ) 
+    email = request.json.get(
+        'email', None
+    )
+    password = request.json.get(
+        'password', None
+    ) 
+    address = request.json.get(
+        'address', None
+    )
+    city = request.json.get(
+        'city', None
+    ) 
+    cp = request.json.get(
+        'cp', None
+    )
     
     if not (name and lastname and phone_number and password and email and address and city and cp):
         return ({'error': 'Some fields are missing'}), 400
@@ -158,6 +176,7 @@ def create_barber():
         is_active=True
     )
     
+
     try:
         account.create()
         
@@ -178,44 +197,9 @@ def get_barber_profile(id):
     barber = Barber.get_by_id(id)
 
     if barber:
-        barber_id = barber.to_dict()
         return jsonify(barber.to_dict()), 200
 
     return({'error': 'Not fount'})
 
-@api.route('/barber', methods=['GET'])
-def get_barber_all():
-    barbers = Barber.get_all()
-    print(barbers,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-    
-    if barbers:
-        barbers_to_dict = [barber.to_dict() for barber in barbers ]
-        return jsonify(barbers_to_dict), 200 
-
-    return jsonify({'error': 'Barbers no fount¡¡¡¡'}), 404
-
-#new
-@api.route('barber/<int:id>/review', methods=['POST'])
-@jwt_required()#hay que estar logeado
-def create_review(barber_id):
-    text = request.json.get('text', None)
-    ratings = request.json.get('ratings', None)
-    client_id= get_jwt_identity()
-    if not (text and ratings):
-        return({'error': 'Some info are missing'}), 400
-
-    review_client= Review(
-        text=text, 
-        ratings=ratings,
-        id_barber=barber_id,
-        id_client=client_id) 
-
-    review = Review(id_barber=account.id)
-    print(review)
-    try:
-        review.create()
-        return jsonify(review.serialize()), 201
-    except exc.IntegrityError:
-        return ({'error': 'This email / phone number is already in use'}), 400
 
     
