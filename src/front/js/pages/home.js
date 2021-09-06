@@ -13,6 +13,7 @@ import Role from "../component/role.jsx";
 import RegisterBarber from "../component/registerBarber.jsx";
 import AddServiceButton from "../component/addServiceButton.jsx";
 import AddService from "../component/addService.jsx";
+import AddImage from "../component/addImage.jsx";
 
 export const Home = () => {
 	return (

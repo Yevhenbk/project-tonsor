@@ -19,20 +19,22 @@ input[type="file"] {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     font-size: 0.938rem;
-    margin: 0 4em .5rem 5rem;
+    margin: 0 4em .5rem 4rem;
     
 }
 .fileUploader:active {
     background-color: rgb(212, 212, 212);
 }
 .myHourInput {
-    border: none;
-    border-bottom: 1px solid black;
-    width: 6rem;
-    outline: none;
+    border: 1px solid #ccc;
+    color: #888;
+    vertical-align: middle;
+    outline: 0;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    width: 18rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
-    margin-left: 1rem;
 }
 .addButton {
     background: #242331;
@@ -55,8 +57,6 @@ input[type="file"] {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    margin-right: 3rem;
-
 }
 .myScheduleLabel {
     display: flex;
@@ -66,6 +66,7 @@ input[type="file"] {
     padding: 0.95rem 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
+    justify-content: left;
 }
 .myCategoryCheck {
     display: flex;
@@ -93,7 +94,7 @@ input[type="file"] {
     font-weight: 600;
 }
 #myCategorySelect {
-    font-size: 15px;
+    font-size: 0.938rem;
     padding: 0.25rem;
     border: 1px solid rgb(212, 212, 212);
     border-radius: 5px;
@@ -103,12 +104,32 @@ input[type="file"] {
 }
 #myCategorySelect option {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-family: 'Roboto', sans-serif;
 }
 .myScheduleSecondHolder {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: left;
+    margin-bottom: .5rem;
 }
+.myScheduleLabel2 {
+    display: flex;
+    text-align: left;
+    margin: 0;
+    font-size: 0.938rem;
+    padding: 0.95rem 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    justify-content: left;
+}
+.myInputs {
+    width: 18rem;
+}
+.addMyServiceImage {
+    margin: 1rem 0;
+}
+
+
 
 

@@ -28,8 +28,8 @@ const RegisterBarber = () => {
 				<Modal.Body>
 					<div>
 						<div className="accessGoogle">
-							<button type="button" className="googleAcc">
-								Registrar con Google <i className="fab fa-google" />
+							<button type="button" className="googleAccR">
+								<p>Registrar con Google</p>
 							</button>
 						</div>
 						<div className="myInputs">
@@ -80,7 +80,7 @@ const RegisterBarber = () => {
 							/>
 
 							<label htmlFor="myAddress" className="myLabel">
-								Direcion:
+								Dirección:
 							</label>
 
 							<input

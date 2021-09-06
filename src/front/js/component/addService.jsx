@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import AddSchedule from "./addSchedule.jsx";
@@ -8,6 +8,7 @@ import { Context } from "../store/appContext.js";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import AddImage from "./addImage.jsx";
 
 const AddService = () => {
 	return (
@@ -20,16 +21,9 @@ const AddService = () => {
 				<Modal.Body>
 					<div>
 						<div className="myInputs">
-							<label htmlFor="files" className="fileUploader">
-								Selecciona la imagen
-							</label>
-							<input
-								type="file"
-								id="files"
-								name="files"
-								className="myFileInput"
-								accept="image/png, image/gif, image/jpeg"
-							/>
+							<div className="addMyServiceImage">
+								<AddImage />
+							</div>
 
 							<label htmlFor="serviceName" className="myLabel">
 								Nombre de servicio:
@@ -38,13 +32,11 @@ const AddService = () => {
 							<input type="text" id="serviceName" name="serviceName" className="myInput" />
 
 							<section className="meetingTimeChoose">
-								<label htmlFor="meeting-time" className="myScheduleLabel">
-									Disponibilidad:
-								</label>
-
 								<div className="myScheduleSecondHolder">
 									<div className="mySchedule">
-										<label htmlFor="meeting-time" />
+										<label htmlFor="meeting-time" className="myScheduleLabel">
+											Hora de empezar:
+										</label>
 										<input
 											type="time"
 											id="meeting-time"
@@ -54,7 +46,9 @@ const AddService = () => {
 									</div>
 
 									<div className="mySchedule">
-										<label htmlFor="meeting-time" />
+										<label htmlFor="meeting-time" className="myScheduleLabel">
+											Hora de terminar:
+										</label>
 										<input
 											type="time"
 											id="meeting-time"
@@ -121,7 +115,9 @@ const AddService = () => {
 								</section>
 
 								<form action="/action_page.php" className="theSelectCategory">
-									<label htmlFor="category">Categoria:</label>
+									<label htmlFor="category" className="myScheduleLabel2">
+										Categoria:
+									</label>
 									<select name="category" id="myCategorySelect">
 										<option value="pigmentacion">Pigmentacion</option>
 										<option value="espalda">Depilacion de espalda</option>
@@ -134,7 +130,7 @@ const AddService = () => {
 								</form>
 							</section>
 
-							<label htmlFor="textArea" className="myScheduleLabel">
+							<label htmlFor="textArea" className="myScheduleLabel2">
 								Descripcion:
 							</label>
 
