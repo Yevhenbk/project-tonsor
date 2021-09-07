@@ -1,8 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import AddSchedule from "./addSchedule.jsx";
-
 import { Context } from "../store/appContext.js";
 
 import Modal from "react-bootstrap/Modal";
@@ -12,8 +10,8 @@ import AddImage from "./addImage.jsx";
 
 const AddService = () => {
 	return (
-		<form action="" method="post">
-			<Modal.Dialog>
+		<Modal.Dialog>
+			<form action="" method="post">
 				<Modal.Header>
 					<Modal.Title>Añadir servicio</Modal.Title>
 				</Modal.Header>
@@ -28,8 +26,21 @@ const AddService = () => {
 							<label htmlFor="serviceName" className="myLabel">
 								Nombre de servicio:
 							</label>
-
 							<input type="text" id="serviceName" name="serviceName" className="myInput" />
+
+							<div className="priceForHolder">
+								<label htmlFor="servicePrice" className="myLabel">
+									Precio:
+								</label>
+
+								<input
+									type="number"
+									id="servicePrice"
+									name="servicePrice"
+									className="myInputPrice"
+									placeholder="0.00"
+								/>
+							</div>
 
 							<section className="meetingTimeChoose">
 								<div className="myScheduleSecondHolder">
@@ -142,8 +153,8 @@ const AddService = () => {
 				<Modal.Footer>
 					<input type="submit" value="Añadir" className="accessButton" />
 				</Modal.Footer>
-			</Modal.Dialog>
-		</form>
+			</form>
+		</Modal.Dialog>
 	);
 };
 

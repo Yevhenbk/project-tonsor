@@ -18,6 +18,7 @@ import AddImage from "../component/addImage.jsx";
 export const Home = () => {
 	return (
 		<div>
+			<AddServiceButton />
 			<AddService />
 			<Login />
 			<Role />
