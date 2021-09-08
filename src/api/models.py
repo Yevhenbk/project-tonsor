@@ -208,7 +208,7 @@ class Barber_Services(db.Model):
     def __repr__(self):
         return f'Barber_Services {self.id}'
     
-    def serialize (self):
+    def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
@@ -228,6 +228,10 @@ class Barber_Services(db.Model):
             "description": self.description, 
             "id_barber": self.id_barber
         }
+    
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class Appointment(db.Model):

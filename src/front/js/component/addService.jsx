@@ -15,7 +15,11 @@ const AddService = () => {
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-
+	//falta poner la funcion que recoje los primeros symbolos de datetime
+	//falta poner react hook form
+	//falta poner la funcion lo de addSchedule component y reiscribir para utilizar para anadir las cartas de servicio
+	//que aparecen despues de click en modal
+	//no olvidar eliminar componentes que no utilizamos y hacer un migrate y upgrade cuando el port esta disponible
 	return (
 		<>
 			{" "}
