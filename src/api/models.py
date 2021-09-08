@@ -183,6 +183,8 @@ class Services(db.Model):
 class Barber_Services(db.Model):
     __tablename__="barberServices"
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    img = db.Column(db.VARCHAR, unique=False, default=False, nullable=True) 
     cost = db.Column(db.Numeric, nullable=False)
     discount = db.Column(db.Integer, nullable=True)
     start_hour = db.Column(db.DateTime, nullable=False)
@@ -194,7 +196,8 @@ class Barber_Services(db.Model):
     friday = db.Column(db.Boolean(), nullable=True)
     saturday = db.Column(db.Boolean(), nullable=True)
     sunday = db.Column(db.Boolean(), nullable=True)
-    category = db.Column(db.Enum('PG', 'DE', 'CP', 'MN', 'DT', 'DP', 'PD', name='service_category'), nullable=False)
+    category = db.Column(db.Enum('Pigmentacion', 'Depilacion de espalda', 'Corte de pelo',
+    'Manicura', 'Depilacion de torso', 'Depilacion de piernas', 'Pedicura', name='service_category'), nullable=False)
     description = db.Column(db.VARCHAR, unique=False, nullable=True)
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
@@ -207,7 +210,9 @@ class Barber_Services(db.Model):
     
     def serialize (self):
         return {
-            "id": self.id, 
+            "id": self.id,
+            "name": self.name,
+            "img": self.img, 
             "cost": self.cost, 
             "discount": self.discount, 
             "start_hour": self.start_hour,

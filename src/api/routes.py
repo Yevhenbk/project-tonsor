@@ -199,4 +199,78 @@ def get_barber_profile(id):
     return({'error': 'Not fount'})
 
 
+#hay que cambiar la ruta
+@api.route('/barber_services', methods=['POST'])
+def add_new_service():
+    img = request.json.get(
+        'img', None
+    )
+    name = request.json.get(
+        'name', None
+    ) 
+    cost = request.json.get(
+        'cost', None
+    ) 
+    start_hour = request.json.get(
+        'start_hour', None
+    ) 
+    end_hour = request.json.get(
+        'end_hour', None
+    )
+    monday = request.json.get(
+        'monday', None
+    ) 
+    tuesday = request.json.get(
+        'tuesday', None
+    )
+    wednesday = request.json.get(
+        'wednesday', None
+    ) 
+    thursday = request.json.get(
+        'thursday', None
+    )
+    friday = request.json.get(
+        'friday', None
+    ) 
+    saturday = request.json.get(
+        'saturday', None
+    )
+    sunday = request.json.get(
+        'sunday', None
+    ) 
+    category = request.json.get(
+        'category', None
+    )
+    description = request.json.get(
+        'description', None
+    ) 
+
     
+    if not (name and cost and start_hour and end_hour and category):
+        return ({'error': 'Some fields are missing'}), 400
+    
+    barber_services = Barber_Services(
+        img=img, 
+        name=name, 
+        cost=cost, 
+        start_hour=phone_number,
+        end_hour=end_hour, 
+        monday=monday,
+        tuesday=tuesday,
+        wednesday=wednesday,
+        thursday=thursday,
+        friday=friday,
+        saturday=saturday,
+        sunday=sunday,
+        category=category,
+        description=description,
+    )
+
+    try:
+        barber_services.create()
+        
+    except exc.IntegrityError:
+        return ({'error': 'Unexpected error'}), 400
+
+#parte de ffernando
+#@api.route('barber_services/<int:id>', methods=['GET'])

@@ -80,6 +80,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
+			barber_services: data => {
+				fetch(getStore().baseURL.concat("/barber_services"), {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid service info");
+						}
+					})
+					.then(responseAsJson => {
+						console.log(data);
+					})
+					.catch(error => console.error("There as been an unknown error", error));
+			},
+
 			getMessage: () => {
 				// fetching data from the backend
 				fetch(process.env.BACKEND_URL + "/api/hello")

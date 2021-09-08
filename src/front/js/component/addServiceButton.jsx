@@ -8,14 +8,9 @@ import Button from "react-bootstrap/Button";
 
 //change this for a button
 const AddServiceButton = () => {
-	const [show, setShow] = useState(false);
-
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
-
 	return (
 		<div className="myServiceButtonHolder">
-			<input type="button" className="addMyServiceButton" value="+" onClick={handleShow} />
+			<input type="button" className="addMyServiceButton" value="+" />
 		</div>
 	);
 };

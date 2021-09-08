@@ -11,14 +11,13 @@ import Login from "../component/login.jsx";
 import RegisterClient from "../component/registerClient.jsx";
 import Role from "../component/role.jsx";
 import RegisterBarber from "../component/registerBarber.jsx";
-import AddServiceButton from "../component/addServiceButton.jsx";
 import AddService from "../component/addService.jsx";
 import AddImage from "../component/addImage.jsx";
+import AddSchedule from "../component/addSchedule.jsx";
 
 export const Home = () => {
 	return (
 		<div>
-			<AddServiceButton />
 			<AddService />
 			<Login />
 			<Role />
