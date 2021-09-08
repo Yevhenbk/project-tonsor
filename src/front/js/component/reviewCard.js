@@ -1,8 +1,9 @@
 import React from "react";
 import "../../styles/barberCard.scss";
 import { StarRating } from "./starRating.js";
+import PropTypes from "prop-types";
 
-export const ReviewCard = () => {
+export const ReviewCard = props => {
 	return (
 		<div className="users_reviews ">
 			<div className="barber_image">
@@ -12,15 +13,17 @@ export const ReviewCard = () => {
 					alt=""
 				/>
 			</div>
-			<span>User name</span>
+			<span>{props.name}</span>
 			<StarRating />
 			<div className="testimonial-content">
-				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi illum quisquam tempore.excepturi, at
-					magnam fugiat ea vel totam perspiciatis dignissimos rem error est delectus praesentium inventore
-					aliquid dolorum eos
-				</p>
+				<p>{props.text}</p>
 			</div>
 		</div>
 	);
+};
+
+ReviewCard.propTypes = {
+	name: PropTypes.string,
+	text: PropTypes.string,
+	ratings: PropTypes.number
 };

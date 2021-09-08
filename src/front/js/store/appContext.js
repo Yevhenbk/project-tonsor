@@ -23,6 +23,7 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			state.actions.getBarbers();
+			state.actions.getReviews();
 			//state.actions.getMessage(); // <---- calling this function from the flux.js actions
 		}, []);
 

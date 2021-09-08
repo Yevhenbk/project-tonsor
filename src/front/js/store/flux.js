@@ -1,5 +1,5 @@
 import jwt_decode from "jwt-decode"; //optional
-const BASE_URL = "https://3001-teal-penguin-cl4xkv08.ws-eu16.gitpod.io/api/";
+const BASE_URL = "https://3001-bronze-spoonbill-gdl4rqic.ws-eu15.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -113,7 +113,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
+			},
+			getReviews: id => {
+				fetch(BASE_URL.concat("barber/", id, "/review"), {
+					method: "GET"
+				})
+					.then(resp => {
+						console.log(resp);
+						if (!resp.ok) {
+							throw Error("Somethin is wrong", resp.status);
+						}
+
+						return resp.json();
+					})
+					.then(resp => {
+						setStore({ reviews: resp });
+					})
+					.catch(error => {
+						console.log(error);
+					});
 			}
+			//createReview pasar por parametro text y ratings para crear al jsonfile
 		}
 	};
 };

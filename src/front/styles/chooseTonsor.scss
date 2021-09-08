@@ -14,16 +14,18 @@
 .mustache_img{
     width: 6rem;
     height: 6rem;
-    margin:auto;
+    margin-left: 50%;
 }
 #mapid { 
-    width: 110rem;
-    height: 70vh;
+    width: 89vw;
+    height: 40vh;
+    padding: 2rem;
     margin-top: 2rem;
     border-radius: 25px;
 }
 .choose_tonsor_title{
     position: relative;
-    top: 3.4rem; left:32rem;
+    top: 3.4rem; 
+    left:2rem;
     color:#C8102E;
 }

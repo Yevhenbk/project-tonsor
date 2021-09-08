@@ -111,7 +111,7 @@ class Review(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
 
     def __repr__(self):
-        return f'Review {self.review}'
+        return f'review {self.review}'
     
     def serialize (self):
         return {
@@ -119,7 +119,7 @@ class Review(db.Model):
             "id_client": self.id_client,
             "text": self.text,
             "ratings": self.ratings, 
-            "barber_id":self.id_barber
+            "barber_id":self.id_barber,
         }
     def create(self):
         db.session.add(self)

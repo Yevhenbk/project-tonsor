@@ -196,8 +196,8 @@ def get_barber_all():
 
 #new
 @api.route('barber/<int:id>/review', methods=['POST'])
-@jwt_required()#hay que estar logeado
-def create_review(barber_id):
+@jwt_required()#user must be loging
+def create_review(id):
     text = request.json.get('text', None)
     ratings = request.json.get('ratings', None)
     client_id= get_jwt_identity()
@@ -207,15 +207,28 @@ def create_review(barber_id):
     review_client= Review(
         text=text, 
         ratings=ratings,
-        id_barber=barber_id,
+        id_barber=id,
         id_client=client_id) 
 
-    review = Review(id_barber=account.id)
-    print(review)
     try:
-        review.create()
-        return jsonify(review.serialize()), 201
+        review_client.create()
+        return jsonify(review_client.serialize()), 201
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
+
+@api.route('/barber/<int:id>/review', methods=['GET'])
+def get_review_by_id(id):
+    reviews = Review.query.filter_by(id=id)
+    print(reviews,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    
+
+    #account = Account.get_by_id(id)
+    #account.name
+    if reviews:
+        reviews_to_dict = [review.serialize() for review in reviews ]
+        return jsonify(reviews_to_dict), 200 
+
+    return jsonify({'error': 'reviews no fount¡¡¡¡'}), 404
+
 
     
