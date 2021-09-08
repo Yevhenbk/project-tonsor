@@ -25,7 +25,7 @@ const AddSchedule = props => {
 		<form className="scheduleForm" onSubmit={handleSubmit}>
 			<div className="mySchedule">
 				<input
-					type="button"
+					type="text"
 					id="meeting-time"
 					name="meeting-time"
 					className="myHourInput"

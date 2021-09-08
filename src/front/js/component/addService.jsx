@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext.js";
 
@@ -10,7 +11,7 @@ import AddImage from "./addImage.jsx";
 import Hour from "./hour.jsx";
 import "../../styles/addServiceButton.scss";
 
-const AddService = () => {
+const AddService = props => {
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
@@ -20,6 +21,23 @@ const AddService = () => {
 	//falta poner la funcion lo de addSchedule component y reiscribir para utilizar para anadir las cartas de servicio
 	//que aparecen despues de click en modal
 	//no olvidar eliminar componentes que no utilizamos y hacer un migrate y upgrade cuando el port esta disponible
+	const [input, setInput] = useState({ name: "" });
+	const [inputList, setInputList] = useState([]);
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		setInputList([...inputList, input]);
+		setInput({ name: "" });
+	};
+
+	const clickDelete = targetIndex => {
+		setInputList(inputList.filter((_, index) => index !== targetIndex));
+	};
+
+	let serviceSelected = inputList.map((value, index) => (
+		<Hour inputValue={value.name} key={index} onMyClick={() => clickDelete(index)} />
+	));
+
 	return (
 		<>
 			{" "}
@@ -28,9 +46,10 @@ const AddService = () => {
 					<input type="button" className="addMyServiceButton" value="+" onClick={handleShow} />
 					<p className="pService">Añadir servicio</p>
 				</div>
+				<div className="newServiceForm">{serviceSelected}</div>
 			</div>
 			<Modal show={show} onHide={handleClose}>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<Modal.Header>
 						<Modal.Title>Añadir servicio</Modal.Title>
 					</Modal.Header>
@@ -45,7 +64,14 @@ const AddService = () => {
 								<label htmlFor="serviceName" className="myLabel">
 									Nombre de servicio:
 								</label>
-								<input type="text" id="serviceName" name="serviceName" className="myInput" />
+								<input
+									type="text"
+									id="serviceName"
+									name="serviceName"
+									className="myInput"
+									value={input.name}
+									onChange={e => setInput({ name: e.target.value })}
+								/>
 
 								<div className="priceForHolder">
 									<label htmlFor="servicePrice" className="myLabel">
@@ -176,6 +202,12 @@ const AddService = () => {
 			</Modal>
 		</>
 	);
+};
+
+AddService.propTypes = {
+	inputValue: PropTypes.string,
+	isDone: PropTypes.bool,
+	onMyClick: PropTypes.func
 };
 
 export default AddService;
