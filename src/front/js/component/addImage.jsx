@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import placeholder from "../../img/no-image.png";
 import "../../styles/addImage.scss";
 
@@ -18,7 +19,7 @@ const AddImage = () => {
 	};
 
 	return (
-		<form encType="multipart/form-data">
+		<div encType="multipart/form-data">
 			<div className="form__img-input-container">
 				<input
 					type="file"
@@ -44,7 +45,7 @@ const AddImage = () => {
 				</label>
 				<img src={src} alt={alt} className="form-img__img-preview" />
 			</div>
-		</form>
+		</div>
 	);
 };
 

@@ -82,16 +82,33 @@ input[type="file"] {
 .myCategoryCheckTitle {
     padding: 0;
 }
-.myCategoryCheck label {
+.categoryChecks label {
     font-size: 0.938rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+.categoryChecks label p {
+    margin: 0;
+    margin-left: .5rem;
+}
+.categoryChecks label input {
+    margin-top: .3rem;
 }
 .myCategoryCheck {
     padding: .5rem;
+    padding-bottom: 0;
 }
 .theSelectCategory {
     display: flex;
     flex-direction: column;
     font-weight: 600;
+}
+.categoryChecks {
+    display: flex;
+    flex-direction: column;
 }
 #myCategorySelect {
     font-size: 0.938rem;
@@ -118,7 +135,7 @@ input[type="file"] {
     text-align: left;
     margin: 0;
     font-size: 0.938rem;
-    padding: 0.95rem 0;
+    padding: 0.95rem 0 0.95rem 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     justify-content: left;

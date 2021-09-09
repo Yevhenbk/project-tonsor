@@ -9,14 +9,10 @@ import Button from "react-bootstrap/Button";
 const RegisterBarber = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const [rol, setRol] = useState(null);
 
 	const getBarber = data => {
 		actions.barber(data);
 	};
-	//const getClient = data => {
-	//	actions.client(data);
-	//};
 
 	return (
 		<form action="" method="post" onSubmit={handleSubmit(getBarber)}>

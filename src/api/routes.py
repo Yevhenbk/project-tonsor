@@ -27,6 +27,7 @@ def login():
         return ({'error': 'Wrong email or password'}), 400
 
     user = Account.get_by_email(email)
+    print(user)
 
     
     if user.is_client:
@@ -199,9 +200,10 @@ def get_barber_profile(id):
     return({'error': 'Not fount'})
 
 
-#hay que cambiar la ruta
+
 @api.route('/barber_services', methods=['POST'])
 def add_new_service():
+    print("llego")
     img = request.json.get(
         'img', None
     )
@@ -248,23 +250,23 @@ def add_new_service():
     
     if not (name and cost and start_hour and end_hour and category):
         return ({'error': 'Some fields are missing'}), 400
-    
     barber_services = Barber_Services(
         img=img, 
         name=name, 
         cost=cost, 
         start_hour=phone_number,
         end_hour=end_hour, 
-        monday=monday,
-        tuesday=tuesday,
-        wednesday=wednesday,
-        thursday=thursday,
-        friday=friday,
-        saturday=saturday,
-        sunday=sunday,
+        monday=True,
+        tuesday=True,
+        wednesday=True,
+        thursday=True,
+        friday=True,
+        saturday=True,
+        sunday=True,
         category=category,
         description=description,
     )
+    print(barber_services)
 
     try:
         barber_services.create()

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 57eabe6fbc9c
+Revision ID: 2a7aa89a6fd4
 Revises: 
-Create Date: 2021-09-02 14:55:15.491244
+Create Date: 2021-09-09 08:43:40.119084
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '57eabe6fbc9c'
+revision = '2a7aa89a6fd4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -55,10 +55,21 @@ def upgrade():
     )
     op.create_table('barberServices',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
+    sa.Column('img', sa.VARCHAR(), nullable=True),
     sa.Column('cost', sa.Numeric(), nullable=False),
     sa.Column('discount', sa.Integer(), nullable=True),
-    sa.Column('date', sa.DateTime(), nullable=False),
-    sa.Column('description', sa.VARCHAR(), nullable=False),
+    sa.Column('start_hour', sa.DateTime(), nullable=False),
+    sa.Column('end_hour', sa.DateTime(), nullable=False),
+    sa.Column('monday', sa.Boolean(), nullable=True),
+    sa.Column('tuesday', sa.Boolean(), nullable=True),
+    sa.Column('wednesday', sa.Boolean(), nullable=True),
+    sa.Column('thursday', sa.Boolean(), nullable=True),
+    sa.Column('friday', sa.Boolean(), nullable=True),
+    sa.Column('saturday', sa.Boolean(), nullable=True),
+    sa.Column('sunday', sa.Boolean(), nullable=True),
+    sa.Column('category', sa.Enum('Pigmentacion', 'Depilacion de espalda', 'Corte de pelo', 'Manicura', 'Depilacion de torso', 'Depilacion de piernas', 'Pedicura', name='service_category'), nullable=False),
+    sa.Column('description', sa.VARCHAR(), nullable=True),
     sa.Column('id_barber', sa.Integer(), nullable=True),
     sa.Column('id_services', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['id_barber'], ['barber.id'], ),
