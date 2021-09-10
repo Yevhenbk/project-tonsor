@@ -247,29 +247,30 @@ def add_new_service():
         'description', None
     ) 
 
-    
+    #if id_barber=True:
     if not (name and cost and start_hour and end_hour and category):
         return ({'error': 'Some fields are missing'}), 400
     barber_services = Barber_Services(
         img=img, 
         name=name, 
         cost=cost, 
-        start_hour=phone_number,
+        start_hour=start_hour,
         end_hour=end_hour, 
-        monday=True,
-        tuesday=True,
-        wednesday=True,
-        thursday=True,
-        friday=True,
-        saturday=True,
-        sunday=True,
+        monday=monday,
+        tuesday=tuesday,
+        wednesday=wednesday,
+        thursday=thursday,
+        friday=friday,
+        saturday=saturday,
+        sunday=sunday,
         category=category,
         description=description,
     )
-    print(barber_services)
+    print(barber_services.to_dict())
 
     try:
-        barber_services.create()
+        barber_created = barber_services.create()
+        return jsonify(barber_created.to_dict()), 201
         
     except exc.IntegrityError:
         return ({'error': 'Unexpected error'}), 400

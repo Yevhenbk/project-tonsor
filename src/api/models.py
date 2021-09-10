@@ -232,6 +232,7 @@ class Barber_Services(db.Model):
     def create(self):
         db.session.add(self)
         db.session.commit()
+        return self
 
 
 class Appointment(db.Model):

@@ -228,13 +228,13 @@ const AddService = () => {
 											Categoria:
 										</label>
 										<select name="category" id="myCategorySelect" {...register("category")}>
-											<option value="pigmentacion">Pigmentacion</option>
-											<option value="espalda">Depilacion de espalda</option>
-											<option value="pelo">Corte de pelo</option>
-											<option value="manicura">Manicura</option>
-											<option value="torso">Depilacion de torso</option>
-											<option value="piernad">Depilacion de piernas</option>
-											<option value="pedicura">Pedicura</option>
+											<option value="Pigmentacion">Pigmentacion</option>
+											<option value="Depilacion de espalda">Depilacion de espalda</option>
+											<option value="Corte de pelo">Corte de pelo</option>
+											<option value="Manicura">Manicura</option>
+											<option value="Torso">Depilacion de torso</option>
+											<option value="Depilacion de piernas">Depilacion de piernas</option>
+											<option value="Pedicura">Pedicura</option>
 										</select>
 									</div>
 								</section>
