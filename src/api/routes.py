@@ -27,6 +27,7 @@ def login():
         return ({'error': 'Wrong email or password'}), 400
 
     user = Account.get_by_email(email)
+    print(user)
 
     
     if user.is_client:
@@ -202,4 +203,80 @@ def get_barber_profile(id):
     return({'error': 'Not fount'})
 
 
-    
+
+@api.route('/barber_services', methods=['POST'])
+def add_new_service():
+    print("llego")
+    img = request.json.get(
+        'img', None
+    )
+    name = request.json.get(
+        'name', None
+    ) 
+    cost = request.json.get(
+        'cost', None
+    ) 
+    start_hour = request.json.get(
+        'start_hour', None
+    ) 
+    end_hour = request.json.get(
+        'end_hour', None
+    )
+    monday = request.json.get(
+        'monday', None
+    ) 
+    tuesday = request.json.get(
+        'tuesday', None
+    )
+    wednesday = request.json.get(
+        'wednesday', None
+    ) 
+    thursday = request.json.get(
+        'thursday', None
+    )
+    friday = request.json.get(
+        'friday', None
+    ) 
+    saturday = request.json.get(
+        'saturday', None
+    )
+    sunday = request.json.get(
+        'sunday', None
+    ) 
+    category = request.json.get(
+        'category', None
+    )
+    description = request.json.get(
+        'description', None
+    ) 
+
+    #if id_barber=True:
+    if not (name and cost and start_hour and end_hour and category):
+        return ({'error': 'Some fields are missing'}), 400
+    barber_services = Barber_Services(
+        img=img, 
+        name=name, 
+        cost=cost, 
+        start_hour=start_hour,
+        end_hour=end_hour, 
+        monday=monday,
+        tuesday=tuesday,
+        wednesday=wednesday,
+        thursday=thursday,
+        friday=friday,
+        saturday=saturday,
+        sunday=sunday,
+        category=category,
+        description=description,
+    )
+    print(barber_services.to_dict())
+
+    try:
+        barber_created = barber_services.create()
+        return jsonify(barber_created.to_dict()), 201
+        
+    except exc.IntegrityError:
+        return ({'error': 'Unexpected error'}), 400
+
+#parte de ffernando
+#@api.route('barber_services/<int:id>', methods=['GET'])

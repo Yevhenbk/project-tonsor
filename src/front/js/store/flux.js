@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode"; //optional
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			BASE_URL: "https://3001-aquamarine-butterfly-d1y8h28g.ws-eu16.gitpod.io/api/",
+			BASE_URL: "https://3001-tan-whippet-6e28u63a.ws-eu16.gitpod.io/api/",
 			currentUser: "",
 			message: ""
 		},
@@ -80,12 +80,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
+			barber_services: data => {
+				console.log("qqqqqqqqqqqqqqqq");
+				fetch(getStore().BASE_URL.concat("barber_services"), {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					}
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid service info");
+						}
+					})
+					.then(responseAsJson => {
+						localStorage.setItem("token", data.token);
+					})
+					.catch(error => console.error("There as been an unknown error", error));
 			}
 		}
 	};

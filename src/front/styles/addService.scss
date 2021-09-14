@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -21,10 +26,13 @@ input[type="file"] {
     background-color: rgb(212, 212, 212);
 }
 .myHourInput {
-    border: none;
-    border-bottom: 1px solid black;
-    width: 6rem;
-    outline: none;
+    border: 1px solid #ccc;
+    color: #888;
+    vertical-align: middle;
+    outline: 0;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    width: 18rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
 }
@@ -47,7 +55,7 @@ input[type="file"] {
 }
 .mySchedule {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: left;
 }
 .myScheduleLabel {
@@ -58,6 +66,7 @@ input[type="file"] {
     padding: 0.95rem 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
+    justify-content: left;
 }
 .myCategoryCheck {
     display: flex;
@@ -71,12 +80,88 @@ input[type="file"] {
     margin-right: .5rem;
 }
 .myCategoryCheckTitle {
-    padding: 0 0 0.95rem;
+    padding: 0;
 }
-.myCategoryCheck label {
+.categoryChecks label {
     font-size: 0.938rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
 }
-.myCheckboxesVsHolder {
+.categoryChecks label p {
+    margin: 0;
+    margin-left: .5rem;
+}
+.categoryChecks label input {
+    margin-top: .3rem;
+}
+.myCategoryCheck {
+    padding: .5rem;
+    padding-bottom: 0;
+}
+.theSelectCategory {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+}
+.categoryChecks {
+    display: flex;
+    flex-direction: column;
+}
+#myCategorySelect {
+    font-size: 0.938rem;
+    padding: 0.25rem;
+    border: 1px solid rgb(212, 212, 212);
     border-radius: 5px;
-    background-color: #E9EBED;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    width: 18rem;
 }
+#myCategorySelect option {
+    font-weight: 600;
+    font-size: 0.938rem;
+    font-family: 'Roboto', sans-serif;
+}
+.myScheduleSecondHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-bottom: .5rem;
+}
+.myScheduleLabel2 {
+    display: flex;
+    text-align: left;
+    margin: 0;
+    font-size: 0.938rem;
+    padding: 0.95rem 0 0.95rem 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    justify-content: left;
+}
+.myInputs {
+    width: 18rem;
+}
+.addMyServiceImage {
+    margin: 1rem 0;
+}
+.myInputPrice {
+    border: 1px solid #ccc;
+    color: #888;
+    vertical-align: middle;
+    outline: 0;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    width: 8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+.priceForHolder {
+    margin-top: .5rem;
+}
+
+
+
+

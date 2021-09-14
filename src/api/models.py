@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.dialects.postgresql import VARCHAR
-from sqlalchemy import Column, ForeignKey, Integer, Table, DateTime, Numeric
+from sqlalchemy import Column, ForeignKey, Integer, Table, DateTime, Numeric, Enum
 #from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
@@ -183,27 +183,55 @@ class Services(db.Model):
 class Barber_Services(db.Model):
     __tablename__="barberServices"
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    img = db.Column(db.VARCHAR, unique=False, default=False, nullable=True) 
     cost = db.Column(db.Numeric, nullable=False)
     discount = db.Column(db.Integer, nullable=True)
-    date = db.Column(db.DateTime, nullable=False)
-    description = db.Column(db.VARCHAR, unique=False, nullable=False)
+    start_hour = db.Column(db.DateTime, nullable=False)
+    end_hour = db.Column(db.DateTime, nullable=False)
+    monday = db.Column(db.Boolean(), nullable=True)
+    tuesday = db.Column(db.Boolean(), nullable=True)
+    wednesday = db.Column(db.Boolean(), nullable=True)
+    thursday = db.Column(db.Boolean(), nullable=True)
+    friday = db.Column(db.Boolean(), nullable=True)
+    saturday = db.Column(db.Boolean(), nullable=True)
+    sunday = db.Column(db.Boolean(), nullable=True)
+    category = db.Column(db.Enum('Pigmentacion', 'Depilacion de espalda', 'Corte de pelo',
+    'Manicura', 'Depilacion de torso', 'Depilacion de piernas', 'Pedicura', name='service_category'), nullable=False)
+    description = db.Column(db.VARCHAR, unique=False, nullable=True)
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
     id_services = db.Column(db.Integer, ForeignKey("services.id"))
 
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):
-        return f'Barber_Services {self.barberServices}'
+        return f'Barber_Services {self.id}'
     
-    def serialize (self):
+    def to_dict(self):
         return {
-            "id": self.id, 
+            "id": self.id,
+            "name": self.name,
+            "img": self.img, 
             "cost": self.cost, 
             "discount": self.discount, 
-            "date": self.date, 
+            "start_hour": self.start_hour,
+            "end_hour": self.end_hour,
+            "monday": self.monday,
+            "tuesday": self.tuesday,
+            "wednesday": self.wednesday,
+            "thursday": self.thursday,
+            "friday": self.friday,
+            "saturday": self.saturday,
+            "sunday": self.sunday,
+            "category": self.category, 
             "description": self.description, 
             "id_barber": self.id_barber
         }
+    
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
 
 
 class Appointment(db.Model):

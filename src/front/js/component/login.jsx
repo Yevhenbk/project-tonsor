@@ -23,7 +23,7 @@ const Login = () => {
 					<div>
 						<div className="accessGoogle">
 							<button type="button" className="googleAcc">
-								Acceder con Google <i className="fab fa-google" />
+								<p>Acceder con Google</p>
 							</button>
 						</div>
 						<div className="myInputs">
