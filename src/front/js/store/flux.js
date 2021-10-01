@@ -1,5 +1,5 @@
 import jwt_decode from "jwt-decode"; //optional
-const BASE_URL = "https://3001-bronze-spoonbill-gdl4rqic.ws-eu15.gitpod.io/api/";
+const BASE_URL = "https://3001-bronze-spoonbill-gdl4rqic.ws-eu18.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			login: data => {
-				fetch(getStore().BASE_URL.concat("login"), {
+				fetch(BASE_URL.concat("login"), {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
@@ -65,9 +65,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			barber: data => {
+			review: data => {
 				console.log(data);
-				fetch(getStore().BASE_URL.concat("barber"), {
+				fetch(BASE_URL.concat("barber"), {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -132,8 +132,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
-			}
+			},
 			//createReview pasar por parametro text y ratings para crear al jsonfile
+			barber: (data, id) => {
+				console.log(data, id);
+				fetch(BASE_URL.concat("barber/", id, "/review"), {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+						"sec-fetch-mode": "no-cors"
+					},
+					body: JSON.stringify(data)
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid info");
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						localStorage.setItem("token", responseAsJson);
+					})
+					.catch(error => console.error("Unknown error", error));
+			}
 		}
 	};
 };

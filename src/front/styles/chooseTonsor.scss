@@ -11,13 +11,18 @@
     //position: relative;
 //top: 30px; left: 10px;
 }
+.mustache-container{
+    width: 100%;
+    text-align: center;
+
+}
 .mustache_img{
     width: 6rem;
     height: 6rem;
-    margin-left: 50%;
+    //margin-left: 50%;
 }
 #mapid { 
-    width: 89vw;
+    width: 100%;
     height: 40vh;
     padding: 2rem;
     margin-top: 2rem;

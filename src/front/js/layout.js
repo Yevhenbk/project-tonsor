@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Reviews } from "./pages/reviews.js";
 import { ChooseTonsor } from "./pages/chooseTonsor.js";
+import { BarberProfile } from "./pages/barberProfile.js";
 
 //create your first component
 const Layout = () => {
@@ -32,6 +33,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/reviews/:id">
 							<Reviews />
+						</Route>
+						<Route exact path="/barberProfile">
+							<BarberProfile />
 						</Route>
 						<Route exact path="/chooseTonsor">
 							<ChooseTonsor />

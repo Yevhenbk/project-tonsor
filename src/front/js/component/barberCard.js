@@ -33,6 +33,11 @@ export const BarberCard = props => {
 						Servicio:&nbsp;
 						{props.services}
 					</div>
+					<Link to={"/barberProfile"}>
+						<button className="barber-date-btn" type="button">
+							Pedir cita
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>

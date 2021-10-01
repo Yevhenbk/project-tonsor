@@ -1,0 +1,44 @@
+.barber-profile-container{
+    display: flex;
+    //background:#E9EBED;
+}
+.l-menu{
+    background:#E9EBED;
+    //width: 15%;
+    height: 100vh;
+    //padding: 2rem;
+    //margin: 0 24px;
+    //border-radius: 25px;
+    flex: 0 0 auto;
+    //width: 25%;
+    padding: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+/*.col-sm-3 {
+    flex: 0 0 auto;
+    //width: 25%;
+    padding: 2rem;
+}*/
+
+.r-menu{
+    //width: 80%;
+    //color: aqua;
+
+}
+.mainmenu-list {
+    flex: 1 1 auto;
+    margin-left: 0;
+    padding-bottom: 32px;
+}
+
+.barber_image_profile1{
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #bebec4;
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    margin: 0rem 0rem 1rem 0rem;
+}

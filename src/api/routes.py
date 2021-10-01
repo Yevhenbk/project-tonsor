@@ -218,14 +218,18 @@ def create_review(id):
 
 @api.route('/barber/<int:id>/review', methods=['GET'])
 def get_review_by_id(id):
-    reviews = Review.query.filter_by(id=id)
+    reviews = Review.query.filter_by(id_barber=id)
     print(reviews,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-    
-
     #account = Account.get_by_id(id)
     #account.name
     if reviews:
-        reviews_to_dict = [review.serialize() for review in reviews ]
+        reviews_to_dict=[]
+        for review in reviews:
+            user=Client.query.filter_by(id=review.id_client).first().to_dict()
+            review_to_dict=review.serialize()
+            review_to_dict["client_name"]=user["name"]
+            review_to_dict["client_img"]=user["img"]
+            reviews_to_dict.append(review_to_dict)
         return jsonify(reviews_to_dict), 200 
 
     return jsonify({'error': 'reviews no fount¡¡¡¡'}), 404

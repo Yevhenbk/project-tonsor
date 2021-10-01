@@ -12,8 +12,13 @@ export const ChooseTonsor = () => {
 
 	return (
 		<div className="services_views ">
-			<img className="mustache_img" src={mustache_img} />
-			<h1 className="choose_tonsor_title">ELIGE TU TONSOR</h1>
+			<div className="mustache-container">
+				<img className="mustache_img" src={mustache_img} />
+			</div>
+			<div className="choose-tonsor-container">
+				<h1 className="choose_tonsor_title">ELIGE TU TONSOR</h1>
+			</div>
+
 			<div className="barber_container_profiles">
 				{store.barbers.map((barber, index) => {
 					//if(type_service==barber.services)
