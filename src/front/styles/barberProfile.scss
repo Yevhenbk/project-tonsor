@@ -4,34 +4,18 @@
 }
 .l-menu{
     background:#E9EBED;
-    //width: 15%;
     height: 100vh;
-    //padding: 2rem;
-    //margin: 0 24px;
-    //border-radius: 25px;
     flex: 0 0 auto;
-    //width: 25%;
     padding: 2rem;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    position: fixed;
+    top: 0;
 }
-/*.col-sm-3 {
-    flex: 0 0 auto;
-    //width: 25%;
-    padding: 2rem;
-}*/
-
 .r-menu{
     //width: 80%;
     //color: aqua;
-
 }
-.mainmenu-list {
-    flex: 1 1 auto;
-    margin-left: 0;
-    padding-bottom: 32px;
-}
-
 .barber_image_profile1{
     object-fit: cover;
     border-radius: 50%;
@@ -41,4 +25,30 @@
     width: 5rem;
     height: 5rem;
     margin: 0rem 0rem 1rem 0rem;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #E9EBED;
+    background-color: #242331;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #242331;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.nav-link:hover, .nav-link:focus {
+    color: #C8102E;
+}
+.img-profile-logo-container{
+    margin-top: 1rem;
+    //text-align: center;
+
+}
+.img-profile-logo{
+    
+    width: 7rem;
+    min-width: 4;
+    height: 3;
 }

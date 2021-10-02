@@ -1,0 +1,95 @@
+.personal-information-container{
+    display: flex;
+    padding: 2rem;
+    position: relative;
+    left: 17rem;
+    
+}
+.l-personal-information {
+    width: 30%;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+.r-personal-information{
+    width: 70%;
+    margin: 1rem 5rem 0rem 0rem ;
+    padding: 0rem 5rem 0rem 0rem  ;
+    
+}
+.tex-body{
+    color: #242331;
+}
+/*.formField_wrapper {
+    background-color: #f2f2fa;
+    border-radius: 8px;
+    position: relative;
+    transition: all .3s linear;
+   //box-sizing: border-box;
+    &:hover{
+        transform: scale(1.1);
+    }
+}*/
+.formBorder{
+    border: none;
+}
+.form-label {
+    /* margin-bottom: 0.5rem; */
+    position: relative;
+    top: 0.5rem;
+    margin-left: 0.5rem;
+}
+form{
+    padding: 0rem 5rem 0rem 5rem;
+}
+.form-group{
+    width: 60%;
+}
+.form-group, .pepe{
+    background: #E9EBED;
+    border-radius: 1rem;
+}
+.pepe{
+  // border: none;
+}
+.mobile-phone-number{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+.form-group-phone-pref{
+    background: #E9EBED;
+    border-radius: 1rem;
+    width: 20%;
+
+}
+.form-group-phone{
+    background: #E9EBED;
+    border-radius: 1rem;
+    width: 75%;
+
+}
+.userRow-editProfilePic {
+    margin-top: 16px;
+    text-align: center;
+    width: 60%;
+    margin-bottom: 1rem;
+}
+.userRow-editProfilePic button {
+    align-items: center;
+    color: #7145d6;
+    cursor: pointer;
+    //display: flex;
+    font-size: 12px;
+    font-size: .75rem;
+    padding: 0;
+    //white-space: nowrap;
+    border: none;
+    background: none;
+    display: inline-block;
+}
+
+
+
+
+
+
