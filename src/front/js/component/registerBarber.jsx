@@ -18,7 +18,7 @@ const RegisterBarber = () => {
 		<form action="" method="post" onSubmit={handleSubmit(getBarber)}>
 			<Modal.Dialog>
 				<Modal.Header>
-					<Modal.Title>Registro</Modal.Title>
+					<Modal.Title>Regístrate como Barbero</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>

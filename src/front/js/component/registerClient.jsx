@@ -22,7 +22,7 @@ const RegisterClient = () => {
 		<form action="" method="post" onSubmit={handleSubmit(getClient)}>
 			<Modal.Dialog>
 				<Modal.Header>
-					<Modal.Title>Registro</Modal.Title>
+					<Modal.Title>Regístrate como cliente</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
