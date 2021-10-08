@@ -10,6 +10,11 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
+import Politicpriv from "./pages/politicpriv";
+import Conduse from "./pages/conduse";
+import Aboutus from "./pages/aboutus";
+import Contactus from "./component/contactus";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -27,6 +32,18 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/politcs">
+							<Politicpriv />
+						</Route>
+						<Route exact path="/conduse">
+							<Conduse />
+						</Route>
+						<Route exact path="/aboutus">
+							<Aboutus />
+						</Route>
+						<Route exact path="/contactus">
+							<Contactus />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

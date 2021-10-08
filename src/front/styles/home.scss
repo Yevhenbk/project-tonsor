@@ -1,0 +1,107 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+.father-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.header-nav {
+    background:url("../img/barber-shop-5212059_1920.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; width: auto;
+    position: static;
+}
+.emo-barb {
+    width: 6rem; height: 6rem;
+    position: relative;
+    left: 45rem;
+}
+.h1-header {
+    color: #C8102E;
+    margin: 2rem;
+    text-align:center;
+    font-size: xx-large;
+    font-family: 'Oswald';
+    
+}
+.position-h1 {
+    position: relative;
+    top: 2rem;
+}
+.p-dark {
+    color: #242331;
+    margin: 4rem;
+    font-size: x-large;
+    font-family: 'Roboto';
+}
+.body-service {
+    background-color: #E9EBED;
+    border-radius: 2rem;
+    margin-top: 4rem;
+    margin: 4rem;
+}
+.img-service-global {
+    width: 21rem; 
+    height: 20rem;
+    border-radius: 50%;
+}
+.img-back {
+    background: url("../img/pexels-koolshooters-8544640.jpg");
+    object-fit: contain;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-beard {
+    background: url("../img/pexels-cottonbro-3998429.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-chest {
+    background: url("../img/hombre-playa-andando.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-leg {
+    background: url("../img/pexels-anouar-olh-1770803.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(180deg);
+}
+.img-manicure {
+    background: url("../img/pexels-lilartsy-2838506.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img-pedicure {
+    background: url("../img/pexels-med-gadon-2425664.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.barber-card {
+    background: url("../img/VECTOR-PELUQUERO\ 1\ \(1\).png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 36rem;
+}
+.butt-reg{
+    background: #C8102E;
+    opacity: 0.8;
+    color: white;
+    border-radius: 2rem;
+    height: 3rem;
+    width: 5rem;
+    border: black;
+}
+.butt-log-barb {
+    position: relative;
+    left:4rem;
+}

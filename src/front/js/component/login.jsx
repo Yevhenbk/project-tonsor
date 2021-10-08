@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Context } from "../store/appContext.js";
@@ -12,9 +12,20 @@ const Login = () => {
 
 	const getLogin = data => actions.login(data);
 
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 	return (
 		<form action="" method="post" onSubmit={handleSubmit(getLogin)}>
-			<Modal.Dialog>
+			<Modal.Dialog
+				show={show}
+				onHide={handleClose}
+				animation={true}
+				size="m"
+				aria-labelledby="contained-modal-title-vcenter"
+				centered>
 				<Modal.Header>
 					<Modal.Title>Login</Modal.Title>
 				</Modal.Header>

@@ -1,0 +1,23 @@
+.location-nav {
+    display:flex;
+    background-color: #242331;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+}
+.img-button-logo{
+    background: url("../img/tonsor-logo-positivo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12vw;
+    height: 10vh;
+    border: transparent;
+    margin: 2rem;
+    top:2.5rem;
+}
+.button-nav-gen {
+    display: flex;
+    margin-right: 6rem;
+    justify-content: space-between;
+}

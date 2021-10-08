@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+.div-master {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+.div-child {
+    background-color: #E9EBED;
+    border-radius: 2rem;
+    margin-top: 5rem;
+    margin: 7rem;
+    padding: 3rem;
+}
+.prv-font-tit {
+    font-family: 'Oswald';
+    color: #C8102E;
+}
+.prv-font-txt {
+    font-family: 'Roboto';
+    font-size: x-large;
+    color: #242331; 
+}
+.img-aboutus {
+   width: 20rem;
+   height: 30rem;
+   border-radius: 2rem;
+   margin-top: 1rem;
+   display: flex;
+}
