@@ -54,7 +54,7 @@ const Login = () => {
 				</Modal.Body>
 
 				<Modal.Footer>
-					<input type="button" value="Registrar" className="registerButton" />
+					{/*<input type="button" value="Registrar" className="registerButton" />*/}
 
 					<input type="submit" value="Acceder" className="accessButton" />
 				</Modal.Footer>
