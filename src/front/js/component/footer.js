@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/footer.scss";
+import LogoPositivo from "../../img/tonsor-logo-positivo.png";
 //Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
@@ -13,9 +14,10 @@ export const Footer = () => {
 		<div className="footer-css">
 			<div className="container-div">
 				<Link to="/">
-					<button className="img-button-logo-foot btn" />
+					<img className="img-logo-footer" src={LogoPositivo} />
 				</Link>
 			</div>
+
 			<div className="container_about_us">
 				<Link className="p-color-gl p-font-tit" to="/aboutus" style={{ textDecoration: "none" }}>
 					¿Quíenes Somos?

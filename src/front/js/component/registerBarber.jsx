@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext.js";
 
 import Modal from "react-bootstrap/Modal";
+import "../../styles/modals.scss";
 import Button from "react-bootstrap/Button";
 
 const RegisterBarber = () => {

@@ -1,23 +1,47 @@
-.location-nav {
-    display:flex;
+.navbar{
+    //display:flex;
     background-color: #242331;
-    align-items: center;
-    justify-content: space-between;
-    height: 5rem;
+    //align-items: center;
+    //justify-content: space-between;
+   //height: 5rem;
 }
-.img-button-logo{
-    background: url("../img/tonsor-logo-positivo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 12vw;
-    height: 10vh;
-    border: transparent;
-    margin: 2rem;
-    top:2.5rem;
+.navbar-brand{
+    //background: url("../img/tonsor-logo-positivo.png");
+    //background-size: cover;
+    //background-position: center;
+    //background-repeat: no-repeat;
+    width: 10rem;
+    min-width: 8rem;
+    //height: 10vh;
+    //border: transparent;
+    margin: 0.5rem 0rem 0.5rem 5rem ;
+    //top:2.5rem;
 }
-.button-nav-gen {
+.navbar-btn{
+    margin-right: 5rem;
+}
+.navbar-btn-login{
+    margin-right: 0.5rem;
+
+}
+.btn-primary {
+    color: #E9EBED;
+    background-color: #C8102E;
+    border-color: #C8102E;
+}
+
+.navbar-btn{
+    border-radius: 10rem;
+    
+}
+
+.btn-primary:hover {
+    background-color: #970820 !important;
+    color: white!important;
+    border-color: #970820 ;
+}
+/*.button-nav-gen {
     display: flex;
     margin-right: 6rem;
     justify-content: space-between;
-}
+}*/

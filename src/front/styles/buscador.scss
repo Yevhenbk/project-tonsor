@@ -1,17 +1,23 @@
-.search-modal-first {
+.search-modal-first-container{
     background: #C8102E;
+    color: #E9EBED;
     opacity: 0.9;
-    border-radius: 2rem;
+    border-radius: 10rem;
     display: flex;
     width: 35vw;
     border: white;
-    height: auto;
+    height: 4rem;
     position: absolute;
     top: 18rem;
     left: 32%;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-evenly;
     text-align: center;
+    &:hover{
+        background-color: #970820 !important;
+    color: white!important;
+    border-color: #970820 ;
+    }
 }
 .h1-cabecera-m {
     color: #C8102E;
@@ -41,4 +47,12 @@
     color: #242331;
     font-size: large;
     font-family: 'Roboto';
+}
+.btn:not(:disabled):not(.disabled) {
+    
+    cursor: pointer;
+}
+.search-bar-container{
+    text-align: center;
+    width: 100vw;
 }

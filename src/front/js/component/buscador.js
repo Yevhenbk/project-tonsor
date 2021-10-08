@@ -64,10 +64,13 @@ export const Buscador = () => {
 	//returnServiceString();
 
 	return (
-		<>
-			<Button className="search-modal-first" onClick={handleShow}>
-				<p>Selecciona aquí: dónde, cuándo y el servicio que deseas </p> <FontAwesomeIcon icon={faSearchPlus} />
-			</Button>
+		<div>
+			<div className="search-bar-container">
+				<button className="search-modal-first-container" onClick={handleShow}>
+					<p>Selecciona aquí: dónde, cuándo y el servicio que deseas </p>{" "}
+					<FontAwesomeIcon icon={faSearchPlus} />
+				</button>
+			</div>
 
 			<Modal
 				show={show}
@@ -129,6 +132,6 @@ export const Buscador = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</>
+		</div>
 	);
 };
