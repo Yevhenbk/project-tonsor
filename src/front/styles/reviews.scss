@@ -1,0 +1,75 @@
+.reviews_view{
+    padding: 2rem;
+}
+.barber_container_reviews{
+    background: #E9EBED;
+    padding: 2rem;
+    border-radius: 25px;
+}
+
+
+.form-control{
+    margin-top: 0.3rem;
+}
+
+.more_reviews_view{
+    margin-top: 5rem;
+}
+.users_reviews{
+    
+    border: 0.3rem solid whitesmoke;
+    width: 25rem;
+    border-radius: 0.5rem;
+}
+.testimonial-content{
+    padding: 0rem 0.5rem;
+    
+}
+.leaflet-container{
+    padding: 5rem;
+    width: 100vw;
+    height: 100vh;
+
+
+}
+.form-control{
+    margin-top: 1rem;
+}
+.cancel_review_btn{
+    background: #C8102E;
+    color: white;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 5rem;
+    position: relative;
+    left: 45rem;
+    border: white;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+.save_review_btn{
+    background: #242331;
+    color: white;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 5rem;
+    position: relative;
+    left: 45rem;
+    border: white;
+    margin-top: 0.5rem;
+}
+.users_reviews{
+    margin-top: 3rem;
+    margin-right: 1rem;
+    
+}
+.opinion_views_title{
+    position: relative;
+top: 28px; left: 30px;
+}
+.all_users_reviews{
+    display: flex;
+}
+.review_container_by_barber{
+    display: flex;
+}

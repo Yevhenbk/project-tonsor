@@ -6,6 +6,7 @@ import cotePelo from "../../img/bigote_02.png";
 import vector from "../../img/VECTOR-PELUQUERO-CUT.png";
 import { Buscador } from "../component/buscador.js";
 import RegisterBarber from "../component/registerBarber.jsx";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	return (
@@ -29,33 +30,45 @@ export const Home = () => {
 
 				<div className="div-service ">
 					<div className="btn-services-container">
-						<button className="img-service-global img-beard " />
-						<p className="p-service ">Corte de cabello y Barbería</p>
+						<Link to="/chooseTonsor">
+							<button className="img-service-global img-beard " />
+							<p className="p-service ">Corte de cabello y Barbería</p>
+						</Link>
 					</div>
 
 					<div className="btn-services-container">
-						<button className=" img-back img-service-global" />
-						<p className="p-service">Depilación de espalda</p>
+						<Link to="/chooseTonsor">
+							<button className=" img-back img-service-global" />
+							<p className="p-service">Depilación de espalda</p>
+						</Link>
 					</div>
 
 					<div className="btn-services-container">
-						<button className="img-chest img-service-global" />
-						<p className="p-service">Depilación de torso</p>
+						<Link to="/chooseTonsor">
+							<button className="img-chest img-service-global" />
+							<p className="p-service">Depilación de torso</p>
+						</Link>
 					</div>
 
 					<div className="btn-services-container">
-						<button className=" img-leg img-service-global" />
-						<p className="p-service">Depilación de piernas</p>
+						<Link to="/chooseTonsor">
+							<button className=" img-leg img-service-global" />
+							<p className="p-service">Depilación de piernas</p>
+						</Link>
 					</div>
 
 					<div className="btn-services-container">
-						<button className=" img-manicure img-service-global" />
-						<p className="p-service">Manicura</p>
+						<Link to="/chooseTonsor">
+							<button className=" img-manicure img-service-global" />
+							<p className="p-service">Manicura</p>
+						</Link>
 					</div>
 
 					<div className="btn-services-container">
-						<button className=" img-pedicure img-service-global" />
-						<p className="p-service">Pedicura</p>
+						<Link to="/chooseTonsor">
+							<button className=" img-pedicure img-service-global" />
+							<p className="p-service">Pedicura</p>
+						</Link>
 					</div>
 				</div>
 			</div>

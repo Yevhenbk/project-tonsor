@@ -277,6 +277,57 @@ def add_new_service():
         
     except exc.IntegrityError:
         return ({'error': 'Unexpected error'}), 400
-
-#parte de ffernando
 #@api.route('barber_services/<int:id>', methods=['GET'])
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@api.route('/barber', methods=['GET'])
+def get_barber_all():
+    barbers = Barber.get_all()
+    print(barbers,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    
+    if barbers:
+        barbers_to_dict = [barber.to_dict() for barber in barbers ]
+        return jsonify(barbers_to_dict), 200 
+
+    return jsonify({'error': 'Barbers no fount¡¡¡¡'}), 404
+
+#new
+@api.route('barber/<int:id>/review', methods=['POST'])
+@jwt_required()#user must be loging
+def create_review(id):
+    text = request.json.get('text', None)
+    ratings = request.json.get('ratings', None)
+    client_id= get_jwt_identity()
+    if not (text and ratings):
+        return({'error': 'Some info are missing'}), 400
+
+    review_client= Review(
+        text=text, 
+        ratings=ratings,
+        id_barber=id,
+        id_client=client_id) 
+
+    try:
+        review_client.create()
+        return jsonify(review_client.serialize()), 201
+    except exc.IntegrityError:
+        return ({'error': 'This email / phone number is already in use'}), 400
+
+@api.route('/barber/<int:id>/review', methods=['GET'])
+def get_review_by_id(id):
+    reviews = Review.query.filter_by(id_barber=id)
+    print(reviews,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    #account = Account.get_by_id(id)
+    #account.name
+    if reviews:
+        reviews_to_dict=[]
+        for review in reviews:
+            user=Client.query.filter_by(id=review.id_client).first().to_dict()
+            review_to_dict=review.serialize()
+            review_to_dict["client_name"]=user["name"]
+            review_to_dict["client_img"]=user["img"]
+            reviews_to_dict.append(review_to_dict)
+        return jsonify(reviews_to_dict), 200 
+
+    return jsonify({'error': 'reviews no fount¡¡¡¡'}), 404
+
+

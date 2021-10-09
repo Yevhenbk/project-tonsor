@@ -1,0 +1,46 @@
+.barber_card{
+    background: white;
+    width: 20rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+}
+.container_barber_card{
+    display: flex;
+}
+.barber_image{
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.barber_image_profile{
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #bebec4;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+}
+.barber_information_container{
+    margin-left: 1rem;
+}
+.btn_watch_reviews{
+    font-family: "Oswald";
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+.barber-date-btn{
+    background: #242331;
+    border-radius: 4rem;
+    min-height: 1rem;
+    border-style: none;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+    color: #E9EBED;
+}
+
+
+

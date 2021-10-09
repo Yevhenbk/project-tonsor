@@ -1,21 +1,10 @@
 .navbar{
-    //display:flex;
     background-color: #242331;
-    //align-items: center;
-    //justify-content: space-between;
-   //height: 5rem;
 }
 .navbar-brand{
-    //background: url("../img/tonsor-logo-positivo.png");
-    //background-size: cover;
-    //background-position: center;
-    //background-repeat: no-repeat;
     width: 10rem;
     min-width: 8rem;
-    //height: 10vh;
-    //border: transparent;
     margin: 0.5rem 0rem 0.5rem 5rem ;
-    //top:2.5rem;
 }
 .navbar-btn{
     margin-right: 5rem;
@@ -23,52 +12,37 @@
 }
 .navbar-btn-login{
     margin-right: 0.5rem;
-
 }
 .btn-primary {
     color: #E9EBED;
     background-color: #C8102E;
     border-color: #C8102E;
 }
-
-.navbar-btn{
-    border-radius: 10rem;
-    
-}
-
 .btn-primary:hover {
     background-color: #970820 !important;
     color: white!important;
     border-color: #970820 ;
 }
-/*.button-nav-gen {
-    display: flex;
-    margin-right: 6rem;
-    justify-content: space-between;
-}*/
+#dropdown-basic{
+    border-radius: 2rem;
+}
 .dropdown-login-container{
-    margin-right: 0.5rem;
-    
+    margin-right: 0.5rem; 
 }
 
-.btn-success {
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
     color: #E9EBED;
     background-color: #C8102E;
     border-color: #C8102E;
-    border-radius: 3rem;
+    border-color: #C8102E;
 }
-/**/
-/*.success.dropdown-toggle {
+.btn-primary:focus {
     color: #E9EBED;
-    background-color: #970820;
-    border-color: #970820;
-}*/
-
-/*.btn-success:hover {
-    color: #fff;
-    background-color: #970820;
-    border-color: #970820;
+    background-color: #C8102E;
+    border-color: #C8102E;
 }
-.btn-success.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem (#970820 50%);
-}*/
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: white;
+}
+

@@ -3,7 +3,7 @@
 .div-master {
     display: flex;
     justify-content: center;
-    width: 100vw;
+    //width: 100vw;
 }
 .div-child {
     background-color: #E9EBED;
@@ -15,11 +15,13 @@
 .prv-font-tit {
     font-family: 'Oswald';
     color: #C8102E;
+    font-weight: bold;
 }
 .prv-font-txt {
     font-family: 'Roboto';
     font-size: x-large;
     color: #242331; 
+    font-weight: bold;
 }
 .img-aboutus {
    width: 20rem;
@@ -27,4 +29,15 @@
    border-radius: 2rem;
    margin-top: 1rem;
    display: flex;
+}
+.btn-mail-contact-us{
+    background: #C8102E;
+    color:#E9EBED ;
+    border-radius: 2rem;
+    height: auto;
+    //width: auto;
+    border: transparent;
+}
+.btn-mail-contact-us-container{
+    text-align: center;
 }

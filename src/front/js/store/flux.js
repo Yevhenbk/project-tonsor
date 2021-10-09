@@ -1,11 +1,19 @@
 import jwt_decode from "jwt-decode"; //optional
 
+const BASE_URL = "https://3001-apricot-pigeon-hctg6qx6.ws-eu18.gitpod.io/api/";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			BASE_URL: "https://3001-tan-whippet-6e28u63a.ws-eu16.gitpod.io/api/",
+			//BASE_URL: "https://3001-apricot-pigeon-hctg6qx6.ws-eu18.gitpod.io/api/",
 			currentUser: "",
-			message: ""
+			message: "",
+			barbers: [],
+			clients: [],
+			barber_services: [],
+			services: [],
+			reviews: [],
+			appointments: []
 		},
 		actions: {
 			login: data => {
@@ -99,6 +107,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("token", data.token);
 					})
 					.catch(error => console.error("There as been an unknown error", error));
+			},
+			//FER
+			getBarbers: () => {
+				fetch(BASE_URL.concat(`barber`), {
+					method: "GET"
+				})
+					.then(resp => {
+						console.log(resp);
+						if (!resp.ok) {
+							throw Error("Somethin is wrong", resp.status);
+						}
+
+						return resp.json();
+					})
+					.then(resp => {
+						console.logo(resp);
+						setStore({ barbers: resp });
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			},
+			getReviews: id => {
+				fetch(BASE_URL.concat("barber/", id, "/review"), {
+					method: "GET"
+				})
+					.then(resp => {
+						console.log(resp);
+						if (!resp.ok) {
+							throw Error("Somethin is wrong", resp.status);
+						}
+
+						return resp.json();
+					})
+					.then(resp => {
+						setStore({ reviews: resp });
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			},
+			//createReview pasar por parametro text y ratings para crear al jsonfile
+			barber: (data, id) => {
+				console.log(data, id);
+				fetch(BASE_URL.concat("barber/", id, "/review"), {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+						"sec-fetch-mode": "no-cors"
+					},
+					body: JSON.stringify(data)
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid info");
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						localStorage.setItem("token", responseAsJson);
+					})
+					.catch(error => console.error("Unknown error", error));
 			}
 		}
 	};

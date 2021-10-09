@@ -40,10 +40,7 @@ export const Navbar = () => {
 
 			<div className="navbar-btn">
 				<Dropdown className="dropdown-login-container">
-					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Login
-					</Dropdown.Toggle>
-
+					<Dropdown.Toggle id="dropdown-basic">Login</Dropdown.Toggle>
 					<Dropdown.Menu>
 						<Dropdown.Item href="#/action-1" onClick={handleShow}>
 							Entra como cliente
@@ -53,6 +50,7 @@ export const Navbar = () => {
 						</Dropdown.Item>
 					</Dropdown.Menu>
 				</Dropdown>
+
 				<Modal
 					show={show}
 					onHide={handleClose}
@@ -64,9 +62,7 @@ export const Navbar = () => {
 				</Modal>
 
 				<Dropdown>
-					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Regístrate
-					</Dropdown.Toggle>
+					<Dropdown.Toggle id="dropdown-basic">Regístrate</Dropdown.Toggle>
 
 					<Dropdown.Menu>
 						<Dropdown.Item href="#/action-1" onClick={handleShowClient}>
@@ -96,40 +92,7 @@ export const Navbar = () => {
 					centered>
 					<RegisterClient />
 				</Modal>
-
-				{/*<Link to="/demo">
-					<button className="btn btn-primary navbar-btn-login navbar-btn">Login </button>
-				</Link>
-				<Link to="/demo">
-					<button className="btn btn-primary navbar-btn">Regístrate </button>
-	</Link>*/}
 			</div>
-			{/*<div className="location-nav">
-			<Link to="/demo" className="img-button-logo btn" />
-			<div className="button-nav-gen"><Login />
-				<Role /></div>
-		</div>*/}
 		</nav>
 	);
 };
-/*
-<Dropdown>
-					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Login
-					</Dropdown.Toggle>
-
-					<Dropdown.Menu>
-						<Dropdown.Item href="#/action-1">Entra como cliente</Dropdown.Item>
-						<Dropdown.Item href="#/action-2">Entra como barbero</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>
-				<Dropdown>
-					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Login
-					</Dropdown.Toggle>
-
-					<Dropdown.Menu>
-						<Dropdown.Item href="#/action-1">Entra como cliente</Dropdown.Item>
-						<Dropdown.Item href="#/action-2">Entra como barbero</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>*/
