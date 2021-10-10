@@ -111,7 +111,7 @@ class Review(db.Model):
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
 
     def __repr__(self):
-        return f'Review {self.review}'
+        return f'review {self.review}'
     
     def serialize (self):
         return {

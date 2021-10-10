@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "../../styles/barberProfile.scss";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
-//import { Sonnet } from "../component/sonnet.js";
+
 import { MiCuenta } from "../component/miCuenta.js";
 import logoPositive from "../../img/tonsor-logo-negativo.png";
-//import "bootstrap/dist/css/bootstrap.min.css";
 
 export const BarberProfile = () => {
 	const [toggleState, setToggleSatte] = useState(1);
@@ -40,9 +39,11 @@ export const BarberProfile = () => {
 							<Nav.Link eventKey="3">Facturación</Nav.Link>
 						</Nav.Item>
 
+
 						<div>
 							<hr size="3" />
 						</div>
+
 
 						<Nav.Item>
 							<Nav.Link eventKey="4">Mi Cuenta</Nav.Link>
@@ -56,7 +57,9 @@ export const BarberProfile = () => {
 				<div className="r-menu col-sm-10">
 					<Tab.Content>
 						<Tab.Pane eventKey="1">
+
 							<div>Servicios</div>
+
 						</Tab.Pane>
 						<Tab.Pane eventKey="2">
 							<div>Servicios</div>

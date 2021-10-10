@@ -9,6 +9,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
+
 export const Footer = () => {
 	return (
 		<div className="footer-css">
@@ -60,3 +61,4 @@ export const Footer = () => {
 		</div>
 	);
 };
+

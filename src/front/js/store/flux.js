@@ -1,6 +1,8 @@
 import jwt_decode from "jwt-decode"; //optional
 
+
 const BASE_URL = "https://3001-apricot-pigeon-hctg6qx6.ws-eu18.gitpod.io/api/";
+
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -17,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			login: data => {
-				fetch(getStore().BASE_URL.concat("login"), {
+				fetch(BASE_URL.concat("login"), {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
@@ -66,9 +68,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			barber: data => {
+			review: data => {
 				console.log(data);
-				fetch(getStore().BASE_URL.concat("barber"), {
+				fetch(BASE_URL.concat("barber"), {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

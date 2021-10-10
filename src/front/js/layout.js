@@ -16,6 +16,8 @@ import Aboutus from "./pages/aboutus";
 import Contactus from "./component/contactus";
 import { ChooseTonsor } from "./pages/chooseTonsor";
 import { Reviews } from "./pages/reviews.js";
+
+
 import { BarberProfile } from "./pages/barberProfile.js";
 
 //create your first component
@@ -36,6 +38,7 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
+
 						<Route exact path="/politcs">
 							<Politicpriv />
 						</Route>
@@ -47,6 +50,7 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/contactus">
 							<Contactus />
+
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
