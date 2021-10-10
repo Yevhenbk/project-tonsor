@@ -39,11 +39,9 @@ export const BarberProfile = () => {
 							<Nav.Link eventKey="3">Facturación</Nav.Link>
 						</Nav.Item>
 
-
 						<div>
 							<hr size="3" />
 						</div>
-
 
 						<Nav.Item>
 							<Nav.Link eventKey="4">Mi Cuenta</Nav.Link>
@@ -57,9 +55,7 @@ export const BarberProfile = () => {
 				<div className="r-menu col-sm-10">
 					<Tab.Content>
 						<Tab.Pane eventKey="1">
-
 							<div>Servicios</div>
-
 						</Tab.Pane>
 						<Tab.Pane eventKey="2">
 							<div>Servicios</div>

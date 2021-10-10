@@ -1,8 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-
-const BASE_URL = "https://3001-apricot-pigeon-hctg6qx6.ws-eu18.gitpod.io/api/";
-
+const BASE_URL = "https://3001-fuchsia-dragonfly-jnxhty38.ws-eu18.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -19,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			login: data => {
-				fetch(BASE_URL.concat("login"), {
+				fetch(BASE_URL + "login", {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
@@ -48,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			client: data => {
-				fetch(getStore().BASE_URL.concat("client"), {
+				fetch(getStore().BASE_URL + "client", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -70,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			review: data => {
 				console.log(data);
-				fetch(BASE_URL.concat("barber"), {
+				fetch(BASE_URL + "barber", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -92,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			barber_services: data => {
 				console.log("qqqqqqqqqqqqqqqq");
-				fetch(getStore().BASE_URL.concat("barber_services"), {
+				fetch(getStore().BASE_URL + "barber_services", {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
@@ -112,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			//FER
 			getBarbers: () => {
-				fetch(BASE_URL.concat(`barber`), {
+				fetch(BASE_URL + `barber`, {
 					method: "GET"
 				})
 					.then(resp => {
@@ -132,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getReviews: id => {
-				fetch(BASE_URL.concat("barber/", id, "/review"), {
+				fetch(BASE_URL + "barber/review", {
 					method: "GET"
 				})
 					.then(resp => {
@@ -153,7 +151,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//createReview pasar por parametro text y ratings para crear al jsonfile
 			barber: (data, id) => {
 				console.log(data, id);
-				fetch(BASE_URL.concat("barber/", id, "/review"), {
+				fetch(BASE_URL + ("barber/", id, "/review"), {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",
