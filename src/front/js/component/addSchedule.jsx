@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Hour from "./hour.jsx";
+import placeholder from "../../img/no-image.png";
 
 const AddSchedule = props => {
 	const [input, setInput] = useState({ hour: "" });
@@ -16,7 +17,7 @@ const AddSchedule = props => {
 		setInputList(inputList.filter((_, index) => index !== targetIndex));
 	};
 
-	let hourSelected = inputList.map((value, index) => (
+	let serviceSelected = inputList.map((value, index) => (
 		<Hour inputValue={value.hour} key={index} onMyClick={() => clickDelete(index)} />
 	));
 
@@ -24,7 +25,7 @@ const AddSchedule = props => {
 		<form className="scheduleForm" onSubmit={handleSubmit}>
 			<div className="mySchedule">
 				<input
-					type="time"
+					type="text"
 					id="meeting-time"
 					name="meeting-time"
 					className="myHourInput"
@@ -33,9 +34,12 @@ const AddSchedule = props => {
 				/>
 				<input type="submit" htmlFor="meeting-time" value="+ elige la hora" className="addButton" />
 			</div>
-			<ul className="hourList">
-				<li className="myHour">{hourSelected}</li>
-			</ul>
+
+			<div className="addMyScheduleHours">
+				<ul className="hourList">
+					<li className="myHour">{serviceSelected}</li>
+				</ul>
+			</div>
 		</form>
 	);
 };

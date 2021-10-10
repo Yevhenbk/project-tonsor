@@ -1,16 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "../../styles/nav.scss";
+import LogoPositivo from "../../img/tonsor-logo-positivo.png";
+import Dropdown from "react-bootstrap/Dropdown";
+
+import Modal from "react-bootstrap/Modal";
+import Login from "./login.jsx";
+import RegisterBarber from "./registerBarber.jsx";
+import RegisterClient from "./registerClient.jsx";
+
+//import { useForm } from "react-hook-form";
+//import { Context } from "../store/appContext.js";
 
 export const Navbar = () => {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	/*REGISTER BARBER */
+	const [showBarber, setShowBarber] = useState(false);
+	const handleCloseBarber = () => setShowBarber(false);
+	const handleShowBarber = () => setShowBarber(true);
+	/*REGISTER CLIENT*/
+	const [showClient, setShowClient] = useState(false);
+	const handleCloseClient = () => setShowClient(false);
+	const handleShowClient = () => setShowClient(true);
+
+	/**/
+	//const { register, handleSubmit } = useForm();
+	//const { store, actions } = useContext(Context);
+
+	//const getLogin = data => actions.login(data);
+
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<img className="navbar-brand " src={LogoPositivo} />
 			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
+
+			<div className="navbar-btn">
+				<Dropdown className="dropdown-login-container">
+					<Dropdown.Toggle id="dropdown-basic">Login</Dropdown.Toggle>
+					<Dropdown.Menu>
+						<Dropdown.Item href="#/action-1" onClick={handleShow}>
+							Entra como cliente
+						</Dropdown.Item>
+						<Dropdown.Item href="#/action-2" onClick={handleShow}>
+							Entra como barbero
+						</Dropdown.Item>
+					</Dropdown.Menu>
+				</Dropdown>
+
+				<Modal
+					show={show}
+					onHide={handleClose}
+					animation={true}
+					size="m"
+					aria-labelledby="contained-modal-title-vcenter"
+					centered>
+					<Login />
+				</Modal>
+
+				<Dropdown>
+					<Dropdown.Toggle id="dropdown-basic">Regístrate</Dropdown.Toggle>
+
+					<Dropdown.Menu>
+						<Dropdown.Item href="#/action-1" onClick={handleShowClient}>
+							Cómo cliente
+						</Dropdown.Item>
+						<Dropdown.Item href="#/action-2" onClick={handleShowBarber}>
+							Cómo barbero
+						</Dropdown.Item>
+					</Dropdown.Menu>
+				</Dropdown>
+
+				<Modal
+					show={showBarber}
+					onHide={handleCloseBarber}
+					animation={true}
+					size="m"
+					aria-labelledby="contained-modal-title-vcenter"
+					centered>
+					<RegisterBarber />
+				</Modal>
+				<Modal
+					show={showClient}
+					onHide={handleCloseClient}
+					animation={true}
+					size="m"
+					aria-labelledby="contained-modal-title-vcenter"
+					centered>
+					<RegisterClient />
+				</Modal>
 			</div>
 		</nav>
 	);

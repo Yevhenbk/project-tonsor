@@ -33,18 +33,28 @@ export const MiCuenta = () => {
 						</div>
 						<Form.Group className="mb-3 form-group  " controlId="formGroupEmail">
 							<Form.Label>Nombre</Form.Label>
-							<Form.Control className="pepe" type="text" placeholder="Nombre" value="Pedro" />
+
+
+							<Form.Control className="form-info-tonsor" type="text" placeholder="Nombre" value="Pedro" />
 						</Form.Group>
 						<Form.Group className="mb-3  form-group" controlId="formGroupPassword">
 							<Form.Label>Apellidos</Form.Label>
-							<Form.Control className="pepe" type="text" placeholder="Password" value="Pérez Camacho" />
+							<Form.Control
+								className="form-info-tonsor"
+								type="text"
+								placeholder="Password"
+								value="Pérez Camacho"
+							/>
+
 						</Form.Group>
 
 						<div className="mobile-phone-number">
 							<Form.Group className="mb-3  form-group-phone-pref" controlId="formGroupPassword">
 								<Form.Label>Prefijo</Form.Label>
 								<Form.Control
-									className="pepe"
+
+									className="form-info-tonsor"
+
 									type="text"
 									onKeyPress={event => {
 										if (!/[0-9]/.test(event.key)) {
@@ -58,7 +68,9 @@ export const MiCuenta = () => {
 							<Form.Group className="mb-3  form-group-phone " controlId="formGroupPassword">
 								<Form.Label>Número de teléfono</Form.Label>
 								<Form.Control
-									className="pepe"
+
+									className="form-info-tonsor"
+
 									type="text"
 									onKeyPress={event => {
 										if (!/[0-9]/.test(event.key)) {
@@ -87,7 +99,9 @@ export const MiCuenta = () => {
 					<Form>
 						<Form.Group className="mb-3 form-group  " controlId="formGroupEmail">
 							<Form.Label>Email</Form.Label>
-							<Form.Control className="pepe" type="text" placeholder="Email" />
+
+							<Form.Control className="form-info-tonsor" type="text" placeholder="Email" />
+
 						</Form.Group>
 						<div className="userRow-editProfilePic">
 							<button id="editProfilePic" type="button">

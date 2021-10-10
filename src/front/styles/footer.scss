@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.footer-css{
+    background-color: #242331;
+    display: flex;
+    width: 100%;
+    
+}
+.fontaw-icons {
+    color: white;
+    font-size: 2rem;
+}
+.p-light{
+    color: white;
+}
+.img-lgtbi {
+  background: url("../img/LGTBIQI.png");  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 7rem;
+  height: 1rem ;
+}
+.p-color-gl {
+    color:white;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-align:center;
+}
+.p-font-tit {
+    font-family: 'Oswald';
+}
+.p-font-text {
+    font-family: 'Roboto';
+    font-size: 1.1rem;
+}
+.img-logo-footer{
+    width: 15rem;
+    margin: 2rem 0rem 1rem 5rem;
+}
+.container-div {
+    width: 40%;
+}
+.container_about_us{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 30%;
+}
+.container-contact-us{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 30%;
+}

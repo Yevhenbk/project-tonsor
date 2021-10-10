@@ -1,11 +1,13 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-body {
+/*body {
     font-size: 0.938;
-}
+}*/
+
 .modal-content {
-    border-radius: 20px;
+    border-radius: 1.25rem;
+    border: none;
 }
 .modal-title {
     color: #C8102E;
@@ -27,14 +29,14 @@ body {
     padding-bottom: 0;
 }
 .modal-body {
-    padding-right: 5rem;
-    padding-left: 5rem;
+    padding-right: 3.5rem;
+    padding-left: 3.5rem;
     padding-top: 0;
 }
 .modal-footer {
     justify-content: center;
     border-top: none;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     padding-bottom: 2rem;
 }
 .modal-dialog {
@@ -44,9 +46,9 @@ body {
     background-color: #242331;
     color: white;
     border: none;
-    border-radius: 40px;
-    width: 124px;
-    height: 44px;
+    border-radius: 2.5rem;
+    width: 7.75rem;
+    height: 2.75rem;
     font-family: 'Oswald', sans-serif;
     font-size: 1.3131rem;
     font-weight: 400;
@@ -59,9 +61,9 @@ body {
     background-color: #C8102E;
     color: white;
     border: none;
-    border-radius: 40px;
-    width: 124px;
-    height: 44px;
+    border-radius: 2.5rem;
+    width: 7.75rem;
+    height: 2.75rem;
     font-family: 'Oswald', sans-serif;
     font-size: 1.3131rem;
     font-weight: 400;
@@ -74,9 +76,9 @@ body {
     background-color: #C8102E;
     color: white;
     border: none;
-    border-radius: 40px;
-    width: 124px;
-    height: 44px;
+    border-radius: 2.5rem;
+    width: 7.75rem;
+    height: 2.75rem;
     font-family: 'Oswald', sans-serif;
     font-size: 1.3131rem;
     font-weight: 400;
@@ -91,6 +93,7 @@ body {
     padding-top: 0.5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
+    font-size: 0.938rem;
 }
 .myInput {
     border: none;
@@ -107,27 +110,38 @@ body {
 }
 .googleAcc {
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-weight: 600;
     border: 1px solid rgb(201, 201, 201);
     border-radius: 5px;
     padding: 0;
     background-color: white;
 }
-.googleAcc:first-child {
-    padding: 0.15rem .7rem 0.15rem 3.2rem;
-}
-.accessGoogle {
-    width: 281px;
-    height: 39px;
-    margin: 0 0 1rem 0;
-}
-.fa-google {
-    padding-left: 1.3rem;
-    padding-right: 1.3rem;
+.googleAccR {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.938rem;
+    font-weight: 600;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 5px;
+    padding: 0;
+    background-color: white;
 }
 .googleAcc:active {
+    border: 1px solid rgb(201, 201, 201);
+    outline: none;
     background-color: rgb(212, 212, 212);
+
+}
+.googleAccR:active {
+    border: 1px solid rgb(201, 201, 201);
+    outline: none;
+    background-color: rgb(212, 212, 212);
+
+}
+.accessGoogle {
+    width: 17.563rem;
+    height: 2.375rem;
+    margin: 0 0 1rem 0;
 }
 .myInput::-webkit-outer-spin-button,
 .myInput::-webkit-inner-spin-button {
@@ -137,53 +151,76 @@ body {
 }
 .yourRole {
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-weight: 600;
     margin: 1rem;
 }
 .barberButton {
-    width: 126px;
-    height: 29px;
+    width: 21rem;
+    height: 2.45rem;
     background-color: #242331;
-    border: 1px solid #5A577A;
-    border-radius: 5px 0 0 5px;
+    border: 1px solid #242331;
+    border-radius: 0.313rem;
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-weight: 600;
     color: white;
-    padding: 0;
-    margin: 0;
+    padding: 0; 
 }
 .barberButton:active {
     background-color: #000000;
 }
 .customerButton {
-    width: 126px;
-    height: 29px;
-    background-color: white;
-    border: 1px solid #CCCCCC;
-    border-radius: 0 5px 5px 0;
+    width: 21rem;
+    height: 2.45rem;
+    background-color: #C8102E;
+    border: 1px solid #C8102E;
+    border-radius: 0.313rem;
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-weight: 600;
-    color: rgb(0, 0, 0);
+    color: white;
     padding: 0;
-    margin: 0;
+    margin-top: .5rem; 
 }
 .customerButton:active {
-    background-color: rgb(212, 212, 212);
+    background-color: #a50e27;
 }
 .myHolder {
     display: flex;
     margin: 1rem 1rem 0 1rem;
 }
-hr {
-    width: 6.5rem;
-}
 .myDivider {
     font-family: "Roboto", sans-serif;
-    font-size: 15px;
+    font-size: 0.938rem;
     font-weight: 600;
     margin-right: 1rem;
     margin-left: 1rem;
+}
+.roleHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modalBody2 {
+    padding: 0.8rem 2rem 2rem 2rem;
+}
+.googleAcc p {
+    margin: 0;
+    padding: .25rem 4.67rem;
+}
+.googleAccR p {
+    margin: 0;
+    padding: .25rem 4.48rem;
+}
+.butt-nav-log{
+    background: #C8102E;
+    opacity: 0.8;
+    color: white;
+    background-color: #C8102E;
+    border-radius: 2rem;
+    height: 2.5rem;
+    width: 5rem;
+    border: black; 
+    margin-left: 2rem;
 }

@@ -1,0 +1,58 @@
+.search-modal-first-container{
+    background: #C8102E;
+    color: #E9EBED;
+    opacity: 0.9;
+    border-radius: 10rem;
+    display: flex;
+    width: 35vw;
+    border: white;
+    height: 4rem;
+    position: absolute;
+    top: 18rem;
+    left: 32%;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    &:hover{
+        background-color: #970820 !important;
+    color: white!important;
+    border-color: #970820 ;
+    }
+}
+.h1-cabecera-m {
+    color: #C8102E;
+    font-size: large;
+    font-size: x-large;
+    font-family: 'Oswald';
+}
+.butt-modal-first{
+    background: #C8102E;
+    color: white;
+    border-radius: 2rem;
+    height: 3rem;
+    width: 6rem;
+    border: white;
+    opacity: 0.9;
+}
+.leaflet-container {
+    width: 100vw; height: 100vh;
+}
+#mapid { 
+    width: 20vw;
+    height: 40vh;
+    margin-top: 2rem;
+    border-radius: 3rem;
+}
+.p-dark-inp {
+    color: #242331;
+    font-size: large;
+    font-family: 'Roboto';
+}
+.btn:not(:disabled):not(.disabled) {
+    
+    cursor: pointer;
+}
+.search-bar-container{
+    text-align: center;
+    width: 100vw;
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Context } from "../store/appContext.js";
@@ -12,9 +12,20 @@ const Login = () => {
 
 	const getLogin = data => actions.login(data);
 
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 	return (
 		<form action="" method="post" onSubmit={handleSubmit(getLogin)}>
-			<Modal.Dialog>
+			<Modal.Dialog
+				show={show}
+				onHide={handleClose}
+				animation={true}
+				size="m"
+				aria-labelledby="contained-modal-title-vcenter"
+				centered>
 				<Modal.Header>
 					<Modal.Title>Login</Modal.Title>
 				</Modal.Header>
@@ -23,7 +34,7 @@ const Login = () => {
 					<div>
 						<div className="accessGoogle">
 							<button type="button" className="googleAcc">
-								Acceder con Google <i className="fab fa-google" />
+								<p>Acceder con Google</p>
 							</button>
 						</div>
 						<div className="myInputs">
@@ -43,7 +54,7 @@ const Login = () => {
 				</Modal.Body>
 
 				<Modal.Footer>
-					<input type="button" value="Registrar" className="registerButton" />
+					{/*<input type="button" value="Registrar" className="registerButton" />*/}
 
 					<input type="submit" value="Acceder" className="accessButton" />
 				</Modal.Footer>

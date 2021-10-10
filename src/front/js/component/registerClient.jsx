@@ -22,14 +22,14 @@ const RegisterClient = () => {
 		<form action="" method="post" onSubmit={handleSubmit(getClient)}>
 			<Modal.Dialog>
 				<Modal.Header>
-					<Modal.Title>Registro</Modal.Title>
+					<Modal.Title>Regístrate como cliente</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
 					<div>
 						<div className="accessGoogle">
-							<button type="button" className="googleAcc">
-								Registrar con Google <i className="fab fa-google" />
+							<button type="button" className="googleAccR">
+								<p>Registrar con Google</p>
 							</button>
 						</div>
 						<div className="myInputs">
@@ -80,7 +80,7 @@ const RegisterClient = () => {
 							/>
 
 							<label htmlFor="myAddress" className="myLabel">
-								Direcion:
+								Dirección:
 							</label>
 
 							<input

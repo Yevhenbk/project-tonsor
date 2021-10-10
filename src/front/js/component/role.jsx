@@ -10,6 +10,10 @@ const Role = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
 	const [rol, setRol] = useState(null);
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
 	//const getBarber = data => {
 	//	actions.barber(data);
@@ -20,6 +24,10 @@ const Role = () => {
 
 	return (
 		<form action="" method="post">
+			<Button className="butt-nav-log" onClick={handleShow}>
+				<p>Login </p>{" "}
+			</Button>
+
 			<Modal.Dialog>
 				<Modal.Header>
 					<div className="modalTitle2">Elige tu role</div>
