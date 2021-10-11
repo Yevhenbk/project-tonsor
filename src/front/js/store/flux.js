@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			client: data => {
-				fetch(getStore().BASE_URL + "client", {
+				fetch(BASE_URL + "client", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -66,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			review: data => {
+			postBarber: data => {
 				console.log(data);
 				fetch(BASE_URL + "barber", {
 					method: "POST",
@@ -114,23 +114,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET"
 				})
 					.then(resp => {
-						console.log(resp);
+						console.log(resp, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 						if (!resp.ok) {
 							throw Error("Somethin is wrong", resp.status);
 						}
 
 						return resp.json();
 					})
-					.then(resp => {
-						console.logo(resp);
-						setStore({ barbers: resp });
+
+					.then(hello => {
+						console.log(hello, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+						setStore({ barbers: hello });
 					})
 					.catch(error => {
 						console.log(error);
 					});
 			},
 			getReviews: id => {
-				fetch(BASE_URL + "barber/review", {
+				fetch(BASE_URL + "barber/" + id + "/review", {
 					method: "GET"
 				})
 					.then(resp => {
@@ -149,9 +150,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			//createReview pasar por parametro text y ratings para crear al jsonfile
-			barber: (data, id) => {
+			postReview: (data, id) => {
 				console.log(data, id);
-				fetch(BASE_URL + ("barber/", id, "/review"), {
+				fetch(BASE_URL + "barber/" + id + "/review", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",

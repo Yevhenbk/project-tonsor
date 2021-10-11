@@ -20,10 +20,10 @@ export const Reviews = () => {
 	const { register, handleSubmit } = useForm();
 
 	const { id } = useParams();
-	//console.log(id);
+	//console.log(data.id);
 
 	const newReview = data => {
-		actions.barber(data, id);
+		actions.postReview(data, id);
 	};
 
 	useEffect(() => {
@@ -34,14 +34,14 @@ export const Reviews = () => {
 		() => {
 			if (store.reviews != null && store.reviews != []) {
 				setReview_View(
-					store.reviews.map((review, index) => {
-						console.log(review, "································");
+					store.reviews.map((postReview, index) => {
+						console.log(postReview, "¿?¿?¿?¿?¿?¿?¿?");
 						return (
 							<ReviewCard
-								key={`review-${index}`}
-								name={review.client_name}
-								text={review.text}
-								ratings={review.ratings}
+								key={`postReview-${index}`}
+								name={postReview.client_name}
+								text={postReview.text}
+								ratings={postReview.ratings}
 							/>
 						);
 					})

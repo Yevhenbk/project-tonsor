@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../../styles/chooseTonsor.scss";
 import mustache_img from "../../img/bigote_02.png";
 import { Context } from "../store/appContext";
@@ -8,6 +8,9 @@ import "leaflet/dist/leaflet.css";
 
 export const ChooseTonsor = () => {
 	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.getBarbers();
+	}, []);
 	console.log(store);
 
 	return (

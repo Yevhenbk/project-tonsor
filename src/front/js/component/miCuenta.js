@@ -76,6 +76,17 @@ export const MiCuenta = () => {
 								/>
 							</Form.Group>
 						</div>
+						<div>
+							<Form.Group className="mb-3  form-group" controlId="formGroupPassword">
+								<Form.Label>Dirección</Form.Label>
+								<Form.Control
+									className="form-info-tonsor"
+									type="text"
+									placeholder="Password"
+									value="Pérez Camacho"
+								/>
+							</Form.Group>
+						</div>
 					</Form>
 				</div>
 			</div>
@@ -93,23 +104,19 @@ export const MiCuenta = () => {
 					<Form>
 						<Form.Group className="mb-3 form-group  " controlId="formGroupEmail">
 							<Form.Label>Email</Form.Label>
-
 							<Form.Control className="form-info-tonsor" type="text" placeholder="Email" />
 						</Form.Group>
-						<div className="userRow-editProfilePic">
-							<button id="editProfilePic" type="button">
-								<span className="avatar_initials" />
-								<img className="" src={faLock} alt="" />
-								<div>
-									<span>Cambiar imagen de perfil</span>
-								</div>
-							</button>
-						</div>
-						<button className="btn-guardar" id="form-submit" type="submit">
-							Guardar
-						</button>
+						<Form.Group className="mb-3 form-group  " controlId="formGroupEmail">
+							<Form.Label>Contrseña</Form.Label>
+							<Form.Control className="form-info-tonsor" type="password" placeholder="Email" />
+						</Form.Group>
 					</Form>
 				</div>
+			</div>
+			<div>
+				<button className="btn-guardar" id="form-submit" type="submit">
+					Guardar
+				</button>
 			</div>
 		</div>
 	);

@@ -28,6 +28,7 @@ def login():
 
     user = Account.get_by_email(email)
     print(user)
+    if not user: return ({'error': 'usuario no encontrado'}), 400
 
     
     if user.is_client:

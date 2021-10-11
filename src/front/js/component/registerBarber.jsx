@@ -11,12 +11,12 @@ const RegisterBarber = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
 
-	const getBarber = data => {
-		actions.barber(data);
+	const postBarber = data => {
+		actions.postBarber(data);
 	};
 
 	return (
-		<form action="" method="post" onSubmit={handleSubmit(getBarber)}>
+		<form action="" method="post" onSubmit={handleSubmit(postBarber)}>
 			<Modal.Dialog>
 				<Modal.Header>
 					<Modal.Title>Regístrate como Barbero</Modal.Title>
