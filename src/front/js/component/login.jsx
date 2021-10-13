@@ -1,21 +1,33 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext.js";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const Login = () => {
+import GoogleLogin from "react-google-login";
+
+const Login = props => {
 	const { register, handleSubmit } = useForm();
 	const { store, actions } = useContext(Context);
 
-	const getLogin = data => actions.login(data);
+	const getLogin = data => {
+		let islogged = actions.login(data);
+		//console.log(islogged);
+		props.close();
+	};
 
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	const responseGoogle = answer => {
+		console.log(answer);
+		console.log(answer.profileObj);
+	};
 
 	return (
 		<form action="" method="post" onSubmit={handleSubmit(getLogin)}>
@@ -33,9 +45,23 @@ const Login = () => {
 				<Modal.Body>
 					<div>
 						<div className="accessGoogle">
-							<button type="button" className="googleAcc">
+							{/*<button type="button" className="googleAcc">
 								<p>Acceder con Google</p>
-							</button>
+							</button>*/}
+							<GoogleLogin
+								clientId="864663247381-avrome86kedmob0vin0vsd5522nc1ll8.apps.googleusercontent.com"
+								render={renderProps => (
+									<button
+										className="googleAcc"
+										onClick={renderProps.onClick}
+										disabled={renderProps.disabled}>
+										Inicia sesión con tu cuenta de Google
+									</button>
+								)}
+								onSuccess={responseGoogle}
+								onFailure={responseGoogle}
+								cookiePolicy={"single_host_origin"}
+							/>
 						</div>
 						<div className="myInputs">
 							<label htmlFor="email" className="myLabel">
@@ -64,3 +90,6 @@ const Login = () => {
 };
 
 export default Login;
+Login.propTypes = {
+	close: PropTypes.func
+};

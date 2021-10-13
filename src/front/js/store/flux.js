@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			barber_services: [],
 			services: [],
 			reviews: [],
-			appointments: []
+			appointments: [],
+			islogged: false
 		},
 		actions: {
 			login: data => {
@@ -37,14 +38,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(data => {
 						localStorage.setItem("token", data.token);
+						setStore({ islogged: true });
 						//redirect(); pasar la url de la vista que va a ver el usuario cuando se registra
 					})
 					.catch(error => {
 						console.error("Unknown error", error);
+						setStore({ islogged: false });
 						//localStorage.removeItem("token");
 					});
 			},
-
+			setLoggedIn: () => {
+				setStore({ islogged: true });
+			},
+			setLoggedOut: () => {
+				setStore({ islogged: false });
+			},
 			client: data => {
 				fetch(BASE_URL + "client", {
 					method: "POST",

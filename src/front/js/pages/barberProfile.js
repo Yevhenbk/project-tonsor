@@ -4,7 +4,11 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 
 import { MiCuenta } from "../component/miCuenta.js";
+import { Facturacion } from "../component/facturacion.js";
+
 import logoPositive from "../../img/tonsor-logo-negativo.png";
+import { PaymentOption } from "../component/paymentOption.js";
+import AddService from "../component/addService.jsx";
 
 export const BarberProfile = () => {
 	const [toggleState, setToggleSatte] = useState(1);
@@ -55,13 +59,20 @@ export const BarberProfile = () => {
 				<div className="r-menu col-sm-10">
 					<Tab.Content>
 						<Tab.Pane eventKey="1">
-							<div>Servicios</div>
+							<div>
+								<AddService />
+								Servicios
+							</div>
 						</Tab.Pane>
 						<Tab.Pane eventKey="2">
-							<div>Servicios</div>
+							<div>
+								<PaymentOption />
+							</div>
 						</Tab.Pane>
 						<Tab.Pane eventKey="3">
-							<div>Metodo de pago</div>
+							<div>
+								<Facturacion />
+							</div>
 						</Tab.Pane>
 						<Tab.Pane eventKey="4">
 							<MiCuenta />

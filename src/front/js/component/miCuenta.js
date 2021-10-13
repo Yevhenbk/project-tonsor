@@ -27,7 +27,7 @@ export const MiCuenta = () => {
 									alt=""
 								/>
 								<div>
-									<span>Cambiar imagen de perfil</span>
+									<span className="change-img-profile">Cambiar imagen de perfil</span>
 								</div>
 							</button>
 						</div>
@@ -87,6 +87,21 @@ export const MiCuenta = () => {
 								/>
 							</Form.Group>
 						</div>
+						<div className="mobile-phone-number">
+							<Form.Group className="mb-3  form-group-phone-pref" controlId="formGroupPassword">
+								<Form.Label>CP</Form.Label>
+								<Form.Control className="form-info-tonsor" type="text" placeholder="cp" maxLength="5" />
+							</Form.Group>
+							<Form.Group className="mb-3  form-group-phone " controlId="formGroupPassword">
+								<Form.Label>Ciudad</Form.Label>
+								<Form.Control
+									className="form-info-tonsor"
+									type="text"
+									placeholder="Ciudad"
+									//maxLength="9"
+								/>
+							</Form.Group>
+						</div>
 					</Form>
 				</div>
 			</div>
@@ -113,8 +128,8 @@ export const MiCuenta = () => {
 					</Form>
 				</div>
 			</div>
-			<div>
-				<button className="btn-guardar" id="form-submit" type="submit">
+			<div className="my-profile-save-btn-container">
+				<button className="my-profile-save-btn" id="form-submit" type="submit">
 					Guardar
 				</button>
 			</div>

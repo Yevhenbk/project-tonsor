@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/barberCard.scss";
 import { StarRating } from "../component/starRating.js";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import { SetAppoiment } from "./setAppoiment.js";
 
 export const BarberCard = props => {
+	const [showAppoiment, setShowAppoiment] = useState(false);
+	const handleCloseAppoiment = () => setShowAppoiment(false);
+	const handleShowAppoiment = () => setShowAppoiment(true);
 	return (
 		<div className="barber_card ">
 			<div className="container_barber_card">
@@ -33,11 +38,23 @@ export const BarberCard = props => {
 						Servicio:&nbsp;
 						{props.services}
 					</div>
-					<Link to={"/barberProfile"}>
+					{/*<Link to={"/barberProfile"}>
 						<button className="barber-date-btn" type="button">
 							Pedir cita
 						</button>
-					</Link>
+					</Link>*/}
+					<button className="barber-date-btn" type="button" onClick={handleShowAppoiment}>
+						Pedir cita
+					</button>
+					<Modal
+						show={showAppoiment}
+						onHide={handleCloseAppoiment}
+						animation={true}
+						size="m"
+						aria-labelledby="contained-modal-title-vcenter"
+						centered>
+						<SetAppoiment />
+					</Modal>
 				</div>
 			</div>
 		</div>
