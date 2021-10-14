@@ -262,13 +262,26 @@ class Appointment(db.Model):
     id_client = db.Column(db.Integer, ForeignKey("client.id"))
 
     def __repr__(self):
-        return f'Appointment {self.appointment}'
+        return f'Appointment {self.id}'
 
-    def serialize (self):
+    def to_dict(self):
+        appointment = Appointment.get_by_id(self.id)
+
+    def to_dict(self):
         return {
             "id": self.id, 
-            "date_Appointment": self.date_appointment, 
+            "date_appointment": self.date_appointment, 
             "id_barber_Services":self.id_barber_Services,
             "id_client": self.id_client 
         }
+
+    @classmethod
+    def get_by_id(cls, id):
+        appointment = cls.query.get(id)
+        return appointment
+    
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
     

@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import placeholder from "../../img/no-image.png";
 import "../../styles/addImage.scss";
 import "../../styles/addServiceButton.scss";
+import "../../styles/addService.scss";
 
 const AddService = () => {
 	const [show, setShow] = useState(false);
@@ -35,7 +36,6 @@ const AddService = () => {
 	const { store, actions } = useContext(Context);
 
 	const getBarberService = data => {
-		console.log(data);
 		actions.barber_services(data);
 	};
 	return (

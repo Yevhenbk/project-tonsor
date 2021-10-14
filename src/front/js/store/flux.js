@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-fuchsia-dragonfly-jnxhty38.ws-eu17.gitpod.io/api/";
+const BASE_URL = "https://3001-amethyst-xerinae-fb66iwfy.ws-eu17.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -74,6 +74,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
+			barber: data => {
+				console.log(data);
+				fetch(BASE_URL + "barber", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					},
+					body: JSON.stringify(data)
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid info");
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						localStorage.setItem("token", responseAsJson);
+					})
+					.catch(error => console.error("Unknown error", error));
+			},
+
 			postBarber: data => {
 				console.log(data);
 				fetch(BASE_URL + "barber", {
@@ -96,9 +118,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			barber_services: data => {
-				console.log("qqqqqqqqqqqqqqqq");
-				fetch(getStore().BASE_URL + "barber_services", {
+			barber_services: (data, id) => {
+				console.log(data);
+				fetch(BASE_URL + "barber" + "barber_services", {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
@@ -178,6 +200,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("token", responseAsJson);
 					})
 					.catch(error => console.error("Unknown error", error));
+			},
+
+			appointment: data => {
+				console.log(data);
+				fetch(getStore().BASE_URL.concat("appointment"), {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					}
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid service info");
+						}
+					})
+					.then(responseAsJson => {
+						setStore({ appointment: responseAsJson });
+					})
+					.catch(error => console.error("There as been an unknown error", error));
+			},
+
+			reserveAppointment: (data, id) => {
+				console.log(data);
+				fetch(BASE_URL + "client/" + id + "/appointment", {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors"
+					}
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Invalid service info");
+						}
+					})
+					.then(responseAsJson => {
+						setStore({ appointment: responseAsJson });
+					})
+					.catch(error => console.error("There as been an unknown error", error));
 			}
 		}
 	};

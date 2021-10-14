@@ -331,3 +331,67 @@ def get_review_by_id(id):
 
     return jsonify({'error': 'reviews no fount¡¡¡¡'}), 404
 
+
+#barbers appointment
+@api.route('/barber/<int:id>/appointment', methods=['POST'])
+def add_new_appointment():
+    print("llego")
+    date_appointment = request.json.get(
+        'date_appointment', None
+    ) 
+
+    if not (date_appointment):
+        return ({'error': 'Some fields are missing'}), 400
+    appointment = Appointment( 
+        date_appointment=date_appointment
+    )
+
+    try:
+        appointment_created = appointment.create()
+        return jsonify(appointment_created.to_dict()), 201
+        
+    except exc.IntegrityError:
+        return ({'error': 'Unexpected error'}), 400
+
+
+@api.route('/barber/<int:id>/appointment', methods=['GET'])
+def get_appointment_request(id):
+    requested_appointment = Appointment.get_by_id(id)
+
+    if requested_appointment:
+        return jsonify(requested_appointment.to_dict()), 200
+    
+    return({"error": "Service not found"}), 404
+
+
+#clients appointment request   
+@api.route('/client/<int:id>/appointment', methods=['POST'])
+def request_appointment():
+    print("llego")
+    date_appointment = request.json.get(
+        'date_appointment', None
+    ) 
+
+    if not (date_appointment):
+        return ({'error': 'Some fields are missing'}), 400
+    appointment = Appointment( 
+        date_appointment=date_appointment
+    )
+    print(appointment.to_dict())
+    
+    try:
+        appointment_created = appointment.create()
+        return jsonify(appointment_created.to_dict()), 201
+        
+    except exc.IntegrityError:
+        return ({'error': 'Unexpected error'}), 400
+
+
+@api.route('/client/<int:id>/appointment', methods=['GET'])
+def get_appointments(id):
+    appointments = Appointment.get_by_id(id)
+
+    if appointments:
+        return jsonify(appointments.to_dict()), 200
+    
+    return({"error": "Service not found"}), 404
