@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-amethyst-xerinae-fb66iwfy.ws-eu17.gitpod.io/api/";
+const BASE_URL = "https://3001-aqua-aphid-pxyougiy.ws-eu17.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -182,11 +182,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//createReview pasar por parametro text y ratings para crear al jsonfile
 			postReview: (data, id) => {
 				console.log(data, id);
-				fetch(BASE_URL + "barber/" + id + "/review", {
+				//obtenemos el token
+				const token = localStorage.getItem("token");
+				console.log(`Token: ${token}`);
+				//comprobar la existencia del token
+				if (!token) {
+					console.error("No existe el token, error");
+					//debes mostrar algo al usuario
+				}
+				//check token
+				fetch(`${BASE_URL}barber/${id}/review`, {
 					method: "POST",
 					headers: {
-						"content-type": "application/json",
-						"sec-fetch-mode": "no-cors"
+						"Content-Type": "application/json",
+						"Sec-Fetch-Mode": "no-cors",
+						Authorization: `Bearer ${token}`
 					},
 					body: JSON.stringify(data)
 				})
@@ -194,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (!resp.ok) {
 							throw Error("Invalid info");
 						}
-						return response.json();
+						return resp.json();
 					})
 					.then(responseAsJson => {
 						localStorage.setItem("token", responseAsJson);

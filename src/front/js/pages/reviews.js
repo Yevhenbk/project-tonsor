@@ -55,9 +55,8 @@ export const Reviews = () => {
 		<div className="reviews_view">
 			<h1 className="opinion_views_title">Tu opinión nos importa</h1>
 			<div className="barber_container_reviews">
-				<StarRating />
-
 				<Form action="" method="post" onSubmit={handleSubmit(newReview)}>
+					<StarRating />
 					<input
 						name="review"
 						type="text"

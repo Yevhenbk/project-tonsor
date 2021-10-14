@@ -12,6 +12,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from api.utils import generate_sitemap, APIException
 from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment, Client
 
+import random
+
 api = Blueprint('api', __name__)
 
 
@@ -33,18 +35,18 @@ def login():
     
     if user.is_client:
         client = Client.get_by_id_account(user.id)
-        print(client)
+        print(client.id)
         print(check_password_hash(user._password, password))
         if client and user.is_active and check_password_hash(user._password, password):
             token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
-            return {'token': token}, 200
+            return {'token': token, 'role': 1}, 200
 
     else:
         barber = Barber.get_by_id_account(user.id)
 
         if barber and user.is_active and check_password_hash(user._password, password):
             token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
-            return {'token': token}, 200
+            return {'token': token, 'role': 2}, 200
 
     
     return ({'error': 'Wrong email or password'}), 400
@@ -296,10 +298,13 @@ def get_barber_all():
 @jwt_required()#user must be loging
 def create_review(id):
     text = request.json.get('text', None)
-    ratings = request.json.get('ratings', None)
+    ratings = random.randint(1,5)
     client_id= get_jwt_identity()
-    if not (text and ratings):
-        return({'error': 'Some info are missing'}), 400
+    if not text :
+        return({'error': 'Some info are missing'}), 409
+    
+    print(client_id)
+    print(id)
 
     review_client= Review(
         text=text, 
@@ -311,7 +316,7 @@ def create_review(id):
         review_client.create()
         return jsonify(review_client.serialize()), 201
     except exc.IntegrityError:
-        return ({'error': 'This email / phone number is already in use'}), 400
+        return ({'error': 'Review can not save up'}), 500
 
 @api.route('/barber/<int:id>/review', methods=['GET'])
 def get_review_by_id(id):
