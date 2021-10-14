@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-aqua-aphid-pxyougiy.ws-eu17.gitpod.io/api/";
+const BASE_URL = "https://3001-purple-clownfish-cv1clch0.ws-eu17.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -160,6 +160,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
+
+			get_barber_services: data => {
+				console.log(data);
+				fetch(BASE_URL + "barber_services", {
+					method: "GET",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load a service");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ barber_services: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+
 			getReviews: id => {
 				fetch(BASE_URL + "barber/" + id + "/review", {
 					method: "GET"
@@ -252,6 +273,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ appointment: responseAsJson });
 					})
 					.catch(error => console.error("There as been an unknown error", error));
+			},
+
+			getAppointment: (data, id) => {
+				console.log(data);
+				fetch(BASE_URL + "barber/" + id + "/appointment", {
+					method: "GET",
+					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error("I can't load a service");
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ appointment: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			}
 		}
 	};
