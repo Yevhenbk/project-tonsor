@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-fuchsia-dragonfly-jnxhty38.ws-eu18.gitpod.io/api/";
+const BASE_URL = "https://3001-fuchsia-dragonfly-jnxhty38.ws-eu17.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {

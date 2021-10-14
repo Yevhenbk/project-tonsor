@@ -4,12 +4,20 @@ import { StarRating } from "../component/starRating.js";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { SetAppoiment } from "./setAppoiment.js";
+
+import DateTimePicker from "react-datetime-picker";
+
+import Form from "react-bootstrap/Form";
 
 export const BarberCard = props => {
 	const [showAppoiment, setShowAppoiment] = useState(false);
 	const handleCloseAppoiment = () => setShowAppoiment(false);
 	const handleShowAppoiment = () => setShowAppoiment(true);
+
+	const [value, onChange] = useState(new Date());
+
 	return (
 		<div className="barber_card ">
 			<div className="container_barber_card">
@@ -50,10 +58,46 @@ export const BarberCard = props => {
 						show={showAppoiment}
 						onHide={handleCloseAppoiment}
 						animation={true}
-						size="m"
+						{...props}
+						size="lg"
 						aria-labelledby="contained-modal-title-vcenter"
 						centered>
-						<SetAppoiment />
+						<Modal.Header closeButton>
+							<Modal.Title id="contained-modal-title-vcenter">Reserva tu servicio</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							<h4>Seleccion los servcios que quieras reservar</h4>
+							<Form>
+								{["checkbox"].map(type => (
+									<div key={`default-${type}`} className="mb-3">
+										<Form.Check
+											type={type}
+											id={`default-${type}`}
+											label={`default ${type}`}
+											checked
+										/>
+
+										<Form.Check
+											enable
+											type={type}
+											label={`disabled ${type}`}
+											id={`disabled-default-${type}`}
+										/>
+									</div>
+								))}
+							</Form>
+
+							<span>Selecciona fecha y hora</span>
+							<div>
+								<DateTimePicker onChange={onChange} value={value} />
+							</div>
+						</Modal.Body>
+						<Modal.Footer>
+							<Button className="confirmar-reserva" onClick={props.onHide}>
+								Confirmar reserva
+							</Button>
+							<Button onClick={props.onHide}>Close</Button>
+						</Modal.Footer>
 					</Modal>
 				</div>
 			</div>
