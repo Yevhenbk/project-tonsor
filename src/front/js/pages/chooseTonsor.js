@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { BarberCard } from "../component/barberCard.js";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import Carousel from "react-bootstrap/Carousel";
 
 export const ChooseTonsor = () => {
 	const { store, actions } = useContext(Context);
@@ -15,6 +16,7 @@ export const ChooseTonsor = () => {
 
 	return (
 		<div className="services_views ">
+			<div />
 			<div className="mustache-container">
 				<img className="mustache_img" src={mustache_img} />
 			</div>

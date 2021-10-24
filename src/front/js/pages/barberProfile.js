@@ -29,7 +29,7 @@ export const BarberProfile = () => {
 						/>
 					</div>
 					<div className="user-data">
-						<p>Pedro Pérez</p>
+						<p>{localStorage.getItem("name")}</p>
 						<hr size="3" />
 					</div>
 					<Nav variant="pills" className="flex-column">

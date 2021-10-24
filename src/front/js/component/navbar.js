@@ -100,10 +100,10 @@ export const Navbar = () => {
 
 						<Dropdown.Menu>
 							<Dropdown.Item href="#/action-1" onClick={handleShowClient}>
-								Cómo cliente
+								Como cliente
 							</Dropdown.Item>
 							<Dropdown.Item href="#/action-2" onClick={handleShowBarber}>
-								Cómo barbero
+								Como barbero
 							</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>

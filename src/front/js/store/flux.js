@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-purple-clownfish-cv1clch0.ws-eu17.gitpod.io/api/";
+const BASE_URL = "https://3001-brown-lemur-lh205gbp.ws-eu17.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -37,16 +37,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						} else throw Error("Something went wrong");
 					})
 					.then(data => {
+						console.log("token" + data.token);
 						localStorage.setItem("token", data.token);
+						localStorage.setItem("name", data.name);
 						setStore({ islogged: true });
-						//redirect(); pasar la url de la vista que va a ver el usuario cuando se registra
+						//redirect(""); //pasar la url de la vista que va a ver el usuario cuando se registra
 					})
 					.catch(error => {
 						console.error("Unknown error", error);
 						setStore({ islogged: false });
-						//localStorage.removeItem("token");
 					});
 			},
+
+			logOut: () => {
+				localStorage.removeItem("token");
+				localStorage.removeItem("name");
+				setStore({ islogged: false });
+				//redirect("/home");
+			},
+
 			setLoggedIn: () => {
 				setStore({ islogged: true });
 			},

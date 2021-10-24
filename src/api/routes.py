@@ -35,18 +35,18 @@ def login():
     
     if user.is_client:
         client = Client.get_by_id_account(user.id)
-        print(client.id)
+        print(user.name)
         print(check_password_hash(user._password, password))
         if client and user.is_active and check_password_hash(user._password, password):
             token = create_access_token(identity=client.id, expires_delta=timedelta(minutes=120))
-            return {'token': token, 'role': 1}, 200
+            return {'token': token, 'role': 1, "name":user.name}, 200
 
     else:
         barber = Barber.get_by_id_account(user.id)
 
         if barber and user.is_active and check_password_hash(user._password, password):
             token = create_access_token(identity=barber.id, expires_delta=timedelta(minutes=120))
-            return {'token': token, 'role': 2}, 200
+            return {'token': token, 'role': 2, "name":user.name}, 200
 
     
     return ({'error': 'Wrong email or password'}), 400
