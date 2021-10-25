@@ -2,6 +2,14 @@
     padding: 5rem;
     //height: 100%;
 }
+.w-100{
+    border-radius: 1.5rem;
+}
+.carousel-inner{
+    border-radius: 1.5rem;
+}
+
+
 .barber_container_profiles{
     background: #E9EBED;
     padding: 2rem;
@@ -14,6 +22,7 @@
 .mustache-container{
     width: 100%;
     text-align: center;
+    margin-top: 2rem;
 
 }
 .mustache_img{
@@ -33,4 +42,7 @@
     top: 3.4rem; 
     left:2rem;
     color:#C8102E;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    font-size: xx-large;
 }

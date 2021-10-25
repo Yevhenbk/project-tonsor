@@ -7,6 +7,9 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Carousel from "react-bootstrap/Carousel";
 
+import CortePelo from "../../img/cortePelo.png";
+import Barba from "../../img/barba.png";
+
 export const ChooseTonsor = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(() => {
@@ -16,7 +19,30 @@ export const ChooseTonsor = () => {
 
 	return (
 		<div className="services_views ">
-			<div />
+			<Carousel>
+				<Carousel.Item interval={1000}>
+					<img className="d-block w-100" src={CortePelo} alt="First slide" />
+					<Carousel.Caption>
+						<h3>Corte de pelo</h3>
+						<p>Manten tu look siempre perfecto</p>
+					</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item interval={500}>
+					<img className="d-block w-100" src={Barba} alt="Second slide" />
+					<Carousel.Caption>
+						<h3>Barbería</h3>
+						<p>Nuestros Tonsores cuidarán de barba</p>
+					</Carousel.Caption>
+				</Carousel.Item>
+				<Carousel.Item>
+					<img className="d-block w-100" src={CortePelo} alt="Third slide" />
+					<Carousel.Caption>
+						<h3>Third slide label</h3>
+						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+					</Carousel.Caption>
+				</Carousel.Item>
+			</Carousel>
+
 			<div className="mustache-container">
 				<img className="mustache_img" src={mustache_img} />
 			</div>

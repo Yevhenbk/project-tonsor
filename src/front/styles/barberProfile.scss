@@ -2,19 +2,22 @@
     display: flex;
     //background:#E9EBED;
 }
+#left-tabs-example{
+    height: 100%;
+}
 .l-menu{
     background:#E9EBED;
-    height: 100vh;
+    //height: 100%;
     flex: 0 0 auto;
     padding: 2rem;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 
 }
-.r-menu{
+/*.r-menu{
     //width: 80%;
     //color: aqua;
-}
+}*/
 .barber_image_profile1{
     object-fit: cover;
     border-radius: 50%;
@@ -42,6 +45,7 @@
 }
 .img-profile-logo-container{
     margin-top: 1rem;
+    height: 100%;
     //text-align: center;
 
 }

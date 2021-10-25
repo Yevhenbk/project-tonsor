@@ -17,16 +17,13 @@ export const BtnProfile = () => {
 		<di>
 			<DropdownButton id="dropdown-basic-button" title={localStorage.getItem("name")}>
 				<Dropdown.Item href="#/action-1">
-					<Link to={"/barberProfile"}>
+					<Link to={"/barberProfile"} className="mi-cuenta">
 						Mi Cuenta &nbsp;
-						{/*props.name*/}
 					</Link>
 				</Dropdown.Item>
-				<hr size="1" />
 				<Dropdown.Item href="#/action-1">
-					<Link to="/" onClick={actions.logOut}>
+					<Link to="/" onClick={actions.logOut} className="mi-cuenta">
 						Cerrar cesión &nbsp;
-						{/*props.name*/}
 					</Link>
 				</Dropdown.Item>
 			</DropdownButton>

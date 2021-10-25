@@ -29,11 +29,6 @@ export const Footer = () => {
 					<Link className="p-color-gl p-font-text" to="/politcs" style={{ textDecoration: "none" }}>
 						Politica de Privacidad
 					</Link>
-					<Link
-						to="https://www.empresasgayfriendly.com/egf-guia/"
-						className="btn d-flex justify-content-center">
-						<button className="img-lgtbi btn" />
-					</Link>
 				</div>
 			</div>
 

@@ -9,8 +9,7 @@ import { Facturacion } from "../component/facturacion.js";
 import logoPositive from "../../img/tonsor-logo-negativo.png";
 import { PaymentOption } from "../component/paymentOption.js";
 import AddService from "../component/addService.jsx";
-import BarbersAppointment from "../component/barbersAppointment.jsx";
-import { MappingClientApp } from "../component/mappingClientApp.js";
+import Calendar from "../component/calendar.js";
 
 export const BarberProfile = () => {
 	const [toggleState, setToggleSatte] = useState(1);
@@ -63,6 +62,7 @@ export const BarberProfile = () => {
 						<Tab.Pane eventKey="1">
 							<div>
 								<AddService />
+								<Calendar />
 							</div>
 						</Tab.Pane>
 						<Tab.Pane eventKey="2">

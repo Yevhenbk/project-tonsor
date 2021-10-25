@@ -1,5 +1,6 @@
 .reviews_view{
     padding: 2rem;
+    height: 100%;
 }
 .barber_container_reviews{
     background: #E9EBED;
@@ -64,8 +65,12 @@
     
 }
 .opinion_views_title{
+    color:#242331;
     position: relative;
-top: 28px; left: 30px;
+    top: 28px; left: 30px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    font-size: xx-large;
 }
 .all_users_reviews{
     display: flex;

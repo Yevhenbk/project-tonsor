@@ -5,3 +5,23 @@
     font-weight: bold;
     margin-right: 5rem;
 }
+/*.mi-cuenta{
+    color: #C8102E;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+}*/
+.mi-cuenta {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #242331;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
