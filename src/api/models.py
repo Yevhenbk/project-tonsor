@@ -5,10 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.dialects.postgresql import VARCHAR
-from sqlalchemy import Column, ForeignKey, Integer, Table, DateTime, Numeric, Enum
+from sqlalchemy import Column, ForeignKey, Integer, Table, DateTime, Numeric, Enum, Float
 #from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
+
+
 
 class Account(db.Model):
     __tablename__="account"
@@ -131,6 +133,8 @@ class Barber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     radio = db.Column(db.Integer, nullable=True)
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
+    lat = db.Column(db.Float, nullable=True)
+    long = db.Column(db.Float, nullable=True)
 
     have_review = relationship("Review", backref="barber")
     have_barber_services = relationship("Barber_Services", backref="barber")
@@ -142,7 +146,9 @@ class Barber(db.Model):
         return {
             "id": self.id,
             "id_account": self.id_account, 
-            "radio": self.radio
+            "radio": self.radio,
+            "lat": self.lat, 
+            "long": self.long
         }
 
     def to_dict(self):
@@ -157,7 +163,9 @@ class Barber(db.Model):
             "email": barber.email,
             "address": barber.address, 
             "city": barber.city, 
-            "cp": barber.cp
+            "cp": barber.cp,
+            "lat":barber.lat, 
+            "long": barber.long
         }
 
     @classmethod
