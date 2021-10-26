@@ -16,6 +16,8 @@ from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="barberApp")
 
 import random
+from geopy.geocoders import Nominatim;
+geolocator=Nominatim(user_agent="tonsor");
 
 api = Blueprint('api', __name__)
 
@@ -195,9 +197,15 @@ def create_barber():
     barber = Barber(
         id_account=account.id,
         lat=location.latitude, 
+<<<<<<< HEAD
         long=location.longitude, 
 
     )
+=======
+        long = location.longitude
+    )
+
+>>>>>>> 5759106322abe21cd64cad25afa37130a6b7b3c3
     print(barber)
     try:
         barber.create()

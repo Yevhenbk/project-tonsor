@@ -133,8 +133,13 @@ class Barber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     radio = db.Column(db.Integer, nullable=True)
     id_account = db.Column(db.Integer, ForeignKey("account.id"))
+<<<<<<< HEAD
     lat = db.Column(db.Float, nullable=True)
     long = db.Column(db.Float, nullable=True)
+=======
+    lat = db.Column(db.Float, nullable=False)
+    long = db.Column(db.Float, nullable=False)
+>>>>>>> 5759106322abe21cd64cad25afa37130a6b7b3c3
 
     have_review = relationship("Review", backref="barber")
     have_barber_services = relationship("Barber_Services", backref="barber")
@@ -163,8 +168,13 @@ class Barber(db.Model):
             "email": barber.email,
             "address": barber.address, 
             "city": barber.city, 
+<<<<<<< HEAD
             "cp": barber.cp,
             "lat":barber.lat, 
+=======
+            "cp": barber.cp, 
+            "lat": barber.lat, 
+>>>>>>> 5759106322abe21cd64cad25afa37130a6b7b3c3
             "long": barber.long
         }
 
