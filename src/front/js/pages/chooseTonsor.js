@@ -9,6 +9,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 import CortePelo from "../../img/cortePelo.png";
 import Barba from "../../img/barba.png";
+import Cut from "../../img/tonsorcut.png";
 
 export const ChooseTonsor = () => {
 	const { store, actions } = useContext(Context);
@@ -21,10 +22,10 @@ export const ChooseTonsor = () => {
 		<div className="services_views ">
 			<Carousel>
 				<Carousel.Item interval={1000}>
-					<img className="d-block w-100" src={CortePelo} alt="First slide" />
+					<img className="d-block w-100" src={Cut} alt="First slide" />
 					<Carousel.Caption>
-						<h3>Corte de pelo</h3>
-						<p>Manten tu look siempre perfecto</p>
+						<h3>Tu mejor look sin salir de casa</h3>
+						<p>Nuestro equipo de Tonsores lo forman los mejores peluqueros</p>
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item interval={500}>
@@ -37,8 +38,8 @@ export const ChooseTonsor = () => {
 				<Carousel.Item>
 					<img className="d-block w-100" src={CortePelo} alt="Third slide" />
 					<Carousel.Caption>
-						<h3>Third slide label</h3>
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+						<h3>Corte de pelo</h3>
+						<p>Manten tu look siempre perfecto.</p>
 					</Carousel.Caption>
 				</Carousel.Item>
 			</Carousel>
@@ -65,7 +66,7 @@ export const ChooseTonsor = () => {
 				})}
 			</div>
 
-			<Map id="mapid" center={[40.4167, -3.70325]} zoom={5} scrollWheelZoom={false}>
+			<Map id="mapid" center={[40.4167, -3.70325]} zoom={6} scrollWheelZoom={false}>
 				<TileLayer
 					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
