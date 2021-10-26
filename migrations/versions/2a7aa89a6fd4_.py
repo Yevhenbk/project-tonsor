@@ -43,6 +43,8 @@ def upgrade():
     op.create_table('barber',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('radio', sa.Integer(), nullable=True),
+    sa.Column("lat", sa.Float(), nullable=False), 
+    sa.Column("long", sa.Float(), nullable=False), 
     sa.Column('id_account', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['id_account'], ['account.id'], ),
     sa.PrimaryKeyConstraint('id')

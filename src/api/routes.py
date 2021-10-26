@@ -13,6 +13,8 @@ from api.utils import generate_sitemap, APIException
 from api.models import db, Account, Review, Barber, Services, Barber_Services, Appointment, Client
 
 import random
+from geopy.geocoders import Nominatim;
+geolocator=Nominatim(user_agent="tonsor");
 
 api = Blueprint('api', __name__)
 
@@ -166,6 +168,8 @@ def create_barber():
         return ({'error': 'Some fields are missing'}), 400
     #hasta aqui todo funciona bien, SEGURO
     
+    location=geolocator.geocode(address + city)
+
     account = Account(
         img=img, 
         name=name, 
@@ -187,7 +191,12 @@ def create_barber():
     except exc.IntegrityError:
         return ({'error': 'This email / phone number is already in use'}), 400
         
-    barber = Barber(id_account=account.id)
+    barber = Barber(
+        id_account=account.id,
+        lat=location.latitude, 
+        long = location.longitude
+    )
+
     print(barber)
     try:
         barber.create()

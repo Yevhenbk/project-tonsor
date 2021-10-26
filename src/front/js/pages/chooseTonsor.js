@@ -70,11 +70,15 @@ export const ChooseTonsor = () => {
 					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				<Marker position={[40.4167, -3.70325]}>
-					<Popup>
-						<BarberCard />
-					</Popup>
-				</Marker>
+				{store.barbers.map(barber => {
+					return (
+						<Marker position={[barber.lat, barber.long]}>
+							<Popup>
+								<BarberCard />
+							</Popup>
+						</Marker>
+					);
+				})}
 			</Map>
 		</div>
 	);
