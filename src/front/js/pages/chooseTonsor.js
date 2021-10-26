@@ -65,7 +65,7 @@ export const ChooseTonsor = () => {
 				})}
 			</div>
 
-			<Map id="mapid" center={[40.4167, -3.70325]} zoom={13} scrollWheelZoom={false}>
+			<Map id="mapid" center={[40.4167, -3.70325]} zoom={5} scrollWheelZoom={false}>
 				<TileLayer
 					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
