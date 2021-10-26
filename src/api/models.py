@@ -164,8 +164,8 @@ class Barber(db.Model):
             "address": barber.address, 
             "city": barber.city, 
             "cp": barber.cp,
-            "lat":barber.lat, 
-            "long": barber.long
+            "lat":self.lat, 
+            "long": self.long
         }
 
     @classmethod

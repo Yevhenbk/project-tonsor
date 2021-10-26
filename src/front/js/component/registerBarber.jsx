@@ -12,7 +12,7 @@ const RegisterBarber = () => {
 	const { register, handleSubmit } = useForm();
 
 	const postBarber = data => {
-		actions.postBarber(data);
+		actions.barber(data);
 	};
 
 	return (

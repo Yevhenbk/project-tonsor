@@ -16,8 +16,8 @@ from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="barberApp")
 
 import random
-from geopy.geocoders import Nominatim;
-geolocator=Nominatim(user_agent="tonsor");
+from geopy.geocoders import Nominatim
+geolocator=Nominatim(user_agent="tonsor")
 
 api = Blueprint('api', __name__)
 
@@ -171,7 +171,10 @@ def create_barber():
         return ({'error': 'Some fields are missing'}), 400
     #hasta aqui todo funciona bien, SEGURO
 
-    location = geolocator.geocode(address+city)
+    location = geolocator.geocode(address + " " + city)
+    
+    location2 = geolocator.geocode(location)
+    
 
     account = Account(
         img=img, 
@@ -196,8 +199,8 @@ def create_barber():
         
     barber = Barber(
         id_account=account.id,
-        lat=location.latitude, 
-        long=location.longitude, 
+        lat=location2.latitude, 
+        long=location2.longitude, 
 
     )
     print(barber)
