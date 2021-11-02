@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import bigote_02 from "../../img/bigote_02.png";
-import cotePelo from "../../img/bigote_02.png";
 import vector from "../../img/VECTOR-PELUQUERO-CUT.png";
 import { Buscador } from "../component/buscador.js";
 import RegisterBarber from "../component/registerBarber.jsx";
+
 import { Link } from "react-router-dom";
 
 export const Home = () => {

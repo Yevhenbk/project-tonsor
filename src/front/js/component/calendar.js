@@ -13,10 +13,7 @@ export default class DemoApp extends React.Component {
 					plugins={[dayGridPlugin, timeGridPlugin]}
 					initialView="dayGridMonth"
 					weekends={false}
-					events={[
-						{ title: "Corde pelo", date: "2021-10-25", time: 12 },
-						{ title: "event 2", date: "2021-10-02" }
-					]}
+					events={[{ title: "Corde pelo", date: "2021-10-25" }, { title: "event 2", date: "2021-10-02" }]}
 					headerToolbar={{
 						left: "prev,next today",
 						center: "title",

@@ -32,7 +32,7 @@ export const ChooseTonsor = () => {
 					<img className="d-block w-100" src={Barba} alt="Second slide" />
 					<Carousel.Caption>
 						<h3>Barbería</h3>
-						<p>Nuestros Tonsores cuidarán de barba</p>
+						<p>Nuestros Tonsores cuidarán de tu barba</p>
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
@@ -66,7 +66,7 @@ export const ChooseTonsor = () => {
 				})}
 			</div>
 
-			<Map id="mapid" center={[40.4167, -3.70325]} zoom={6} scrollWheelZoom={false}>
+			<Map id="mapid" center={[40.4167, -3.70325]} zoom={7} scrollWheelZoom={true}>
 				<TileLayer
 					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

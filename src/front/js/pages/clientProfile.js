@@ -9,9 +9,9 @@ import { Facturacion } from "../component/facturacion.js";
 import logoPositive from "../../img/tonsor-logo-negativo.png";
 import { PaymentOption } from "../component/paymentOption.js";
 import AddService from "../component/addService.jsx";
-import BarbersAppointment from "../component/barbersAppointment.jsx";
+import Calendar from "../component/calendar.js";
 
-export const BarberProfile = () => {
+export const ClientProfile = () => {
 	const [toggleState, setToggleSatte] = useState(1);
 	const toggleTab = index => {
 		setToggleSatte(index);
@@ -28,7 +28,7 @@ export const BarberProfile = () => {
 						/>
 					</div>
 					<div className="user-data">
-						<p>Pedro Pérez</p>
+						<p>{localStorage.getItem("name")}</p>
 						<hr size="3" />
 					</div>
 					<Nav variant="pills" className="flex-column">
@@ -61,8 +61,7 @@ export const BarberProfile = () => {
 					<Tab.Content>
 						<Tab.Pane eventKey="1">
 							<div>
-								<AddService />
-								<BarbersAppointment />
+								<Calendar />
 							</div>
 						</Tab.Pane>
 						<Tab.Pane eventKey="2">
