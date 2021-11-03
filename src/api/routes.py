@@ -15,6 +15,7 @@ from api.models import db, Account, Review, Barber, Services, Barber_Services, A
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="barberApp")
 
+
 import random
 from geopy.geocoders import Nominatim
 geolocator=Nominatim(user_agent="tonsor")
