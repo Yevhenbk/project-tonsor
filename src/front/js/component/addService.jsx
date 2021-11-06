@@ -35,8 +35,8 @@ const AddService = () => {
 	const { register, handleSubmit } = useForm();
 	const { store, actions } = useContext(Context);
 
-	const getBarberService = data => {
-		actions.barber_services(data);
+	const getBarberService = (data, id) => {
+		actions.barber_services(data, id);
 	};
 	return (
 		<>
@@ -65,6 +65,7 @@ const AddService = () => {
 												id="photo"
 												className="visually-hidden"
 												onChange={handleImg}
+												{...register("img")}
 											/>
 											<label htmlFor="photo" className="form-img__file-label">
 												<svg

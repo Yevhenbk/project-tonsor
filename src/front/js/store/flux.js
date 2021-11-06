@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-brown-lemur-lh205gbp.ws-eu17.gitpod.io/api/";
+const BASE_URL = "https://3001-lavender-horse-gph8zjv4.ws-eu18.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -127,14 +127,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			barber_services: (data, id) => {
+			barber_services: data => {
 				console.log(data);
-				fetch(BASE_URL + "barber" + "barber_services", {
+				fetch(BASE_URL + "barber_services", {
 					method: "POST",
-					body: JSON.stringify(data),
+					body: data,
 					headers: {
-						"Content-Type": "application/json",
-						"Sec-Fetch-Mode": "no-cors"
+						"Sec-Fetch-Mode": "no-cors",
+						Authorization: "Bearer " + localStorage.getItem("token")
 					}
 				})
 					.then(resp => {
@@ -142,8 +142,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							throw Error("Invalid service info");
 						}
 					})
-					.then(responseAsJson => {
-						localStorage.setItem("token", data.token);
+					.then(response => {
+						console.log(response, "@@@@@@@@@@@@@@@@@@@@@@@@@");
 					})
 					.catch(error => console.error("There as been an unknown error", error));
 			},
@@ -170,11 +170,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			get_barber_services: data => {
+			get_barber_services: (data, id) => {
 				console.log(data);
-				fetch(BASE_URL + "barber_services", {
-					method: "GET",
-					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
+				fetch(BASE_URL + "barber/" + id + "/barber_services", {
+					method: "GET"
 				})
 					.then(function(response) {
 						if (!response.ok) {
@@ -242,28 +241,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error("Unknown error", error));
 			},
 
-			appointment: data => {
-				console.log(data);
-				fetch(getStore().BASE_URL.concat("appointment"), {
-					method: "POST",
-					body: JSON.stringify(data),
-					headers: {
-						"Content-Type": "application/json",
-						"Sec-Fetch-Mode": "no-cors"
-					}
-				})
-					.then(resp => {
-						if (!resp.ok) {
-							throw Error("Invalid service info");
-						}
-					})
-					.then(responseAsJson => {
-						setStore({ appointment: responseAsJson });
-					})
-					.catch(error => console.error("There as been an unknown error", error));
-			},
-
-			reserveAppointment: (data, id) => {
+			appointment: (data, id) => {
 				console.log(data);
 				fetch(BASE_URL + "client/" + id + "/appointment", {
 					method: "POST",

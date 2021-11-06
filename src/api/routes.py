@@ -15,6 +15,12 @@ from api.models import db, Account, Review, Barber, Services, Barber_Services, A
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="barberApp")
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import os
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 import random
 from geopy.geocoders import Nominatim
@@ -170,7 +176,6 @@ def create_barber():
     
     if not (name and lastname and phone_number and password and email and address and city and cp):
         return ({'error': 'Some fields are missing'}), 400
-    #hasta aqui todo funciona bien, SEGURO
 
     location = geolocator.geocode(address + " " + city)
     
@@ -215,6 +220,7 @@ def create_barber():
 @api.route('/barber/<int:id>', methods=['GET'])
 def get_barber_profile(id):
     barber = Barber.get_by_id(id)
+    
 
     if barber:
         return jsonify(barber.to_dict()), 200
@@ -224,51 +230,66 @@ def get_barber_profile(id):
 
 
 @api.route('/barber_services', methods=['POST'])
+@jwt_required()
 def add_new_service():
-    print("llego")
-    img = request.json.get(
-        'img', None
+    print()
+    #congif cloudinary
+    cloudinary.config(
+        cloud_name= os.getenv('CLOUD_NAME'),
+        api_key= os.getenv('API_KEY'),
+        api_secret= os.getenv('API_SECRET')
     )
-    name = request.json.get(
+    img = request.files.get(
+        'file', None
+    )
+    name = request.form.get(
         'name', None
     ) 
-    cost = request.json.get(
+    cost = request.form.get(
         'cost', None
     ) 
-    start_hour = request.json.get(
+    start_hour = request.form.get(
         'start_hour', None
     ) 
-    end_hour = request.json.get(
+    end_hour = request.form.get(
         'end_hour', None
     )
-    monday = request.json.get(
+    monday = request.form.get(
         'monday', None
     ) 
-    tuesday = request.json.get(
+    tuesday = request.form.get(
         'tuesday', None
     )
-    wednesday = request.json.get(
+    wednesday = request.form.get(
         'wednesday', None
     ) 
-    thursday = request.json.get(
+    thursday = request.form.get(
         'thursday', None
     )
-    friday = request.json.get(
+    friday = request.form.get(
         'friday', None
     ) 
-    saturday = request.json.get(
+    saturday = request.form.get(
         'saturday', None
     )
-    sunday = request.json.get(
+    sunday = request.form.get(
         'sunday', None
     ) 
-    category = request.json.get(
+    category = request.form.get(
         'category', None
     )
-    description = request.json.get(
+    description = request.form.get(
         'description', None
     ) 
-
+    #validar la extension del archivo
+    if img and img.filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS:
+            print("si")
+            upload_result = cloudinary.uploader.upload(img)
+            if upload_result:
+                image_url = upload_result.get('secure_url')
+                file_name = img.filename
+    
+    print(request.form)
     #if id_barber=True:
     if not (name and cost and start_hour and end_hour and category):
         return ({'error': 'Some fields are missing'}), 400
@@ -296,8 +317,9 @@ def add_new_service():
         
     except exc.IntegrityError:
         return ({'error': 'Unexpected error'}), 400
-#@api.route('barber_services/<int:id>', methods=['GET'])
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
 @api.route('/barber', methods=['GET'])
 def get_barber_all():
     barbers = Barber.get_all()
