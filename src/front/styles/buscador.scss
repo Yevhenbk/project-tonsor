@@ -4,14 +4,13 @@
     opacity: 0.9;
     border-radius: 10rem;
     display: flex;
-    width: 35vw;
-    border: white;
-    height: 4rem;
-    position: absolute;
-    top: 18rem;
-    left: 32%;
-    align-items: center;
     justify-content: space-evenly;
+    width: 35rem;
+    border: white;
+    height: 4.5rem;
+    position: absolute;
+    top: 22rem;
+    align-items: center;
     text-align: center;
     &:hover{
         background-color: #970820 !important;
@@ -58,4 +57,12 @@
 .search-bar-container{
     text-align: center;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.icon-search {
+    margin: 1rem 2rem;
+}
+.search-modal-text {
+    padding: 1rem 2rem;
 }

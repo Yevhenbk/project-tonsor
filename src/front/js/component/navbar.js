@@ -66,7 +66,7 @@ export const Navbar = () => {
 	console.log(store);*/
 
 	return (
-		<nav className="navbar">
+		<nav className="navbar fixed-top" collapseOnSelect expand="lg">
 			<Link to="/">
 				<img className="navbar-brand " src={LogoPositivo} />
 			</Link>

@@ -26,7 +26,7 @@ export const BarberCard = props => {
 	const { register, handleSubmit } = useForm();
 	const { store, actions } = useContext(Context);
 
-	const requestAppointment = data => actions.reserveAppointment(data);
+	const requestAppointment = data => actions.appointment(data);
 
 	return (
 		<div className="barber_card ">

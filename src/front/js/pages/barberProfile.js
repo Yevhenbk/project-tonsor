@@ -10,6 +10,7 @@ import logoPositive from "../../img/tonsor-logo-negativo.png";
 import { PaymentOption } from "../component/paymentOption.js";
 import AddService from "../component/addService.jsx";
 import Calendar from "../component/calendar.js";
+import { MappingClientApp } from "../component/mappingClientApp.js";
 
 export const BarberProfile = () => {
 	const [toggleState, setToggleSatte] = useState(1);
@@ -62,6 +63,7 @@ export const BarberProfile = () => {
 						<Tab.Pane eventKey="1">
 							<div>
 								<AddService />
+								<MappingClientApp />
 								<Calendar />
 							</div>
 						</Tab.Pane>

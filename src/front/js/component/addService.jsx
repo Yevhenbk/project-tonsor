@@ -65,7 +65,6 @@ const AddService = () => {
 												id="photo"
 												className="visually-hidden"
 												onChange={handleImg}
-												{...register("img")}
 											/>
 											<label htmlFor="photo" className="form-img__file-label">
 												<svg

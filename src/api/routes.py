@@ -308,6 +308,7 @@ def add_new_service():
         sunday=sunday,
         category=category,
         description=description,
+        id_barber=id_barber
     )
     print(barber_services.to_dict())
 
@@ -376,7 +377,8 @@ def get_review_by_id(id):
 
 
 #barbers appointment
-@api.route('/barber/<int:id>/appointment', methods=['POST'])
+@api.route('/appointment', methods=['POST'])
+@jwt_required()
 def add_new_appointment():
     print("llego")
     date_appointment = request.json.get(
@@ -397,44 +399,19 @@ def add_new_appointment():
         return ({'error': 'Unexpected error'}), 400
 
 
-@api.route('/barber/<int:id>/appointment', methods=['GET'])
-def get_appointment_request(id):
-    requested_appointment = Appointment.get_by_id(id)
-
-    if requested_appointment:
-        return jsonify(requested_appointment.to_dict()), 200
+@api.route('/appointment', methods=['GET'])
+def get_appointment_request():
+    print("wwwwwwwwwwwwwwwwwwwwwwwwwwww")
+    barber_services = Barber_Services.query.filter_by(id_barber=1).all()
+    appointments = []
+    print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", barber_services)
+    for service in barber_services:
+        for appointment in Appointment.query.filter_by(id_barber_Services=service.id).all():
+            print(appointment.to_dict(), "xxxxxxxxxxxxxxxxxxxxxxxxx")
+            appointments.append(appointment.to_dict())
     
-    return({"error": "Service not found"}), 404
-
-
-#clients appointment request   
-@api.route('/client/<int:id>/appointment', methods=['POST'])
-def request_appointment():
-    print("llego")
-    date_appointment = request.json.get(
-        'date_appointment', None
-    ) 
-
-    if not (date_appointment):
-        return ({'error': 'Some fields are missing'}), 400
-    appointment = Appointment( 
-        date_appointment=date_appointment
-    )
-    print(appointment.to_dict())
-    
-    try:
-        appointment_created = appointment.create()
-        return jsonify(appointment_created.to_dict()), 201
-        
-    except exc.IntegrityError:
-        return ({'error': 'Unexpected error'}), 400
-
-
-@api.route('/client/<int:id>/appointment', methods=['GET'])
-def get_appointments(id):
-    appointments = Appointment.get_by_id(id)
-
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", appointments)
     if appointments:
-        return jsonify(appointments.to_dict()), 200
+        return jsonify(appointments), 200
     
     return({"error": "Service not found"}), 404

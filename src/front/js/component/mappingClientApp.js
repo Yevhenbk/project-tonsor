@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useForm, useEffect } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import { Context } from "../store/appContext.js";
 
@@ -17,8 +17,18 @@ export const MappingClientApp = () => {
 		<div className="getAppointment">
 			{store.appointments.map((appointment, index) => {
 				console.log(appointment, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-				return <GetClientAppointment key={`appointment-${index}`} date={appointment.date_appointment} />;
+				return (
+					<div key={`appointment-${index}`}>
+						<div className="getAppointment">
+							<p>{appointment.date_appointment}</p>
+						</div>
+					</div>
+				);
 			})}
 		</div>
 	);
+};
+
+MappingClientApp.propTypes = {
+	date: PropTypes.string
 };

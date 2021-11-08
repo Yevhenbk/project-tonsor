@@ -243,28 +243,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			appointment: (data, id) => {
 				console.log(data);
-				fetch(BASE_URL + "client/" + id + "/appointment", {
+				console.log(data, id);
+				const token = localStorage.getItem("token");
+				console.log(`Token: ${token}`);
+				if (!token) {
+					console.error("No existe el token, error");
+				}
+				fetch(`${BASE_URL}appointment`, {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
 						"Content-Type": "application/json",
-						"Sec-Fetch-Mode": "no-cors"
+						"Sec-Fetch-Mode": "no-cors",
+						Authorization: `Bearer ${token}`
 					}
 				})
 					.then(resp => {
 						if (!resp.ok) {
-							throw Error("Invalid service info");
+							throw Error("Invalid info");
 						}
+						return resp.json();
 					})
 					.then(responseAsJson => {
-						setStore({ appointment: responseAsJson });
+						localStorage.setItem("token", responseAsJson);
 					})
 					.catch(error => console.error("There as been an unknown error", error));
 			},
 
 			getAppointment: (data, id) => {
 				console.log(data);
-				fetch(BASE_URL + "barber/" + id + "/appointment", {
+				fetch(BASE_URL + "appointment", {
 					method: "GET",
 					headers: new Headers({ "Content-Type": "application/json", "Sec-Fetch-Mode": "no-cors" })
 				})
@@ -275,7 +283,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(function(responseAsJson) {
-						setStore({ appointment: responseAsJson });
+						setStore({ appointments: responseAsJson });
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);

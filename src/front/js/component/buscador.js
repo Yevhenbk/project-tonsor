@@ -67,8 +67,8 @@ export const Buscador = () => {
 		<div>
 			<div className="search-bar-container">
 				<button className="search-modal-first-container" onClick={handleShow}>
-					<p>Selecciona aquí: dónde, cuándo y el servicio que deseas </p>{" "}
-					<FontAwesomeIcon icon={faSearchPlus} />
+					<p className="search-modal-text">Selecciona aquí: dónde, cuándo y el servicio que deseas </p>{" "}
+					<FontAwesomeIcon icon={faSearchPlus} className="icon-search" />
 				</button>
 			</div>
 

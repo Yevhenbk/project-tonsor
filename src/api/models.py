@@ -187,7 +187,22 @@ class Barber(db.Model):
         print("get all")
         barbers = cls.query.all()
         return barbers
-        
+
+class Services(db.Model):
+    __tablename__="services"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.VARCHAR, unique=False, nullable=False)
+
+    is_in_barber_services = relationship("Barber_Services", backref="services")
+
+    def __repr__(self):
+        return f'Services {self.services}'
+
+    def serialize (self):
+        return {
+            "id": self.id, 
+            "name": self.name
+        }
 
 
 class Barber_Services(db.Model):
@@ -210,14 +225,12 @@ class Barber_Services(db.Model):
     'Manicura', 'Depilacion de torso', 'Depilacion de piernas', 'Pedicura', name='service_category'), nullable=False)
     description = db.Column(db.VARCHAR, unique=False, nullable=True)
     id_barber = db.Column(db.Integer, ForeignKey("barber.id"))
+    id_services = db.Column(db.Integer, ForeignKey("services.id"), nullable=True)
 
     have_appointment = relationship("Appointment", backref="barberServices")
 
     def __repr__(self):
         return f'Barber_Services {self.id}'
-    
-    def __repr__(self):
-        return f'Barber_Services {self.barberServices}'
     
     def to_dict(self):
         return {
@@ -256,8 +269,6 @@ class Appointment(db.Model):
     def __repr__(self):
         return f'Appointment {self.id}'
 
-    def to_dict(self):
-        appointment = Appointment.get_by_id(self.id)
 
     def to_dict(self):
         return {
@@ -276,4 +287,3 @@ class Appointment(db.Model):
         db.session.add(self)
         db.session.commit()
         return self
-    
