@@ -25,50 +25,61 @@ export const Home = () => {
 			</div>
 
 			<div className="body-service ">
-				<h1 className="h1-header position-h1 d-flex ">SELECCIONA</h1>
-				<h1 className="h1-service d-flex">TU SERVICIO</h1>
+				<h1 className="h1-header position-h1 d-flex ones-hold">SELECCIONA</h1>
+				<h1 className="h1-service d-flex oness-hold">TU SERVICIO</h1>
 
-				<div className="div-service ">
-					<div className="btn-services-container">
-						<Link to="/chooseTonsor">
-							<button className="img-service-global img-beard " />
-							<p className="p-service ">Corte de cabello y Barbería</p>
-						</Link>
+				<div className="holder-for">
+					<input type="radio" name="dot" id="one" className="radio-but" />
+					<input type="radio" name="dot" id="two" className="radio-but" />
+					<div className="service-div-holder">
+						<div className="div-service ">
+							<div className="btn-services-container">
+								<Link to="/chooseTonsor">
+									<button className="img-service-global img-beard " />
+									<p className="p-service ">Corte de cabello y Barbería</p>
+								</Link>
+							</div>
+
+							<div className="btn-services-container">
+								<Link to="/chooseTonsor">
+									<button className=" img-back img-service-global" />
+									<p className="p-service">Depilación de espalda</p>
+								</Link>
+							</div>
+
+							<div className="btn-services-container">
+								<Link to="/chooseTonsor">
+									<button className="img-chest img-service-global" />
+									<p className="p-service">Depilación de torso</p>
+								</Link>
+							</div>
+						</div>
+						<div className="div-service ">
+							<div className="btn-services-container">
+								<Link to="/chooseTonsor">
+									<button className=" img-leg img-service-global" />
+									<p className="p-service">Depilación de piernas</p>
+								</Link>
+							</div>
+
+							<div className="btn-services-container">
+								<Link to="/chooseTonsor">
+									<button className=" img-manicure img-service-global" />
+									<p className="p-service">Manicura</p>
+								</Link>
+							</div>
+
+							<div className="btn-services-container">
+								<Link to="/chooseTonsor">
+									<button className=" img-pedicure img-service-global" />
+									<p className="p-service">Pedicura</p>
+								</Link>
+							</div>
+						</div>
 					</div>
-
-					<div className="btn-services-container">
-						<Link to="/chooseTonsor">
-							<button className=" img-back img-service-global" />
-							<p className="p-service">Depilación de espalda</p>
-						</Link>
-					</div>
-
-					<div className="btn-services-container">
-						<Link to="/chooseTonsor">
-							<button className="img-chest img-service-global" />
-							<p className="p-service">Depilación de torso</p>
-						</Link>
-					</div>
-
-					<div className="btn-services-container">
-						<Link to="/chooseTonsor">
-							<button className=" img-leg img-service-global" />
-							<p className="p-service">Depilación de piernas</p>
-						</Link>
-					</div>
-
-					<div className="btn-services-container">
-						<Link to="/chooseTonsor">
-							<button className=" img-manicure img-service-global" />
-							<p className="p-service">Manicura</p>
-						</Link>
-					</div>
-
-					<div className="btn-services-container">
-						<Link to="/chooseTonsor">
-							<button className=" img-pedicure img-service-global" />
-							<p className="p-service">Pedicura</p>
-						</Link>
+					<div className="op-buttons">
+						<label htmlFor="one" className="one active" />
+						<label htmlFor="two" className="two" />
 					</div>
 				</div>
 			</div>

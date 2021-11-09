@@ -401,17 +401,14 @@ def add_new_appointment():
 
 @api.route('/appointment', methods=['GET'])
 def get_appointment_request():
-    print("wwwwwwwwwwwwwwwwwwwwwwwwwwww")
     barber_services = Barber_Services.query.filter_by(id_barber=1).all()
     appointments = []
-    print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", barber_services)
+
     for service in barber_services:
         for appointment in Appointment.query.filter_by(id_barber_Services=service.id).all():
-            print(appointment.to_dict(), "xxxxxxxxxxxxxxxxxxxxxxxxx")
             appointments.append(appointment.to_dict())
     
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", appointments)
     if appointments:
         return jsonify(appointments), 200
     
-    return({"error": "Service not found"}), 404
+    return({"error": "Not found"}), 404
