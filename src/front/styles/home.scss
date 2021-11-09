@@ -13,10 +13,11 @@
     height: 100vh; width: auto;
     position: relative;
     margin-top: 4rem;
+    max-height: 40rem;
 }
 .mostache-container{
     text-align: center;
-    margin: 5rem;
+    margin: 2rem 5rem 5rem 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,6 +133,8 @@
     height: 100%;
     //margin-left: 5rem;
     width: 37%;
+    display: flex;
+    margin: 2rem 2rem 0 2rem;
 }
 .butt-reg{
     background: #C8102E;
@@ -142,14 +145,21 @@
     width: 5rem;
     border: black;
 }
-
+.img-container-tonsores {
+    display: flex;
+    justify-content: end;
+}
 .img-cut{
-    width: 100%;
+    width: 33rem;
     position: relative;
-    bottom: -0.5rem;
+    bottom: -12.6rem;
+    margin: 0 2rem;
 }
 .barber-register-txt-vector{
     display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-bottom: 2rem;
 }
 .register-barb{
     width: 60%;
@@ -157,26 +167,80 @@
 }
 .h1-profesional{
     text-align-last: end;
-   
+    margin-top: -2.35rem;
+    margin-right: 4rem;
 }
 .body-register-barber-container{
-    margin: 9rem 5rem 9rem 5rem;
+    margin: 9rem 6rem 9rem 6rem;
     background-color: #E9EBED;
     border-radius: 2rem;
+    min-width: 90%;
+    align-self: center;
 }
-.profesional-title{
-    position: relative;
-    top: -4rem;
-    margin-right: 6rem;
-
+@media screen and (max-width: 1300px) {
+    .body-register-barber-container{
+        background-color: #E9EBED;
+        align-self: center;
+        width: 100%;
+        border-radius: 0;
+    }
+}
+@media screen and (max-width: 950px) {
+    .body-register-barber-container {
+        margin: 9rem 6rem 9rem 6rem;
+        background-color: #E9EBED;
+        border-radius: 2rem;
+        max-width: 90%;
+        align-self: center;
+    } 
+    .barber-card {
+        display: none;
+    }
+        
+}
+@media screen and (max-width: 1050px) {
+    .barber-register-txt-vector {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+    .barber-card {
+        align-self: center;
+        margin: 0;
+        margin-top: 2rem;
+    }
+    .register-barb {
+        align-self: center;
+    }
+    .h1-profesional {
+        text-align: center; 
+        text-align-last: center;
+        margin-right: 0;
+    }
+    div.p-container-tonsores .p-tonsores {
+        text-align: center;
+        height: 20rem;
+        margin: 0;
+        margin-top: 2rem;
+    }
+    .img-container-tonsores {
+        justify-content: center;
+    }
+    .img-cut{
+        width: 26rem;
+        bottom: -.2rem;
+        margin: 0 2rem;
+    }
+    .register-barb {
+        align-self: center;
+    }
+    .profesional-title {
+        display: contents;
+    }
 }
 .tonsores-team{
-    position: relative;
-    top: -6rem;
-    margin-right: 6rem;
     color: #242331;
     font-size: 36px;
-    font-weight: 400;
     font-family: 'Oswald', sans-serif;
 }
 .text-tonsores{
@@ -186,6 +250,8 @@
 
 .p-tonsores{
     text-align: end;
+    margin: 4rem 4rem 0 4rem;
+    height: 10rem;
 }
 .div-service {
     /*width: 100%;
@@ -263,7 +329,7 @@ div.op-buttons {
 @media screen and (max-width: 880px) {
     .mostache-container{
         text-align: center;
-        margin: 5rem 1rem;
+        margin: 3rem 1rem 5rem 1rem;
     }
     .p-dark {
         margin: 4rem 2rem;
