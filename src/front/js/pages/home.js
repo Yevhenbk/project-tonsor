@@ -16,7 +16,7 @@ export const Home = () => {
 
 			<div className="mostache-container">
 				<img className="emo-barb" src={bigote_02} />
-				<h1 className="h1-header">Manter tu cabello siempre perfecto ahora es fácil</h1>
+				<h1 className="h1-header loren">Manter tu cabello siempre perfecto ahora es fácil</h1>
 				<p className="p-dark text-center">
 					TONSOR hace que sea muy sencillo mantener un look siempre perfecto, aun cuando no tengas tiempo y
 					estando desde la comodidad de tu casa. Sólo tienes que selecionar tu ubicación, hora y servicio que
@@ -24,9 +24,11 @@ export const Home = () => {
 				</p>
 			</div>
 
-			<div className="body-service ">
-				<h1 className="h1-header position-h1 d-flex ones-hold">SELECCIONA</h1>
-				<h1 className="h1-service d-flex oness-hold">TU SERVICIO</h1>
+			<div className="body-service">
+				<div className="h1-service-tag">
+					<h1 className="h1-header position-h1 d-flex ones-hold">SELECCIONA</h1>
+					<h1 className="h1-service d-flex oness-hold">TU SERVICIO</h1>
+				</div>
 
 				<div className="holder-for">
 					<input type="radio" name="dot" id="one" className="radio-but" />

@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode"; //optional
 
-const BASE_URL = "https://3001-lavender-horse-gph8zjv4.ws-eu18.gitpod.io/api/";
+const BASE_URL = "https://3001-copper-puffin-lxsur7uj.ws-eu18.gitpod.io//api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {

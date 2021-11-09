@@ -11,6 +11,7 @@
 .navbar-btn{
     margin-right: 5rem;
     display: flex;
+    outline: none !important;
 }
 .navbar-btn-login{
     margin-right: 0.5rem;
@@ -19,6 +20,7 @@
     color: #E9EBED;
     background-color: #C8102E;
     border-color: #C8102E;
+    outline: none !important;
 }
 .btn-primary:hover {
     background-color: #970820 !important;
@@ -32,12 +34,15 @@
 .show > .btn-primary.dropdown-toggle:active {
     box-shadow: none;
     background-color: #970820;
+    outline: none !important;
 }
 #dropdown-basic{
     border-radius: 2rem;
+    outline: none !important;
 }
 .dropdown-login-container{
     margin-right: 0.5rem; 
+    outline: none !important;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
@@ -45,14 +50,19 @@
     background-color: #C8102E;
     border-color: #C8102E;
     border-color: #C8102E;
+    outline: none !important;
     box-shadow: none;
 }
 .btn-primary:focus {
     color: #E9EBED;
     background-color: #C8102E;
     border-color: #C8102E;
+    outline: none !important;
 }
 .btn:focus, .btn.focus {
     outline: 0;
     box-shadow: white;
+}
+button:visited {
+    outline: none !important;
 }
