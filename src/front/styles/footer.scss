@@ -5,7 +5,37 @@
     background-color: #242331;
     display: flex;
     width: 100%;
-    
+    flex-direction: row;
+    justify-content: space-between;
+}
+@media screen and (max-width: 810px) {
+    .footer-css {
+        flex-direction: column;
+    }
+    .container-div {
+        display: flex;
+        align-self: center;
+    }
+    .container_about_us {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+    div.container-contact-us {
+        align-self: center;
+        margin: 0 0 2rem 0;
+    }
+    img.img-logo-footer {
+        margin: 0;
+        margin-top: 4rem;
+    }
+        
+}
+.p-color-gl a:hover {
+    color: #C8102E;
+}
+.p-color-gl a {
+    transition: 0s;
 }
 .fontaw-icons {
     color: white;
@@ -29,28 +59,36 @@
     justify-content: center;
     font-size: 1.5rem;
     text-align:center;
+    margin-top: .5rem;
+    transition: 0s;
+}
+.p-color-gl:hover {
+    color: #C8102E;
 }
 .p-font-tit {
     font-family: 'Oswald';
+    font-weight: 300;
+    font-size: 26px;
+    margin: 0;
 }
 .p-font-text {
     font-family: 'Roboto';
-    font-size: 1.1rem;
+    font-size: 16px;
+    margin: .5rem 0;
 }
 .img-logo-footer{
     width: 15rem;
-    margin: 2rem 0rem 1rem 5rem;
+    margin: 2rem 0 0 2rem;
 }
 .container-div {
-    width: 40%;
+    display: flex;
 }
 .container_about_us{
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 30%;
 }
 .container-contact-us{
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 30%;
+    margin-right: 2rem;
 }

@@ -229,7 +229,7 @@
     .img-cut{
         width: 26rem;
         bottom: -.2rem;
-        margin: 0 2rem;
+        margin: 0;
     }
     .register-barb {
         align-self: center;
@@ -419,11 +419,11 @@ div.op-buttons {
     @media screen and (max-width: 500px) {
         .service-div-holder {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: space-evenly;
             overflow: hidden;
-            //width: 200%;
-            //transition: 1s all ease;
+            // width: 200%;
+            // transition: 1s all ease;
             margin-top: 0;
             margin-bottom: 3rem;
         }
@@ -436,14 +436,54 @@ div.op-buttons {
         }
         .btn-services-container {
             align-self: center;
-            margin: .5rem;
+            margin: 0.5rem;
         }
         .p-service {
-            font-size: 21px;
+            font-size: 18px;
             width: 100%;
         }
-        div.op-buttons {
-            display: none;
-        }
+        // div.op-buttons {
+        //     display: none;
+        // }
+    }
+}
+@media screen and (max-width: 460px) {
+    .p-dark {
+        font-size: 18px;
+    }
+    .h1-header {
+        font-size: 26px;
+        max-width: 80%;
+    }
+    .h1-service {
+        font-size: 26px;
+    }
+    .h1-service-tag {
+        margin-top: -1.72rem;
+    }
+    .tonsores-team {
+        font-size: 26px;
+        width: 15rem;
+        align-self: center;
+        text-align: center;
+    }
+    .h1-profesional {
+        display: flex;
+        flex-direction: column;
+        margin-top: -1.72rem;
+    }
+    .img-cut {
+        width: 70vw;
+    }
+    div.p-container-tonsores .p-tonsores {
+        height: 40vh;
+
+    }
+    .body-register-barber-container {
+        max-width: 100%;
+        border-radius: 0;
+    }
+    .body-register-barber-container {
+        margin-bottom: 0;
     }
 }

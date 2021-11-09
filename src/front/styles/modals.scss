@@ -32,6 +32,12 @@
     padding-left: 3.5rem;
     padding-top: 0;
 }
+@media screen and (max-width: 460px) {
+    .modal-body {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+}
 .modal-footer {
     justify-content: center;
     border-top: none;
@@ -99,7 +105,7 @@
 .myInput {
     border: none;
     border-bottom: 1px solid black;
-    width: 18rem;
+    width: 16rem;
     outline: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;

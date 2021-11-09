@@ -21,6 +21,34 @@
         margin: 0;
     }
 }
+@media screen and (max-width: 658px) {
+    .search-modal-first-container {
+        width: 25rem;
+        height: 4rem;
+    }
+    .search-modal-text {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 440px) {
+    .search-modal-first-container {
+        top: 17rem;
+    }
+}
+@media screen and (max-width: 470px) {
+    .search-modal-first-container {
+        width: 65vw;
+        height: 3.5rem;
+        display: flex;
+        justify-content: end;
+    }
+    .search-modal-text {
+        display: none;
+    }
+    img.img-logo-footer {
+        width: 10rem;
+    }
+}
 .h1-cabecera-m {
     color: #C8102E;
     font-size: large;

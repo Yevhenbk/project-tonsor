@@ -38,7 +38,7 @@ export const Home = () => {
 							<div className="btn-services-container">
 								<Link to="/chooseTonsor">
 									<button className="img-service-global img-beard " />
-									<p className="p-service ">Corte de cabello y Barbería</p>
+									<p className="p-service ">Corte de cabello</p>
 								</Link>
 							</div>
 
