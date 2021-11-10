@@ -1,6 +1,7 @@
 import jwt_decode from "jwt-decode"; //optional
+import { Form } from "react-bootstrap";
 
-const BASE_URL = "https://3001-copper-puffin-lxsur7uj.ws-eu18.gitpod.io//api/";
+const BASE_URL = "https://3001-amaranth-goat-25t4tbhl.ws-eu18.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -128,10 +129,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			barber_services: data => {
-				console.log(data);
+				let variable = new FormData();
+				let dataKeys = Object.keys(data);
+				for (let x in dataKeys) {
+					variable.append(dataKeys[x], data[dataKeys[x]]);
+				}
 				fetch(BASE_URL + "barber_services", {
 					method: "POST",
-					body: data,
+					body: variable,
 					headers: {
 						"Sec-Fetch-Mode": "no-cors",
 						Authorization: "Bearer " + localStorage.getItem("token")
@@ -172,18 +177,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			get_barber_services: (data, id) => {
 				console.log(data);
-				fetch(BASE_URL + "barber/" + id + "/barber_services", {
+				fetch(BASE_URL + "/barber_services", {
 					method: "GET"
 				})
 					.then(function(response) {
 						if (!response.ok) {
 							throw Error("I can't load a service");
 						}
-						return response.json();
 					})
-					.then(function(responseAsJson) {
-						setStore({ barber_services: responseAsJson });
-					})
+					// .then(function(responseAsJson) {
+					// 	setStore({ barber_services: responseAsJson });
+					// })
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
 					});

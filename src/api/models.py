@@ -252,6 +252,12 @@ class Barber_Services(db.Model):
             "description": self.description, 
             "id_barber": self.id_barber
         }
+
+    @classmethod
+    def get_all(cls):
+        print("get all")
+        services = cls.query.all()
+        return services
     
     def create(self):
         db.session.add(self)

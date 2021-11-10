@@ -232,7 +232,12 @@ def get_barber_profile(id):
 @api.route('/barber_services', methods=['POST'])
 @jwt_required()
 def add_new_service():
-    print()
+    id_barber= get_jwt_identity()
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    print(request.form.get(
+        'name', None
+    ) )
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     #congif cloudinary
     cloudinary.config(
         cloud_name= os.getenv('CLOUD_NAME'),
@@ -240,7 +245,7 @@ def add_new_service():
         api_secret= os.getenv('API_SECRET')
     )
     img = request.files.get(
-        'file', None
+        'img', None
     )
     name = request.form.get(
         'name', None
@@ -255,25 +260,25 @@ def add_new_service():
         'end_hour', None
     )
     monday = request.form.get(
-        'monday', None
+        'monday', False
     ) 
     tuesday = request.form.get(
-        'tuesday', None
+        'tuesday', False
     )
     wednesday = request.form.get(
-        'wednesday', None
+        'wednesday', False
     ) 
     thursday = request.form.get(
-        'thursday', None
+        'thursday', False
     )
     friday = request.form.get(
-        'friday', None
+        'friday', False
     ) 
     saturday = request.form.get(
-        'saturday', None
+        'saturday', False
     )
     sunday = request.form.get(
-        'sunday', None
+        'sunday', False
     ) 
     category = request.form.get(
         'category', None
@@ -292,6 +297,7 @@ def add_new_service():
     print(request.form)
     #if id_barber=True:
     if not (name and cost and start_hour and end_hour and category):
+        print(name, cost, start_hour, end_hour)
         return ({'error': 'Some fields are missing'}), 400
     barber_services = Barber_Services(
         img=img, 
@@ -318,6 +324,18 @@ def add_new_service():
         
     except exc.IntegrityError:
         return ({'error': 'Unexpected error'}), 400
+
+
+@api.route('/barber_services', methods=['GET'])
+@jwt_required()
+def get_barber_services():
+    barber_services = Barber_Services.get_all()
+    print(barber_services,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+    if barber_services:
+        return barber_services.to_dict(), 200
+
+    return({'error': 'Not fount'})
 
 
 
