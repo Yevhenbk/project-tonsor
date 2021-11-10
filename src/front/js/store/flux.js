@@ -1,7 +1,7 @@
 import jwt_decode from "jwt-decode"; //optional
 import { Form } from "react-bootstrap";
 
-const BASE_URL = "https://3001-amaranth-goat-25t4tbhl.ws-eu18.gitpod.io/api/";
+const BASE_URL = "https://3001-blush-weasel-5xr8eyn2.ws-eu18.gitpod.io/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {

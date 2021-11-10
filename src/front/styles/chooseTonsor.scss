@@ -8,6 +8,12 @@
 .carousel-inner{
     border-radius: 1.5rem;
 }
+.carousel {
+    display: none;
+}
+.services_views .mustache-container {
+    margin-top: 4rem;
+}
 
 
 .barber_container_profiles{
@@ -39,10 +45,10 @@
 }
 .choose_tonsor_title{
     position: relative;
-    top: 3.4rem; 
-    left:2rem;
+    top: 2.4rem; 
+    left:4rem;
     color:#C8102E;
-    font-weight: bold;
+    font-weight: 500;
     font-family: 'Oswald', sans-serif;
-    font-size: xx-large;
+    font-size: 36px;
 }

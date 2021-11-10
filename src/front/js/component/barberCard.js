@@ -40,14 +40,6 @@ export const BarberCard = props => {
 				</div>
 
 				<div className="barber_information_container ">
-					<div className="Review_container">
-						<StarRating />
-						<Link to={"/reviews/".concat(props.id)}>
-							<button className="btn_watch_reviews" type="button">
-								Ver reseñas: (24)
-							</button>
-						</Link>
-					</div>
 					<div className="Berber_name_container">
 						Name:&nbsp;
 						{props.name}
@@ -55,6 +47,15 @@ export const BarberCard = props => {
 					<div className="Services_info_container">
 						Servicio:&nbsp;
 						{props.services}
+					</div>
+					<div className="Review_container">
+						<Link to={"/reviews/".concat(props.id)}>
+							<button className="btn_watch_reviews" type="button">
+								Ver reseñas: (24)
+							</button>
+						</Link>
+
+						<StarRating />
 					</div>
 					{/*<Link to={"/barberProfile"}>
 						<button className="barber-date-btn" type="button">
@@ -77,7 +78,7 @@ export const BarberCard = props => {
 								<Modal.Title>Reserva Online</Modal.Title>
 							</Modal.Header>
 							<Modal.Body>
-								<section className="myCheckboxesVsHolder">
+								<section className="myCheckboxesVsHolder holderMine">
 									<div className="myCategoryCheckTitle">
 										<p className="myLabel">Seleccion los servcios que quieras reservar:</p>
 									</div>

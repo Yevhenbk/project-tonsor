@@ -152,7 +152,7 @@
 .img-cut{
     width: 33rem;
     position: relative;
-    bottom: -12.6rem;
+    bottom: -10.6rem;
     margin: 0 2rem;
 }
 .barber-register-txt-vector{
@@ -185,6 +185,11 @@
         border-radius: 0;
     }
 }
+@media screen and (min-width: 950px) {
+    .uniteButton {
+        display: none;
+    }
+}
 @media screen and (max-width: 950px) {
     .body-register-barber-container {
         margin: 9rem 6rem 9rem 6rem;
@@ -195,6 +200,21 @@
     } 
     .barber-card {
         display: none;
+    }
+    .uniteButton {
+        display: flex;
+        width: 7.75rem;
+        height: 2.75rem;
+        background-color: #C8102E;
+        color: white;
+        font-family: 'Roboto';
+        font-weight: 600;
+        font-size: 21px;
+        border: none;
+        border-radius: 30px;
+        padding: .5rem 2rem;
+        align-self: center;
+        margin: .5rem 0 5rem 0;
     }
         
 }
@@ -219,7 +239,7 @@
     }
     div.p-container-tonsores .p-tonsores {
         text-align: center;
-        height: 20rem;
+        // height: 20rem;
         margin: 0;
         margin-top: 2rem;
     }
@@ -247,11 +267,10 @@
     height: 60%;
 
 }
-
 .p-tonsores{
     text-align: end;
     margin: 4rem 4rem 0 4rem;
-    height: 10rem;
+    //height: 10rem;
 }
 .div-service {
     /*width: 100%;
@@ -277,6 +296,7 @@
     // width: 200%;
     // transition: 1s all ease;
 }
+
 .btn-services-container {
     padding: 2rem 2rem 0 2rem;
     margin-bottom: 4rem;
@@ -475,10 +495,6 @@ div.op-buttons {
     .img-cut {
         width: 70vw;
     }
-    div.p-container-tonsores .p-tonsores {
-        height: 40vh;
-
-    }
     .body-register-barber-container {
         max-width: 100%;
         border-radius: 0;
@@ -486,4 +502,12 @@ div.op-buttons {
     .body-register-barber-container {
         margin-bottom: 0;
     }
+    .uniteButton {
+        margin: .5rem 0 1rem 0;
+    }
+}
+.unite-button-holder {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 2rem 0;
 }

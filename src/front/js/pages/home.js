@@ -5,6 +5,7 @@ import bigote_02 from "../../img/bigote_02.png";
 import vector from "../../img/VECTOR-PELUQUERO-CUT.png";
 import { Buscador } from "../component/buscador.js";
 import RegisterBarber from "../component/registerBarber.jsx";
+import Unite from "../component/unite.jsx";
 
 import { Link } from "react-router-dom";
 
@@ -106,6 +107,7 @@ export const Home = () => {
 									quieres ofrecer. Lo siguiente que tienes que hacer es empezar a cambiar looks.
 								</p>
 							</div>
+							<Unite />
 							<div className="img-container-tonsores">
 								<img className="img-cut " src={vector} />
 							</div>

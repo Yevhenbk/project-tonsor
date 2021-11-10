@@ -1,6 +1,5 @@
 .barber_card{
     background: white;
-    width: 20rem;
     border-radius: 1rem;
     margin-right: 1rem;
     margin-top: 2rem;
@@ -21,9 +20,10 @@
     flex-shrink: 0;
     width: 50px;
     height: 50px;
+    margin: 1rem 0 0 .5rem;
 }
 .barber_information_container{
-    margin-left: 1rem;
+    margin: 1rem 2rem 1rem .75rem;
 }
 .btn_watch_reviews{
     font-family: "Oswald";
@@ -38,7 +38,7 @@
     border-radius: 4rem;
     min-height: 1rem;
     border-style: none;
-    margin: 0.5rem 0rem 0.5rem 0rem;
+    padding: .25rem 1rem;
     color: #E9EBED;
 }
 .confirmar-reserva{
@@ -51,5 +51,14 @@
     margin: 1rem 0;
 }
 
+.Services_info_container {
+    display: none;
+}
+svg.star {
+    margin: 0 .1rem;
+}
+.holderMine {
+    display: none;
+}
 
 
